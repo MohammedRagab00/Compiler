@@ -56,17 +56,15 @@ public class HelloController {
 
         // Setup theme toggle - start with dark mode
         themeToggle.setGraphic(new FontIcon("fas-moon"));
-        themeToggle.setSelected(true); // Start with dark theme
+        themeToggle.setSelected(true); // Start with a dark theme
 
         // Setup theme change listener
-        themeToggle.selectedProperty().addListener((obs, oldVal, newVal) -> {
-            applyTheme(newVal);
-        });
+        themeToggle.selectedProperty().addListener((obs, oldVal, newVal) -> applyTheme(newVal));
 
         // Make sure we initialize the scene with correct icons when it becomes available
         themeToggle.sceneProperty().addListener((obs, oldScene, newScene) -> {
             if (newScene != null) {
-                // Apply initial theme when scene is available
+                // Apply the initial theme when a scene is available
                 applyTheme(themeToggle.isSelected());
             }
         });
@@ -102,43 +100,41 @@ public class HelloController {
                 new FileChooser.ExtensionFilter("All Files", "*.*")
         );
 
-        // Show file chooser dialog
+        // Show the file chooser dialog
         File selectedFile = fileChooser.showOpenDialog(inputArea.getScene().getWindow());
 */
         File selectedFile = new File("src/main/resources/Input.txt");
 
-        if (selectedFile != null) {
-            try {
-                // Read file content
-                String content = new String(Files.readAllBytes(selectedFile.toPath()));
+        try {
+            // Read file content
+            String content = new String(Files.readAllBytes(selectedFile.toPath()));
 
-                // Set content to input area
-                inputArea.setText(content);
+            // Set content to the input area
+            inputArea.setText(content);
 
-                // Optional: Show success message in console
-                consoleArea.setText("File loaded successfully: " + selectedFile.getName());
+            // Optional: Show a success message in the console
+            consoleArea.setText("File loaded successfully: " + selectedFile.getName());
 
-                // Reset status icon - clear the container
-                statusIconContainer.getChildren().clear();
+            // Reset status icon - clear the container
+            statusIconContainer.getChildren().clear();
 
-                // Reset parse tree view
-                parseTreeView.setImage(null);
+            // Reset parse tree view
+            parseTreeView.setImage(null);
 
-                // Disable draw and open buttons until compilation
-                drawButton.setDisable(true);
-                openButton.setDisable(true);
+            // Disable draw and open buttons until compilation
+            drawButton.setDisable(true);
+            openButton.setDisable(true);
 
-            } catch (IOException e) {
-                // Show error in console area
-                consoleArea.setText("Error loading file: " + e.getMessage());
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            // Show error in the console area
+            consoleArea.setText("Error loading file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     private void compile() {
         try {
-            // Get input from text area
+            // Get input from the text area
             String inputText = inputArea.getText();
 
             // Show compiling status
@@ -150,32 +146,30 @@ public class HelloController {
             consoleArea.setStyle("-fx-text-fill: blue;");
             consoleArea.setText("Compiling...");
 
-            // Create ANTLR string stream from input text
+            // Create ANTLR string stream from an input text
             ANTLRStringStream input = new ANTLRStringStream(inputText);
 
-            // Create lexer attached to the input stream
+            // Create a lexer attached to the input stream
             Project_ASTLexer lexer = new Project_ASTLexer(input);
 
-            // Create token stream from lexer
+            // Create a token stream from lexer
             CommonTokenStream tokens = new CommonTokenStream(lexer);
 
             // Create parser attached to token stream
             parser = new Project_ASTParser(tokens);
 
-            // Invoke program rule and get return value
-            Project_ASTParser.program_return r = null;
-            boolean hasErrors = false;
+            // Invoke program rule and get a return value
+            Project_ASTParser.program_return r;
 
             try {
                 r = parser.program();
             } catch (RecognitionException e) {
-                hasErrors = true;
                 consoleArea.setStyle("-fx-text-fill: red;");
                 consoleArea.setText("Syntax Error: " + e.getMessage() +
                         "\nLine: " + e.line +
                         ", Column: " + e.charPositionInLine);
 
-                // Create and set error icon using FontIcon
+                // Create and set the error icon using FontIcon
                 FontIcon errorIcon = new FontIcon("fas-times-circle");
                 errorIcon.setIconColor(javafx.scene.paint.Color.RED);
                 errorIcon.setIconSize(24);
@@ -198,7 +192,6 @@ public class HelloController {
 
             if (lexer.getNumberOfSyntaxErrors() > 0 || parser.getNumberOfSyntaxErrors() > 0 || parserHasErrors) {
                 // Compilation had errors
-                hasErrors = true;
 
                 StringBuilder errorMsg = new StringBuilder("Compilation failed with errors:\n");
                 if (msg != null && !msg.isEmpty()) {
@@ -210,7 +203,7 @@ public class HelloController {
                 consoleArea.setStyle("-fx-text-fill: red;");
                 consoleArea.setText(errorMsg.toString());
 
-                // Create and set error icon using FontIcon
+                // Create and set the error icon using FontIcon
                 FontIcon errorIcon = new FontIcon("fas-times-circle");
                 errorIcon.setIconColor(javafx.scene.paint.Color.RED);
                 errorIcon.setIconSize(24);
@@ -227,7 +220,7 @@ public class HelloController {
                     consoleArea.setStyle("-fx-text-fill: red;");
                     consoleArea.setText("Error: No parse tree was generated.");
 
-                    // Create and set error icon using FontIcon
+                    // Create and set the error icon using FontIcon
                     FontIcon errorIcon = new FontIcon("fas-times-circle");
                     errorIcon.setIconColor(javafx.scene.paint.Color.RED);
                     errorIcon.setIconSize(24);
@@ -244,14 +237,14 @@ public class HelloController {
                 DOTTreeGenerator gen = new DOTTreeGenerator();
                 StringTemplate st = gen.toDOT(t);
 
-                // Write DOT file
+                // Write a DOT file
                 String dotContent = st.toString();
                 File dotFile = new File("Dot.dot");
                 PrintWriter output = new PrintWriter(dotFile);
                 output.print(dotContent);
                 output.close();
 
-                // Run DOT.BAT to generate parse tree image (assuming DOT.BAT exists)
+                // Run DOT.BAT to generate a parse tree image (assuming DOT.BAT exists)
                 Process process = new ProcessBuilder("DOT.BAT").start();
 
                 // Wait for the process to complete
@@ -267,7 +260,7 @@ public class HelloController {
                     consoleArea.setText("Compiled Successfully" + (msg != null ? "\n" + msg : ""));
                 }
 
-                // Create and set success icon using FontIcon
+                // Create and set the success icon using FontIcon
                 FontIcon successIcon = new FontIcon("fas-check-circle");
                 successIcon.setIconColor(javafx.scene.paint.Color.GREEN);
                 successIcon.setIconSize(24);
@@ -284,7 +277,7 @@ public class HelloController {
             consoleArea.setText("IO Error: " + e.getMessage());
             e.printStackTrace();
 
-            // Create and set error icon
+            // Create and set the error icon
             FontIcon errorIcon = new FontIcon("fas-times-circle");
             errorIcon.setIconColor(javafx.scene.paint.Color.RED);
             errorIcon.setIconSize(24);
@@ -299,7 +292,7 @@ public class HelloController {
             consoleArea.setText("Process interrupted: " + e.getMessage());
             e.printStackTrace();
 
-            // Create and set error icon
+            // Create and set the error icon
             FontIcon errorIcon = new FontIcon("fas-times-circle");
             errorIcon.setIconColor(javafx.scene.paint.Color.RED);
             errorIcon.setIconSize(24);
@@ -314,7 +307,7 @@ public class HelloController {
             consoleArea.setText("Error: " + e.getMessage());
             e.printStackTrace();
 
-            // Create and set error icon
+            // Create and set the error icon
             FontIcon errorIcon = new FontIcon("fas-times-circle");
             errorIcon.setIconColor(javafx.scene.paint.Color.RED);
             errorIcon.setIconSize(24);
@@ -333,7 +326,7 @@ public class HelloController {
             double width = parseTreeView.getFitWidth();
             double height = parseTreeView.getFitHeight();
 
-            // Load parse tree image and resize to fit view
+            // Load parse tree image and resize to fit the view
             File imageFile = new File("Parse.png");
             if (imageFile.exists()) {
                 Image parseImage = new Image(imageFile.toURI().toString(),
@@ -342,10 +335,10 @@ public class HelloController {
                 // Check if there are errors before displaying
                 String msg = parser.s;
                 if (msg != null && msg.contains("line")) {
-                    // If there are errors, don't show parse tree
+                    // If there are errors, don't show a parse tree
                     parseTreeView.setImage(null);
                 } else {
-                    // If compilation was successful, show parse tree
+                    // If compilation was successful, show a parse tree
                     parseTreeView.setImage(parseImage);
                 }
             } else {
