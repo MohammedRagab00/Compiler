@@ -1,0 +1,255 @@
+// C Program to implement Hospital Management System
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+
+// Define a structure for Hospital
+struct Hospital
+{
+    char name[50];
+    char city[50];
+    int beds;
+    float price;
+    float rating;
+    int reviews;
+};
+
+// Function to print hospital data
+void printHospital(struct Hospital hosp)
+{
+    printf("Hospital Name: %s\n", hosp.name);
+    printf("City: %s\n", hosp.city);
+    printf("Total Beds: %d\n", hosp.beds);
+    printf("Price per Bed: $%.2f\n", hosp.price);
+    printf("Rating: %.1f\n", hosp.rating);
+    printf("Reviews: %d\n\n", hosp.reviews);
+}
+
+// Function to sort hospitals by beds price (ascending)
+void sortByPrice(struct Hospital hospitals[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (hospitals[j].price > hospitals[j + 1].price)
+            {
+                struct Hospital temp = hospitals[j];
+                hospitals[j] = hospitals[j + 1];
+                hospitals[j + 1] = temp;
+            }
+        }
+    }
+}
+
+// Function to find the cheapest hospital
+void findCheapestHospital(struct Hospital hospitals[], int n)
+{
+    int minIndex = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (hospitals[i].price < hospitals[minIndex].price)
+        {
+            minIndex = i;
+        }
+    }
+    printf("\nCheapest Hospital:\n");
+    printHospital(hospitals[minIndex]);
+}
+
+// Function to find the best-rated hospital
+void findBestRatedHospital(struct Hospital hospitals[], int n)
+{
+    int maxIndex = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (hospitals[i].rating > hospitals[maxIndex].rating)
+        {
+            maxIndex = i;
+        }
+    }
+    printf("\nBest Rated Hospital:\n");
+    printHospital(hospitals[maxIndex]);
+}
+
+// Function to find the hospital with the most beds
+void findHospitalWithMostBeds(struct Hospital hospitals[], int n)
+{
+    int maxIndex = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (hospitals[i].beds > hospitals[maxIndex].beds)
+        {
+            maxIndex = i;
+        }
+    }
+    printf("\nHospital with Most Beds:\n");
+    printHospital(hospitals[maxIndex]);
+}
+
+// Function to find the hospital with the least beds
+void findHospitalWithLeastBeds(struct Hospital hospitals[], int n)
+{
+    int minIndex = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (hospitals[i].beds < hospitals[minIndex].beds)
+        {
+            minIndex = i;
+        }
+    }
+    printf("\nHospital with Least Beds:\n");
+    printHospital(hospitals[minIndex]);
+}
+
+// Function to sort hospitals by rating (descending)
+void sortByRating(struct Hospital hospitals[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (hospitals[j].rating < hospitals[j + 1].rating)
+            {
+                struct Hospital temp = hospitals[j];
+                hospitals[j] = hospitals[j + 1];
+                hospitals[j + 1] = temp;
+            }
+        }
+    }
+}
+
+// Function to sort hospitals by beds (descending)
+void sortByBeds(struct Hospital hospitals[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (hospitals[j].beds < hospitals[j + 1].beds)
+            {
+                struct Hospital temp = hospitals[j];
+                hospitals[j] = hospitals[j + 1];
+                hospitals[j + 1] = temp;
+            }
+        }
+    }
+}
+
+// Function to update hospital rating
+void updateHospitalRating(struct Hospital hospitals[], int n, char name[], float newRating)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (strcasecmp(hospitals[i].name, name) == 0)
+        {
+            hospitals[i].rating = (hospitals[i].rating * hospitals[i].reviews + newRating) / (hospitals[i].reviews + 1);
+            hospitals[i].reviews++;
+            printf("\nUpdated Hospital Rating:\n");
+            printHospital(hospitals[i]);
+            return;
+        }
+    }
+    printf("Hospital not found.\n");
+}
+
+// Function to add a new hospital
+void addNewHospital(struct Hospital hospitals[], int *n)
+{
+    if (*n >= 100)
+    {
+        printf("Cannot add more hospitals.\n");
+        return;
+    }
+
+    printf("Enter Hospital Name: ");
+    scanf(" %[^\n]", hospitals[*n].name);
+    printf("Enter City: ");
+    scanf(" %[^\n]", hospitals[*n].city);
+    printf("Enter Total Beds: ");
+    scanf("%d", &hospitals[*n].beds);
+    printf("Enter Price per Bed: ");
+    scanf("%f", &hospitals[*n].price);
+    printf("Enter Rating: ");
+    scanf("%f", &hospitals[*n].rating);
+    hospitals[*n].reviews = 1;
+
+    (*n)++;
+    printf("New hospital added successfully!\n");
+}
+
+int main()
+{
+    struct Hospital hospitals[100] = {
+        {"Hospital A", "X", 100, 250.0, 4.5, 100},
+        {"Hospital B", "Y", 150, 200.0, 4.2, 80},
+        {"Hospital C", "X", 200, 180.0, 4.0, 120},
+        {"Hospital D", "Z", 80, 300.0, 4.8, 90},
+        {"Hospital E", "Y", 120, 220.0, 4.6, 110}};
+
+    int n = 5;
+    int choice;
+    char name[50];
+    float newRating;
+
+    do
+    {
+        printf("\n*********** Hospital Management System Menu ***********\n");
+        printf("1. Print All Hospitals\n");
+        printf("2. Find Cheapest Hospital\n");
+        printf("3. Find Best Rated Hospital\n");
+        printf("4. Find Hospital with Most Beds\n");
+        printf("5. Find Hospital with Least Beds\n");
+        printf("6. Sort Hospitals by Rating\n");
+        printf("7. Sort Hospitals by Beds\n");
+        printf("8. Update Hospital Rating\n");
+        printf("9. Add New Hospital\n");
+        printf("10. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        getchar();
+
+        switch (choice)
+        {
+        case 1:
+            for (int i = 0; i < n; i++)
+                printHospital(hospitals[i]);
+            break;
+        case 2:
+            findCheapestHospital(hospitals, n);
+            break;
+        case 3:
+            findBestRatedHospital(hospitals, n);
+            break;
+        case 4:
+            findHospitalWithMostBeds(hospitals, n);
+            break;
+        case 5:
+            findHospitalWithLeastBeds(hospitals, n);
+            break;
+        case 6:
+            sortByRating(hospitals, n);
+            break;
+        case 7:
+            sortByBeds(hospitals, n);
+            break;
+        case 8:
+            printf("Enter hospital name: ");
+            scanf(" %[^\n]", name);
+            printf("Enter new rating: ");
+            scanf("%f", &newRating);
+            updateHospitalRating(hospitals, n, name, newRating);
+            break;
+        case 9:
+            addNewHospital(hospitals, &n);
+            break;
+        case 10:
+            printf("Exiting the program.\n");
+            break;
+        default:
+            printf("Invalid choice. Please enter a valid option.\n");
+        }
+    } while (choice != 10);
+
+    return 0;
+}

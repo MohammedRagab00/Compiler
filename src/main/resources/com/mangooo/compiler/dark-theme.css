@@ -1,0 +1,87 @@
+.root {
+    -fx-background-color: #1e1e1e;
+}
+
+.split-pane {
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #333333;
+    -fx-padding: 1;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-background-color: #333333;
+    -fx-padding: 0 1 0 1;
+}
+
+.split-pane > .viewport {
+    -fx-background-color: #1e1e1e;
+}
+
+.section-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #cccccc;
+}
+
+.text-area {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 14px;
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: #cccccc;
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+    -fx-padding: 5;
+}
+
+.text-area .content {
+    -fx-background-color: #2d2d2d;
+}
+
+.text-area:disabled {
+    -fx-opacity: 0.8;
+}
+
+.button {
+    -fx-padding: 8 15 8 15;
+}
+
+.action-button {
+    -fx-background-color: #3c3c3c;
+    -fx-text-fill: #cccccc;
+    -fx-border-color: #555555;
+    -fx-border-radius: 3;
+    -fx-min-width: 90px;
+}
+
+.primary-button {
+    -fx-background-color: #0e639c;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8 15 8 15;
+    -fx-border-radius: 3;
+    -fx-min-width: 120px;
+}
+
+.button:hover {
+    -fx-opacity: 0.9;
+    -fx-cursor: hand;
+}
+
+#parseTreeView {
+    -fx-background-color: #2d2d2d;
+}
+
+.toggle-theme {
+    -fx-background-radius: 50%;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-color: #3c3c3c;
+    -fx-border-color: #555555;
+    -fx-border-radius: 50%;
+}
+
+.toggle-theme:selected {
+    -fx-background-color: #0e639c;
+}
