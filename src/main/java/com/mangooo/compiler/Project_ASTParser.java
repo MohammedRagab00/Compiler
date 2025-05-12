@@ -1,4 +1,4 @@
-package com.mangooo.compiler;// $ANTLR 3.4 N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g 2025-05-13 00:53:51
+package com.mangooo.compiler;// $ANTLR 3.4 N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g 2025-05-13 01:24:50
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -173,7 +173,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_globalDeclarations.add(globalDeclarations2.getTree());
 
             // AST REWRITE
-            // elements: includeDirectives, globalDeclarations
+            // elements: globalDeclarations, includeDirectives
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -239,7 +239,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "includeDirectives"
-    // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:37:1: includeDirectives : ( includeDirective )* -> ^( INCLUDES ( includeDirective )* ) ;
+    // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:37:1: includeDirectives : ( includeDirective )+ -> ^( INCLUDES ( includeDirective )+ ) ;
     public final includeDirectives_return includeDirectives() throws RecognitionException {
         includeDirectives_return retval = new includeDirectives_return();
         retval.start = input.LT(1);
@@ -252,10 +252,11 @@ public TreeAdaptor getTreeAdaptor() {
 
         RewriteRuleSubtreeStream stream_includeDirective=new RewriteRuleSubtreeStream(adaptor,"rule includeDirective");
         try {
-            // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:38:5: ( ( includeDirective )* -> ^( INCLUDES ( includeDirective )* ) )
-            // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:38:7: ( includeDirective )*
+            // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:38:5: ( ( includeDirective )+ -> ^( INCLUDES ( includeDirective )+ ) )
+            // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:38:7: ( includeDirective )+
             {
-            // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:38:7: ( includeDirective )*
+            // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:38:7: ( includeDirective )+
+            int cnt1=0;
             loop1:
             do {
                 int alt1=2;
@@ -281,8 +282,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop1;
+            	    if ( cnt1 >= 1 ) break loop1;
+                        EarlyExitException eee =
+                            new EarlyExitException(1, input);
+                        throw eee;
                 }
+                cnt1++;
             } while (true);
 
 
@@ -297,16 +302,18 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 38:25: -> ^( INCLUDES ( includeDirective )* )
+            // 38:25: -> ^( INCLUDES ( includeDirective )+ )
             {
-                // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:38:28: ^( INCLUDES ( includeDirective )* )
+                // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:38:28: ^( INCLUDES ( includeDirective )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
                 (Object)adaptor.create(INCLUDES, "INCLUDES")
                 , root_1);
 
-                // N:\\Study\\Material\\CS407\\Practical\\Projects\\Project 1\\New\\Project_AST.g:38:39: ( includeDirective )*
+                if ( !(stream_includeDirective.hasNext()) ) {
+                    throw new RewriteEarlyExitException();
+                }
                 while ( stream_includeDirective.hasNext() ) {
                     adaptor.addChild(root_1, stream_includeDirective.nextTree());
 
@@ -954,7 +961,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: globalVariableDeclaration, functionDefinition, structDefinition
+            // elements: functionDefinition, globalVariableDeclaration, structDefinition
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1092,7 +1099,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: structMembers, ID
+            // elements: ID, structMembers
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2232,7 +2239,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_compoundStatement.add(compoundStatement54.getTree());
 
             // AST REWRITE
-            // elements: compoundStatement, ID, retType, parameterList
+            // elements: compoundStatement, parameterList, ID, retType
             // token labels: 
             // rule labels: retType, retval
             // token list labels: 
@@ -3543,7 +3550,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: initializer, dataType, declarator
+            // elements: dataType, declarator, initializer
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3970,7 +3977,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: INT_LITERAL, statement
+            // elements: statement, INT_LITERAL
             // token labels: 
             // rule labels: retval
             // token list labels: 
