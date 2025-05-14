@@ -82,6 +82,7 @@ public class HelloController {
         view3DButton.setDisable(true);
     }
 
+/*
     private void openThreeDHtml() {
         try {
             File htmlFile = new File("threeD.html");
@@ -90,6 +91,41 @@ public class HelloController {
             } else {
                 consoleArea.setText("Error: Unable to open threeD.html. File may not exist.");
             }
+        } catch (IOException e) {
+            consoleArea.setText("Error opening 3D view: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+*/
+
+    private void openThreeDHtml() {
+        try {
+            // Define the path to the Edge executable
+            String edgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
+
+            // Define the user data directory
+            String userDataDir = "C:/EdgeDevSession";
+
+            // Specify the HTML file to open
+            File htmlFile = new File("threeD.html");
+
+            // Check if the file exists
+            if (!htmlFile.exists()) {
+                consoleArea.setText("Error: threeD.html not found.");
+                return;
+            }
+
+            // Convert the file path to a proper file URL
+            String fileUrl = htmlFile.toURI().toString(); // e.g., file:///path/to/threeD.html
+
+            // Build and execute the command
+            ProcessBuilder pb = new ProcessBuilder(
+                    edgePath,
+                    "--disable-web-security",
+                    "--user-data-dir=" + userDataDir,
+                    fileUrl
+            );
+            pb.start();
         } catch (IOException e) {
             consoleArea.setText("Error opening 3D view: " + e.getMessage());
             e.printStackTrace();
