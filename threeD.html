@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D AST Tree Visualizer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+      }
+
+      #container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      #info {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 5px;
+        color: #fff;
+        font-size: 12px;
+        max-width: 300px;
+        z-index: 100;
+      }
+
+      #upload-container {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .button {
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      #loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 24px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        display: none;
+        z-index: 200;
+      }
+
+      #node-info {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 14px;
+        max-width: 300px;
+        z-index: 100;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        display: none;
+      }
+
+      #title {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 100;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        border-radius: 10px;
+        letter-spacing: 1px;
+      }
+
+      .controls-info {
+        margin-top: 15px;
+        font-size: 11px;
+        opacity: 0.7;
+      }
+
+      .slider-container {
+        width: 100%;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .slider-group {
+        margin-bottom: 10px;
+      }
+
+      .slider-label {
+        display: block;
+        font-size: 12px;
+        margin-bottom: 5px;
+        color: #fff;
+      }
+
+      .slider-input {
+        width: 100%;
+        -webkit-appearance: none;
+        height: 4px;
+        border-radius: 2px;
+        margin-top: 5px;
+      }
+
+      .slider-input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .slider-input::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+      }
+
+      .slider-value {
+        font-size: 10px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 2px;
+        text-align: right;
+      }
+
+      .theme-selector {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+      }
+
+      .theme-button {
+        padding: 8px 16px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .theme-button.active {
+        transform: scale(1.05);
+      }
+
+      /* Theme-specific styles */
+      body.theme-pastel {
+        background: linear-gradient(135deg, #ffebee, #e1bee7);
+        color: #000000;
+      }
+      body.theme-pastel .button {
+        background: #ffccd2;
+        color: #000000;
+      }
+      body.theme-pastel .button:hover {
+        background: #ffabaf;
+      }
+      body.theme-pastel .slider-input {
+        background: #e1bee7;
+      }
+      body.theme-pastel .slider-input::-webkit-slider-thumb {
+        background: #ffccd2;
+      }
+      body.theme-pastel #node-info {
+        background: rgba(255, 235, 238, 0.8);
+        color: #000000;
+      }
+      body.theme-pastel .theme-button {
+        background: #ffccd2;
+        color: #000000;
+      }
+      body.theme-pastel .theme-button:hover {
+        background: #ffabaf;
+      }
+      body.theme-pastel .theme-button.active {
+        background: #ffabaf;
+      }
+
+      body.theme-monochrome {
+        background: linear-gradient(135deg, #f5f5f5, #bdbdbd);
+        color: #000000;
+      }
+      body.theme-monochrome .button {
+        background: #e0e0e0;
+        color: #000000;
+      }
+      body.theme-monochrome .button:hover {
+        background: #bdbdbd;
+      }
+      body.theme-monochrome .slider-input {
+        background: #bdbdbd;
+      }
+      body.theme-monochrome .slider-input::-webkit-slider-thumb {
+        background: #e0e0e0;
+      }
+      body.theme-monochrome #node-info {
+        background: rgba(224, 224, 224, 0.8);
+        color: #000000;
+      }
+      body.theme-monochrome .theme-button {
+        background: #e0e0e0;
+        color: #000000;
+      }
+      body.theme-monochrome .theme-button:hover {
+        background: #bdbdbd;
+      }
+      body.theme-monochrome .theme-button.active {
+        background: #bdbdbd;
+      }
+
+      body.theme-vibrant {
+        background: linear-gradient(135deg, #e1f5fe, #b3e5fc);
+        color: #000000;
+      }
+      body.theme-vibrant .button {
+        background: #c8e6c9;
+        color: #000000;
+      }
+      body.theme-vibrant .button:hover {
+        background: #a5d6a7;
+      }
+      body.theme-vibrant .slider-input {
+        background: #b3e5fc;
+      }
+      body.theme-vibrant .slider-input::-webkit-slider-thumb {
+        background: #c8e6c9;
+      }
+      body.theme-vibrant #node-info {
+        background: rgba(200, 230, 201, 0.8);
+        color: #000000;
+      }
+      body.theme-vibrant .theme-button {
+        background: #c8e6c9;
+        color: #000000;
+      }
+      body.theme-vibrant .theme-button:hover {
+        background: #a5d6a7;
+      }
+      body.theme-vibrant .theme-button.active {
+        background: #a5d6a7;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <div id="title">3D Abstract Syntax Tree Visualizer</div>
+    <div id="upload-container">
+      <button id="draw-btn" class="button">Draw</button>
+      <div class="controls-info">
+        <p>Mouse: Rotate view<br />Scroll: Zoom<br />Right-click: Pan</p>
+      </div>
+      <div class="slider-container">
+        <div class="slider-group">
+          <label class="slider-label">Node Size</label>
+          <input
+            type="range"
+            id="nodeSize"
+            class="slider-input"
+            min="5"
+            max="30"
+            step="1"
+            value="15"
+          />
+          <div class="slider-value" id="nodeSizeValue">15</div>
+        </div>
+        <div class="slider-group">
+          <label class="slider-label">Node Spacing</label>
+          <input
+            type="range"
+            id="nodeSpacing"
+            class="slider-input"
+            min="40"
+            max="200"
+            step="5"
+            value="80"
+          />
+          <div class="slider-value" id="nodeSpacingValue">80</div>
+        </div>
+        <div class="slider-group">
+          <label class="slider-label">Label Size</label>
+          <input
+            type="range"
+            id="labelSize"
+            class="slider-input"
+            min="20"
+            max="100"
+            step="5"
+            value="48"
+          />
+          <div class="slider-value" id="labelSizeValue">48</div>
+        </div>
+      </div>
+      <div class="theme-selector">
+        <button class="theme-button" data-theme="pastel">Pastel</button>
+        <button class="theme-button" data-theme="monochrome">Monochrome</button>
+        <button class="theme-button" data-theme="vibrant">Vibrant</button>
+      </div>
+    </div>
+    <div id="loading">Loading AST...</div>
+    <div id="node-info">
+      <h3 id="node-label"></h3>
+      <p id="node-details"></p>
+    </div>
+
+    <script>
+      let scene, camera, renderer, controls, graphGroup;
+      let nodes = {},
+        edges = [];
+      let nodeObjects = {},
+        edgeObjects = {};
+      let raycaster,
+        mouse,
+        selectedNode = null;
+      let nodeInfoPanel = document.getElementById("node-info");
+
+      let nodeSize = 15;
+      let nodeSpacing = 80;
+      let labelSize = 48; // Add new variable
+
+      const themes = {
+        pastel: {
+          baseColor: 0xffebee,
+          glowColors: {
+            PROGRAM: 0xffcdd2,
+            INCLUDES: 0xdcedc8,
+            STRUCT: 0xbbdefb,
+            VAR_DECL: 0xffecb3,
+            default: 0xe1bee7,
+          },
+          nodeColors: {
+            // Add node colors
+            PROGRAM: 0xffe4e5,
+            INCLUDES: 0xedf7e5,
+            STRUCT: 0xe3f2fd,
+            VAR_DECL: 0xfff8e1,
+            default: 0xf3e5f5,
+          },
+          glowOpacity: 0.3,
+          particles: [0xffcdd2, 0xdcedc8, 0xbbdefb, 0xffecb3, 0xe1bee7],
+        },
+        monochrome: {
+          baseColor: 0xf5f5f5,
+          glowColors: {
+            PROGRAM: 0xe0e0e0,
+            INCLUDES: 0xbdbdbd,
+            STRUCT: 0x9e9e9e,
+            VAR_DECL: 0x757575,
+            default: 0x616161,
+          },
+          nodeColors: {
+            // Add node colors
+            PROGRAM: 0xfafafa,
+            INCLUDES: 0xf5f5f5,
+            STRUCT: 0xeeeeee,
+            VAR_DECL: 0xe0e0e0,
+            default: 0xbdbdbd,
+          },
+          glowOpacity: 0.5,
+          particles: [0xe0e0e0, 0xbdbdbd, 0x9e9e9e, 0x757575, 0x616161],
+        },
+        vibrant: {
+          baseColor: 0xe1f5fe,
+          glowColors: {
+            PROGRAM: 0xb3e5fc,
+            INCLUDES: 0xc8e6c9,
+            STRUCT: 0xffecb3,
+            VAR_DECL: 0xffe0b2,
+            default: 0xf8bbd0,
+          },
+          nodeColors: {
+            // Add node colors
+            PROGRAM: 0xe1f5fe,
+            INCLUDES: 0xe8f5e9,
+            STRUCT: 0xfff8e1,
+            VAR_DECL: 0xfff3e0,
+            default: 0xfce4ec,
+          },
+          glowOpacity: 0.3,
+          particles: [0xb3e5fc, 0xc8e6c9, 0xffecb3, 0xffe0b2, 0xf8bbd0],
+        },
+      };
+
+      let currentTheme = "pastel";
+
+      function loadDefaultDOT() {
+        fetch("Dot.dot")
+          .then((response) => response.text())
+          .then((dotContent) => parseDOT(dotContent))
+          .catch((error) => console.error("Error loading DOT file:", error));
+      }
+
+      function init() {
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x000c18);
+
+        camera = new THREE.PerspectiveCamera(
+          60,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          10000
+        );
+        camera.position.set(0, 0, -1000); // Changed from 1000 to -1000
+
+        renderer = new THREE.WebGLRenderer({
+          antialias: true,
+          alpha: true,
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        document.getElementById("container").appendChild(renderer.domElement);
+
+        scene.add(new THREE.AmbientLight(0x152238, 0.6));
+
+        const lights = [
+          { color: 0x4285f4, position: [1, 1, 1] },
+          { color: 0x34a853, position: [-1, -1, 1] },
+          { color: 0xfbbc05, position: [1, -1, -1] },
+          { color: 0xea4335, position: [-1, 1, -1] },
+        ];
+
+        lights.forEach((light) => {
+          const directionalLight = new THREE.DirectionalLight(light.color, 0.5);
+          directionalLight.position.set(...light.position);
+          scene.add(directionalLight);
+        });
+
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+
+        raycaster = new THREE.Raycaster();
+        mouse = new THREE.Vector2();
+
+        window.addEventListener("resize", onWindowResize);
+        window.addEventListener("mousemove", onMouseMove);
+        window.addEventListener("click", onMouseClick);
+
+        setupSliders();
+
+        graphGroup = new THREE.Group();
+        scene.add(graphGroup);
+
+        scene.fog = new THREE.FogExp2(0x000c18, 0.00025);
+        addEnhancedParticles();
+
+        document.querySelectorAll(".theme-button").forEach((button) => {
+          button.addEventListener("click", () => {
+            const newTheme = button.dataset.theme;
+            updateTheme(newTheme);
+            document
+              .querySelectorAll(".theme-button")
+              .forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+          });
+        });
+
+        updateTheme(currentTheme);
+        document
+          .querySelector(`.theme-button[data-theme="${currentTheme}"]`)
+          .classList.add("active");
+
+        document
+          .getElementById("draw-btn")
+          .addEventListener("click", loadDefaultDOT);
+        loadDefaultDOT();
+
+        animate();
+      }
+
+      function setupSliders() {
+        const nodeSizeSlider = document.getElementById("nodeSize");
+        const nodeSpacingSlider = document.getElementById("nodeSpacing");
+        const labelSizeSlider = document.getElementById("labelSize"); // Add new slider
+        const nodeSizeValue = document.getElementById("nodeSizeValue");
+        const nodeSpacingValue = document.getElementById("nodeSpacingValue");
+        const labelSizeValue = document.getElementById("labelSizeValue"); // Add new value display
+
+        nodeSizeSlider.addEventListener("input", (e) => {
+          nodeSize = parseInt(e.target.value);
+          nodeSizeValue.textContent = nodeSize;
+          refreshVisuals();
+        });
+
+        nodeSpacingSlider.addEventListener("input", (e) => {
+          nodeSpacing = parseInt(e.target.value);
+          nodeSpacingValue.textContent = nodeSpacing;
+          refreshVisuals();
+        });
+
+        labelSizeSlider.addEventListener("input", (e) => {
+          labelSize = parseInt(e.target.value);
+          labelSizeValue.textContent = labelSize;
+          refreshVisuals();
+        });
+      }
+
+      function refreshVisuals() {
+        if (Object.keys(nodes).length === 0) return;
+
+        calculateNodePositions();
+
+        Object.keys(nodeObjects).forEach((nodeId) => {
+          const node = nodes[nodeId];
+          const nodeMesh = nodeObjects[nodeId];
+          nodeMesh.position.copy(node.position);
+          nodeMesh.scale.set(nodeSize, nodeSize, nodeSize);
+          if (nodeMesh.userData.labelSprite) {
+            nodeMesh.userData.labelSprite.position.set(
+              node.position.x,
+              node.position.y - nodeSize * 2,
+              node.position.z
+            );
+            const spriteScale = labelSize / 48;
+            nodeMesh.userData.labelSprite.scale.set(
+              80 * spriteScale,
+              40 * spriteScale,
+              1
+            );
+          }
+          if (nodeMesh.userData.glow) {
+            nodeMesh.userData.glow.position.copy(node.position);
+            const glowScale = nodeSize * 1.2;
+            nodeMesh.userData.glow.scale.set(glowScale, glowScale, glowScale);
+          }
+        });
+
+        edges.forEach((edge) => {
+          const sourceNode = nodes[edge.source];
+          const targetNode = nodes[edge.target];
+          if (!sourceNode || !targetNode) return;
+          const start = sourceNode.position;
+          const end = targetNode.position;
+          const edgeLine = edgeObjects[`${edge.source}-${edge.target}`];
+          if (edgeLine) {
+            const points = [
+              new THREE.Vector3(start.x, start.y, start.z),
+              new THREE.Vector3(end.x, end.y, end.z),
+            ];
+            edgeLine.geometry.setFromPoints(points);
+            edgeLine.geometry.computeBoundingSphere();
+          }
+        });
+      }
+
+      function addEnhancedParticles() {
+        const particleCount = 3000;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+        const sizes = new Float32Array(particleCount);
+
+        const initialColors = themes[currentTheme].particles;
+
+        for (let i = 0; i < particleCount; i++) {
+          const radius = 1000 + Math.random() * 2000;
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(Math.random() * 2 - 1);
+
+          positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+          positions[i * 3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+          positions[i * 3 + 2] = radius * Math.cos(phi);
+
+          const color = new THREE.Color(
+            initialColors[Math.floor(Math.random() * initialColors.length)]
+          );
+          colors[i * 3] = color.r;
+          colors[i * 3 + 1] = color.g;
+          colors[i * 3 + 2] = color.b;
+
+          sizes[i] = Math.random() * 4 + 1;
+        }
+
+        geometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(positions, 3)
+        );
+        geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+        geometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
+
+        const material = new THREE.PointsMaterial({
+          size: 2,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.8,
+          blending: THREE.AdditiveBlending,
+          sizeAttenuation: true,
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        particles.name = "particles";
+        particles.userData.particleCount = particleCount;
+        scene.add(particles);
+
+        function animateParticles() {
+          const time = Date.now() * 0.0001;
+          particles.rotation.x = time * 0.25;
+          particles.rotation.y = time * 0.5;
+          requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+      }
+
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+
+      function onMouseMove(event) {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      }
+
+      function onMouseClick(event) {
+        raycaster.setFromCamera(mouse, camera);
+        const nodeValues = Object.values(nodeObjects);
+        const intersects = raycaster.intersectObjects(nodeValues);
+
+        if (intersects.length > 0) {
+          const nodeObj = intersects[0].object;
+          showNodeInfo(nodeObj.userData.id, nodeObj.userData.label);
+
+          if (selectedNode) {
+            selectedNode.material.emissive.setHex(0x000000);
+          }
+
+          selectedNode = nodeObj;
+          selectedNode.material.emissive.setHex(0x33ff33);
+
+          const target = nodeObj.position.clone();
+          const distance = camera.position.distanceTo(target) * 0.6;
+          const newPos = camera.position
+            .clone()
+            .sub(target)
+            .normalize()
+            .multiplyScalar(distance)
+            .add(target);
+
+          new TWEEN.Tween(camera.position)
+            .to(newPos, 800)
+            .easing(TWEEN.Easing.Quadratic.Out)
+            .start();
+
+          controls.target.copy(target);
+        } else {
+          nodeInfoPanel.style.display = "none";
+          if (selectedNode) {
+            selectedNode.material.emissive.setHex(0x000000);
+            selectedNode = null;
+          }
+        }
+      }
+
+      function showNodeInfo(id, label) {
+        const nodeLabel = document.getElementById("node-label");
+        const nodeDetails = document.getElementById("node-details");
+
+        nodeLabel.textContent = label;
+
+        let details = "";
+        if (nodes[id]) {
+          const nodeData = nodes[id];
+          details = `Node ID: ${id}`;
+          const childEdges = edges.filter((edge) => edge.source === id);
+          if (childEdges.length > 0) {
+            details += `<br>Connected to: ${childEdges
+              .map((edge) => edge.target)
+              .join(", ")}`;
+          }
+        }
+
+        nodeDetails.innerHTML = details;
+        nodeInfoPanel.style.display = "block";
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        TWEEN.update();
+
+        raycaster.setFromCamera(mouse, camera);
+        const nodeValues = Object.values(nodeObjects);
+        const intersects = raycaster.intersectObjects(nodeValues);
+
+        nodeValues.forEach((obj) => {
+          if (obj !== selectedNode) {
+            obj.material.emissive.setHex(0x000000);
+          }
+        });
+
+        if (intersects.length > 0 && intersects[0].object !== selectedNode) {
+          intersects[0].object.material.emissive.setHex(0x111111);
+        }
+
+        renderer.render(scene, camera);
+      }
+
+      function parseDOT(dotContent) {
+        document.getElementById("loading").style.display = "block";
+        scene.remove(graphGroup);
+        graphGroup = new THREE.Group();
+        scene.add(graphGroup);
+
+        // Map DOT node IDs to internal node IDs
+        let dotIdToInternalId = {};
+        let parsedNodes = []; // [{ origId, label, position, id }]
+        let parsedEdges = []; // [{ source, target, label, id }]
+        let nodeIdCounter = 0;
+        let edgeIdCounter = 0;
+
+        // Regexes
+        const nodeRegex = /(\w+)\s*\[\s*label="([^"]+)"[^\]]*\]/g;
+        const edgeRegex =
+          /(\w+)\s*->\s*(\w+)(?:\s*\[\s*label="([^"]+)"[^\]]*\])?(?:\s*\/\/\s*"([^"]*)")?/g;
+
+        // 1) collect all unique nodes
+        let m;
+        while ((m = nodeRegex.exec(dotContent)) !== null) {
+          const origId = m[1];
+          const label = m[2];
+          if (!(origId in dotIdToInternalId)) {
+            const internalId = `n${nodeIdCounter++}`;
+            dotIdToInternalId[origId] = internalId;
+            parsedNodes.push({
+              id: internalId,
+              origId,
+              label,
+              position: new THREE.Vector3(),
+            });
+          }
+        }
+
+        if (parsedNodes.length === 0) {
+          alert("No nodes found in the DOT file. Please check the file format.");
+          document.getElementById("loading").style.display = "none";
+          return;
+        }
+
+        // 2) collect all edges (using unique nodes)
+        while ((m = edgeRegex.exec(dotContent)) !== null) {
+          const srcOrig = m[1];
+          const dstOrig = m[2];
+          const attrLabel = m[3];
+          const cmtLabel = m[4];
+          const label = attrLabel ?? cmtLabel ?? "";
+
+          // Only add edge if both nodes exist
+          if (dotIdToInternalId[srcOrig] && dotIdToInternalId[dstOrig]) {
+            parsedEdges.push({
+              id: `e${edgeIdCounter++}`,
+              source: dotIdToInternalId[srcOrig],
+              target: dotIdToInternalId[dstOrig],
+              label,
+            });
+          }
+        }
+
+        // Assign to global variables in the expected format
+        nodes = {};
+        parsedNodes.forEach((n) => {
+          nodes[n.id] = n;
+        });
+        edges = parsedEdges;
+
+        nodeObjects = {};
+        edgeObjects = {};
+
+        calculateNodePositions();
+        createVisuals();
+
+        document.getElementById("loading").style.display = "none";
+      }
+
+      function calculateNodePositions() {
+        const rootNodes = findRootNodes();
+        if (rootNodes.length > 0) {
+          const rootId = rootNodes[0];
+          const verticalSpacing = nodeSpacing;
+          const horizontalSpacing = nodeSpacing * 2.2;
+
+          const tree = { id: rootId, children: [] };
+          const nodeMap = { [rootId]: tree };
+          const queue = [tree];
+          while (queue.length) {
+            const node = queue.shift();
+            const childrenIds = edges
+              .filter((e) => e.source === node.id)
+              .map((e) => e.target);
+            node.children = [];
+            for (const childId of childrenIds) {
+              const childNode = { id: childId, children: [] };
+              node.children.push(childNode);
+              nodeMap[childId] = childNode;
+              queue.push(childNode);
+            }
+          }
+
+          const stack = [];
+          const postOrder = [];
+          stack.push(tree);
+          while (stack.length) {
+            const node = stack.pop();
+            postOrder.push(node);
+            for (const child of node.children) stack.push(child);
+          }
+          postOrder.reverse();
+          for (const node of postOrder) {
+            if (!node.children.length) {
+              node.subtreeWidth = 1;
+            } else {
+              node.subtreeWidth = node.children.reduce(
+                (a, c) => a + (c.subtreeWidth || 1),
+                0
+              );
+            }
+          }
+
+          const posStack = [{ node: tree, x: 0, y: 100 }];
+          while (posStack.length) {
+            const { node, x, y } = posStack.pop();
+            nodes[node.id].position.set(-x, y, 0); // Added minus sign to x
+            if (!node.children.length) continue;
+
+            let totalWidth = node.children.reduce(
+              (a, c) => a + (c.subtreeWidth || 1),
+              0
+            );
+            let left = x - ((totalWidth - 1) * horizontalSpacing) / 2;
+
+            const childYOffset =
+              node === tree ? verticalSpacing * 0.5 : verticalSpacing;
+
+            for (let i = 0; i < node.children.length; i++) {
+              // Changed from reverse order to forward
+              const child = node.children[i];
+              let childWidth = child.subtreeWidth || 1;
+              let childX = left + ((childWidth - 1) * horizontalSpacing) / 2;
+              posStack.push({ node: child, x: childX, y: y - childYOffset });
+              left += childWidth * horizontalSpacing;
+            }
+          }
+        }
+      }
+
+      function findRootNodes() {
+        const targets = new Set(edges.map((edge) => edge.target));
+        return Object.keys(nodes).filter((nodeId) => !targets.has(nodeId));
+      }
+
+      function getNodeColor(node, theme) {
+        const nodeColors = theme.nodeColors; // Use nodeColors instead of glowColors
+        if (node.label.includes("PROGRAM")) {
+          return nodeColors.PROGRAM;
+        } else if (node.label.includes("INCLUDES")) {
+          return nodeColors.INCLUDES;
+        } else if (node.label.includes("STRUCT")) {
+          return nodeColors.STRUCT;
+        } else if (node.label.includes("VAR_DECL")) {
+          return nodeColors.VAR_DECL;
+        } else {
+          return nodeColors.default;
+        }
+      }
+
+      function createVisuals() {
+        const nodeMaterial = new THREE.MeshLambertMaterial();
+
+        Object.keys(nodes).forEach((nodeId) => {
+          const node = nodes[nodeId];
+          const geometry = new THREE.SphereGeometry(1, 32, 32);
+          const nodeMesh = new THREE.Mesh(geometry, nodeMaterial.clone());
+          nodeMesh.position.copy(node.position);
+          nodeMesh.scale.set(nodeSize, nodeSize, nodeSize);
+          nodeMesh.userData = { id: nodeId, label: node.label };
+          graphGroup.add(nodeMesh);
+          nodeObjects[nodeId] = nodeMesh;
+
+          const theme = themes[currentTheme];
+          const nodeColor = getNodeColor(node, theme);
+          nodeMesh.material.color.set(nodeColor);
+          nodeMesh.material.transparent = false;
+
+          addTextLabel(node, nodeMesh);
+          addNodeGlow(nodeMesh, node);
+        });
+
+        edges.forEach((edge) => {
+          const sourceNode = nodes[edge.source];
+          const targetNode = nodes[edge.target];
+          if (!sourceNode || !targetNode) return;
+
+          const start = sourceNode.position;
+          const end = targetNode.position;
+          const points = [
+            new THREE.Vector3(start.x, start.y, start.z),
+            new THREE.Vector3(end.x, end.y, end.z),
+          ];
+
+          const edgeGeometry = new THREE.BufferGeometry().setFromPoints(points);
+          const edgeMaterial = new THREE.LineBasicMaterial({
+            color: 0xaaaaff,
+            transparent: true,
+            opacity: 0.7,
+            linewidth: 1,
+          });
+
+          const edgeLine = new THREE.Line(edgeGeometry, edgeMaterial);
+          graphGroup.add(edgeLine);
+          edgeObjects[`${edge.source}-${edge.target}`] = edgeLine;
+        });
+      }
+
+      function addTextLabel(node, nodeMesh) {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        canvas.width = 512;
+        canvas.height = 256;
+
+        context.fillStyle = "rgba(0, 0, 0, 0.7)";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.strokeStyle = "rgba(255, 255, 255, 0.3)";
+        context.lineWidth = 2;
+        context.strokeRect(4, 4, canvas.width - 8, canvas.height - 8);
+
+        context.font = `bold ${labelSize}px Arial`;
+        context.fillStyle = "white";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+
+        let label = node.label;
+        if (label.length > 15) {
+          const words = label.split(/(?=[A-Z])/);
+          label = words.join("\n");
+        }
+
+        const lines = label.split("\n");
+        const lineHeight = labelSize + 4;
+        lines.forEach((line, i) => {
+          const yPos =
+            canvas.height / 2 -
+            ((lines.length - 1) * lineHeight) / 2 +
+            i * lineHeight;
+          context.fillText(line, canvas.width / 2, yPos);
+        });
+
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.needsUpdate = true;
+
+        const spriteMaterial = new THREE.SpriteMaterial({
+          map: texture,
+          transparent: true,
+          opacity: 0.9,
+        });
+
+        const sprite = new THREE.Sprite(spriteMaterial);
+        // Calculate sprite scale based on label size
+        const spriteScale = labelSize / 48; // Base scale on default label size
+        sprite.scale.set(80 * spriteScale, 40 * spriteScale, 1);
+        sprite.position.set(
+          node.position.x,
+          node.position.y - nodeSize * 2,
+          node.position.z
+        );
+        graphGroup.add(sprite);
+        nodeMesh.userData.labelSprite = sprite;
+      }
+
+      function addNodeGlow(nodeMesh, node) {
+        const theme = themes[currentTheme];
+        const glowColors = theme.glowColors;
+        let glowColor;
+        if (node.label.includes("PROGRAM")) {
+          glowColor = glowColors.PROGRAM;
+        } else if (node.label.includes("INCLUDES")) {
+          glowColor = glowColors.INCLUDES;
+        } else if (node.label.includes("STRUCT")) {
+          glowColor = glowColors.STRUCT;
+        } else if (node.label.includes("VAR_DECL")) {
+          glowColor = glowColors.VAR_DECL;
+        } else {
+          glowColor = glowColors.default;
+        }
+
+        const glowGeometry = new THREE.SphereGeometry(1, 32, 32);
+        const glowMaterial = new THREE.MeshBasicMaterial({
+          color: glowColor,
+          transparent: true,
+          opacity: theme.glowOpacity,
+          side: THREE.BackSide,
+        });
+
+        const glowMesh = new THREE.Mesh(glowGeometry, glowMaterial);
+        glowMesh.position.copy(node.position);
+        glowMesh.scale.set(nodeSize * 1.2, nodeSize * 1.2, nodeSize * 1.2);
+        graphGroup.add(glowMesh);
+        nodeMesh.userData.glow = glowMesh;
+
+        const initialScale = nodeSize * 1.2;
+        const duration = 2000 + Math.random() * 1000;
+
+        function animateGlow() {
+          const scale =
+            initialScale +
+            Math.sin(Date.now() / duration) * (initialScale * 0.1);
+          glowMesh.scale.set(scale, scale, scale);
+          requestAnimationFrame(animateGlow);
+        }
+
+        animateGlow();
+      }
+
+      function updateTheme(newTheme) {
+        currentTheme = newTheme;
+        const theme = themes[currentTheme];
+        document.body.className = `theme-${newTheme}`;
+
+        Object.keys(nodeObjects).forEach((nodeId) => {
+          const nodeMesh = nodeObjects[nodeId];
+          const node = nodes[nodeId];
+          const nodeColor = getNodeColor(node, theme);
+          nodeMesh.material.color.set(nodeColor);
+
+          if (nodeMesh.userData.glow) {
+            nodeMesh.userData.glow.material.color.set(nodeColor);
+            nodeMesh.userData.glow.material.opacity = theme.glowOpacity;
+            nodeMesh.userData.glow.material.needsUpdate = true;
+          }
+        });
+
+        const particles = scene.getObjectByName("particles");
+        if (particles) {
+          const particleCount = particles.userData.particleCount;
+          const colors = particles.geometry.attributes.color.array;
+          const newColors = theme.particles;
+          for (let i = 0; i < particleCount; i++) {
+            const color = new THREE.Color(
+              newColors[Math.floor(Math.random() * newColors.length)]
+            );
+            colors[i * 3] = color.r;
+            colors[i * 3 + 1] = color.g;
+            colors[i * 3 + 2] = color.b;
+          }
+          particles.geometry.attributes.color.needsUpdate = true;
+        }
+      }
+
+      function focusCameraOnGraph() {
+        if (Object.keys(nodes).length === 0) return;
+
+        const box = new THREE.Box3();
+        Object.values(nodeObjects).forEach((obj) => {
+          box.expandByObject(obj);
+        });
+
+        const center = new THREE.Vector3();
+        box.getCenter(center);
+
+        const size = new THREE.Vector3();
+        box.getSize(size);
+
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const fov = camera.fov * (Math.PI / 180);
+        let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2));
+
+        camera.position.set(center.x, center.y, center.z + cameraZ);
+        controls.target.copy(center);
+      }
+
+      init();
+    </script>
+  </body>
+</html>

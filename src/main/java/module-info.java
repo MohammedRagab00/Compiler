@@ -4,6 +4,7 @@ module com.mangooo.compiler {
     requires org.kordamp.ikonli.javafx;
     requires antlr;
     requires java.desktop;
+    requires javafx.web;
 
 
     opens com.mangooo.compiler to javafx.fxml;

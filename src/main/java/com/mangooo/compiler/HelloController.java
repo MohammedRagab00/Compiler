@@ -8,6 +8,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebView;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
@@ -42,6 +43,11 @@ public class HelloController {
     private StackPane statusIconContainer; // Change from ImageView to StackPane
     @FXML
     private ToggleButton themeToggle;
+    @FXML
+    private Button view3DButton;
+    @FXML
+    private WebView webView;
+
 
     // Parser reference to access from other methods
     private Project_ASTParser parser;
@@ -53,6 +59,7 @@ public class HelloController {
         compileButton.setOnAction(e -> compile());
         drawButton.setOnAction(e -> drawParseTree());
         openButton.setOnAction(e -> openParseTree());
+        view3DButton.setOnAction(e -> openThreeDHtml());
 
         // Setup theme toggle - start with dark mode
         themeToggle.setGraphic(new FontIcon("fas-moon"));
@@ -72,6 +79,21 @@ public class HelloController {
         // Disable draw and open buttons initially until compilation is successful
         drawButton.setDisable(true);
         openButton.setDisable(true);
+        view3DButton.setDisable(true);
+    }
+
+    private void openThreeDHtml() {
+        try {
+            File htmlFile = new File("threeD.html");
+            if (Desktop.isDesktopSupported() && htmlFile.exists()) {
+                Desktop.getDesktop().browse(htmlFile.toURI());
+            } else {
+                consoleArea.setText("Error: Unable to open threeD.html. File may not exist.");
+            }
+        } catch (IOException e) {
+            consoleArea.setText("Error opening 3D view: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private void applyTheme(boolean isDark) {
@@ -124,7 +146,7 @@ public class HelloController {
             // Disable draw and open buttons until compilation
             drawButton.setDisable(true);
             openButton.setDisable(true);
-
+            view3DButton.setDisable(true);
         } catch (IOException e) {
             // Show error in the console area
             consoleArea.setText("Error loading file: " + e.getMessage());
@@ -179,6 +201,7 @@ public class HelloController {
                 // Disable parse tree buttons
                 drawButton.setDisable(true);
                 openButton.setDisable(true);
+                view3DButton.setDisable(true);
                 return;
             }
 
@@ -213,6 +236,7 @@ public class HelloController {
                 // Disable parse tree buttons
                 drawButton.setDisable(true);
                 openButton.setDisable(true);
+                view3DButton.setDisable(true);
             } else {
                 // Check if we have a valid tree
                 CommonTree t = (CommonTree) r.getTree();
@@ -230,6 +254,7 @@ public class HelloController {
                     // Disable parse tree buttons
                     drawButton.setDisable(true);
                     openButton.setDisable(true);
+                    view3DButton.setDisable(true);
                     return;
                 }
 
@@ -270,6 +295,7 @@ public class HelloController {
                 // Enable parse tree buttons
                 drawButton.setDisable(false);
                 openButton.setDisable(false);
+                view3DButton.setDisable(false);
             }
 
         } catch (IOException e) {
@@ -287,6 +313,7 @@ public class HelloController {
             // Disable parse tree buttons
             drawButton.setDisable(true);
             openButton.setDisable(true);
+            view3DButton.setDisable(true);
         } catch (InterruptedException e) {
             consoleArea.setStyle("-fx-text-fill: red;");
             consoleArea.setText("Process interrupted: " + e.getMessage());
@@ -302,6 +329,7 @@ public class HelloController {
             // Disable parse tree buttons
             drawButton.setDisable(true);
             openButton.setDisable(true);
+            view3DButton.setDisable(true);
         } catch (Exception e) {
             consoleArea.setStyle("-fx-text-fill: red;");
             consoleArea.setText("Error: " + e.getMessage());
@@ -317,6 +345,7 @@ public class HelloController {
             // Disable parse tree buttons
             drawButton.setDisable(true);
             openButton.setDisable(true);
+            view3DButton.setDisable(true);
         }
     }
 
