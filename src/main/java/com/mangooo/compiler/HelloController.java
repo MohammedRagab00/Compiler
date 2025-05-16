@@ -8,7 +8,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HelloController {
     @FXML
@@ -40,63 +42,86 @@ public class HelloController {
     @FXML
     private ImageView parseTreeView;
     @FXML
-    private StackPane statusIconContainer; // Change from ImageView to StackPane
+    private StackPane statusIconContainer;
     @FXML
     private ToggleButton themeToggle;
     @FXML
     private Button view3DButton;
-    @FXML
-    private WebView webView;
 
-
-    // Parser reference to access from other methods
     private Project_ASTParser parser;
 
     @FXML
     private void initialize() {
-        // Add button handlers
         loadButton.setOnAction(e -> loadFile());
         compileButton.setOnAction(e -> compile());
         drawButton.setOnAction(e -> drawParseTree());
         openButton.setOnAction(e -> openParseTree());
         view3DButton.setOnAction(e -> openThreeDHtml());
 
-        // Setup theme toggle - start with dark mode
+        // Theme toggle
         themeToggle.setGraphic(new FontIcon("fas-moon"));
-        themeToggle.setSelected(true); // Start with a dark theme
-
-        // Setup theme change listener
-        themeToggle.selectedProperty().addListener((obs, oldVal, newVal) -> applyTheme(newVal));
-
-        // Make sure we initialize the scene with correct icons when it becomes available
-        themeToggle.sceneProperty().addListener((obs, oldScene, newScene) -> {
-            if (newScene != null) {
-                // Apply the initial theme when a scene is available
-                applyTheme(themeToggle.isSelected());
-            }
+        themeToggle.setSelected(true);
+        themeToggle.selectedProperty().addListener((obs, o, n) -> applyTheme(n));
+        themeToggle.sceneProperty().addListener((obs, o, n) -> {
+            if (n != null) applyTheme(themeToggle.isSelected());
         });
 
-        // Disable draw and open buttons initially until compilation is successful
         drawButton.setDisable(true);
         openButton.setDisable(true);
         view3DButton.setDisable(true);
     }
 
-/*
-    private void openThreeDHtml() {
-        try {
-            File htmlFile = new File("threeD.html");
-            if (Desktop.isDesktopSupported() && htmlFile.exists()) {
-                Desktop.getDesktop().browse(htmlFile.toURI());
-            } else {
-                consoleArea.setText("Error: Unable to open threeD.html. File may not exist.");
-            }
-        } catch (IOException e) {
-            consoleArea.setText("Error opening 3D view: " + e.getMessage());
-            e.printStackTrace();
+    private void applyTheme(boolean isDark) {
+        Scene scene = themeToggle.getScene();
+        if (scene == null) return;
+        String darkCss = Objects.requireNonNull(
+                HelloApplication.class.getResource("dark-theme.css")
+        ).toExternalForm();
+        String lightCss = Objects.requireNonNull(
+                HelloApplication.class.getResource("light-theme.css")
+        ).toExternalForm();
+        scene.getStylesheets().clear();
+        if (isDark) {
+            scene.getStylesheets().add(darkCss);
+            themeToggle.setGraphic(new FontIcon("fas-moon"));
+        } else {
+            scene.getStylesheets().add(lightCss);
+            themeToggle.setGraphic(new FontIcon("fas-sun"));
         }
     }
-*/
+
+    private void loadFile() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Input File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("All Files", "*.*")
+        );
+
+        // Show the file chooser dialog
+        File selectedFile = fileChooser.showOpenDialog(inputArea.getScene().getWindow());
+//        File selectedFile = new File("src/main/resources/Input.txt");
+        try {
+            String content = new String(Files.readAllBytes(selectedFile.toPath()));
+            inputArea.setText(content);
+            consoleArea.setStyle("-fx-text-fill: black;");
+            consoleArea.setText("File loaded successfully: " + selectedFile.getName());
+            statusIconContainer.getChildren().clear();
+            parseTreeView.setImage(null);
+            drawButton.setDisable(true);
+            openButton.setDisable(true);
+            view3DButton.setDisable(true);
+        } catch (IOException ex) {
+            consoleArea.setStyle("-fx-text-fill: red;");
+            consoleArea.setText("Error loading file: " + ex.getMessage());
+            statusIconContainer.getChildren().setAll(
+                    new FontIcon("fas-times-circle") {{
+                        setIconColor(javafx.scene.paint.Color.RED);
+                        setIconSize(24);
+                    }}
+            );
+        }
+    }
 
     private void openThreeDHtml() {
         try {
@@ -132,253 +157,98 @@ public class HelloController {
         }
     }
 
-    private void applyTheme(boolean isDark) {
-        Scene scene = themeToggle.getScene();
-        if (scene != null) {
-            String darkTheme = Objects.requireNonNull(HelloApplication.class.getResource("dark-theme.css")).toExternalForm();
-            String lightTheme = Objects.requireNonNull(HelloApplication.class.getResource("light-theme.css")).toExternalForm();
-
-            scene.getStylesheets().clear();
-            if (isDark) { // Dark theme
-                scene.getStylesheets().add(darkTheme);
-                themeToggle.setGraphic(new FontIcon("fas-moon"));
-            } else { // Light theme
-                scene.getStylesheets().add(lightTheme);
-                themeToggle.setGraphic(new FontIcon("fas-sun"));
-            }
-        }
-    }
-
-    private void loadFile() {
-/*
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Input File");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
-                new FileChooser.ExtensionFilter("All Files", "*.*")
-        );
-
-        // Show the file chooser dialog
-        File selectedFile = fileChooser.showOpenDialog(inputArea.getScene().getWindow());
-*/
-        File selectedFile = new File("src/main/resources/Input.txt");
-
-        try {
-            // Read file content
-            String content = new String(Files.readAllBytes(selectedFile.toPath()));
-
-            // Set content to the input area
-            inputArea.setText(content);
-
-            // Optional: Show a success message in the console
-            consoleArea.setText("File loaded successfully: " + selectedFile.getName());
-
-            // Reset status icon - clear the container
-            statusIconContainer.getChildren().clear();
-
-            // Reset parse tree view
-            parseTreeView.setImage(null);
-
-            // Disable draw and open buttons until compilation
-            drawButton.setDisable(true);
-            openButton.setDisable(true);
-            view3DButton.setDisable(true);
-        } catch (IOException e) {
-            // Show error in the console area
-            consoleArea.setText("Error loading file: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
     private void compile() {
         try {
-            // Get input from the text area
             String inputText = inputArea.getText();
 
-            // Show compiling status
-            FontIcon processingIcon = new FontIcon("fas-spinner");
-            processingIcon.setIconColor(javafx.scene.paint.Color.BLUE);
-            processingIcon.setIconSize(24);
-            statusIconContainer.getChildren().clear();
-            statusIconContainer.getChildren().add(processingIcon);
+            // show "loading" = red X icon instead of spinner
+            statusIconContainer.getChildren().setAll(
+                    new FontIcon("fas-times-circle") {{
+                        setIconColor(javafx.scene.paint.Color.RED);
+                        setIconSize(24);
+                    }}
+            );
             consoleArea.setStyle("-fx-text-fill: blue;");
             consoleArea.setText("Compiling...");
 
-            // Create ANTLR string stream from an input text
-            ANTLRStringStream input = new ANTLRStringStream(inputText);
+            // Prepare a collector for *all* errors
+            StringBuilder errors = new StringBuilder();
 
-            // Create a lexer attached to the input stream
-            Project_ASTLexer lexer = new Project_ASTLexer(input);
+            // --- ANTLR3 lexer that captures errors as "syntax error" only ---
+            ANTLRStringStream in = new ANTLRStringStream(inputText);
+            Project_ASTLexer lexer = new Project_ASTLexer(in) {
+                @Override
+                public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
+                    String hdr = getErrorHeader(e);          // "line 1:0"
+                    errors.append(hdr).append(" syntax error\n");
+                }
+            };
 
-            // Create a token stream from lexer
             CommonTokenStream tokens = new CommonTokenStream(lexer);
 
-            // Create parser attached to token stream
-            parser = new Project_ASTParser(tokens);
+            // --- ANTLR3 parser that also captures errors as "syntax error" ---
+            parser = new Project_ASTParser(tokens) {
+                @Override
+                public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
+                    String hdr = getErrorHeader(e);
+                    errors.append(hdr).append(" syntax error\n");
+                }
+            };
 
-            // Invoke program rule and get a return value
-            Project_ASTParser.program_return r;
+            // Run the grammar
+            Project_ASTParser.program_return result = parser.program();
 
-            try {
-                r = parser.program();
-            } catch (RecognitionException e) {
+            // If any errors, display and bail
+            if (errors.length() > 0) {
                 consoleArea.setStyle("-fx-text-fill: red;");
-                consoleArea.setText("Syntax Error: " + e.getMessage() +
-                        "\nLine: " + e.line +
-                        ", Column: " + e.charPositionInLine);
-
-                // Create and set the error icon using FontIcon
-                FontIcon errorIcon = new FontIcon("fas-times-circle");
-                errorIcon.setIconColor(javafx.scene.paint.Color.RED);
-                errorIcon.setIconSize(24);
-                statusIconContainer.getChildren().clear();
-                statusIconContainer.getChildren().add(errorIcon);
-
-                // Disable parse tree buttons
+                consoleArea.setText(errors.toString());
+                highlightFirstError(errors.toString());
                 drawButton.setDisable(true);
                 openButton.setDisable(true);
                 view3DButton.setDisable(true);
                 return;
             }
 
-            // Check if there are any errors
-            String msg = parser.s;
-            boolean parserHasErrors = (msg != null && (msg.contains("line") ||
-                    msg.contains("error") ||
-                    msg.contains("Error") ||
-                    msg.contains("exception") ||
-                    msg.contains("Exception")));
+            // --- No errors → build the parse tree as before ---
+            CommonTree tree = (CommonTree) result.getTree();
+            if (tree == null) {
+                throw new RuntimeException("No parse tree generated.");
+            }
 
-            if (lexer.getNumberOfSyntaxErrors() > 0 || parser.getNumberOfSyntaxErrors() > 0 || parserHasErrors) {
-                // Compilation had errors
+            // Write DOT
+            StringTemplate dot = new DOTTreeGenerator().toDOT(tree);
+            try (PrintWriter pw = new PrintWriter(new File("Dot.dot"))) {
+                pw.print(dot);
+            }
 
-                StringBuilder errorMsg = new StringBuilder("Compilation failed with errors:\n");
-                if (msg != null && !msg.isEmpty()) {
-                    errorMsg.append(msg).append("\n");
-                }
-                errorMsg.append("Lexer errors: ").append(lexer.getNumberOfSyntaxErrors()).append("\n");
-                errorMsg.append("Parser errors: ").append(parser.getNumberOfSyntaxErrors());
-
-                consoleArea.setStyle("-fx-text-fill: red;");
-                consoleArea.setText(errorMsg.toString());
-
-                // Create and set the error icon using FontIcon
-                FontIcon errorIcon = new FontIcon("fas-times-circle");
-                errorIcon.setIconColor(javafx.scene.paint.Color.RED);
-                errorIcon.setIconSize(24);
-                statusIconContainer.getChildren().clear();
-                statusIconContainer.getChildren().add(errorIcon);
-
-                // Disable parse tree buttons
-                drawButton.setDisable(true);
-                openButton.setDisable(true);
-                view3DButton.setDisable(true);
-            } else {
-                // Check if we have a valid tree
-                CommonTree t = (CommonTree) r.getTree();
-                if (t == null) {
-                    consoleArea.setStyle("-fx-text-fill: red;");
-                    consoleArea.setText("Error: No parse tree was generated.");
-
-                    // Create and set the error icon using FontIcon
-                    FontIcon errorIcon = new FontIcon("fas-times-circle");
-                    errorIcon.setIconColor(javafx.scene.paint.Color.RED);
-                    errorIcon.setIconSize(24);
-                    statusIconContainer.getChildren().clear();
-                    statusIconContainer.getChildren().add(errorIcon);
-
-                    // Disable parse tree buttons
-                    drawButton.setDisable(true);
-                    openButton.setDisable(true);
-                    view3DButton.setDisable(true);
-                    return;
-                }
-
-                // Generate DOT notation for the parse tree
-                DOTTreeGenerator gen = new DOTTreeGenerator();
-                StringTemplate st = gen.toDOT(t);
-
-                // Write a DOT file
-                String dotContent = st.toString();
-                File dotFile = new File("Dot.dot");
-                PrintWriter output = new PrintWriter(dotFile);
-                output.print(dotContent);
-                output.close();
-
-                // Run DOT.BAT to generate a parse tree image (assuming DOT.BAT exists)
-                Process process = new ProcessBuilder("DOT.BAT").start();
-
-                // Wait for the process to complete
-                int exitCode = process.waitFor();
-
-                if (exitCode != 0) {
-                    consoleArea.setStyle("-fx-text-fill: orange;");
-                    consoleArea.setText("Compiled Successfully, but there was a problem generating the parse tree visualization.\n" +
-                            "DOT.BAT exit code: " + exitCode);
-                } else {
-                    // Success case
-                    consoleArea.setStyle("-fx-text-fill: green;");
-                    consoleArea.setText("Compiled Successfully" + (msg != null ? "\n" + msg : ""));
-                }
-
-                // Create and set the success icon using FontIcon
-                FontIcon successIcon = new FontIcon("fas-check-circle");
-                successIcon.setIconColor(javafx.scene.paint.Color.GREEN);
-                successIcon.setIconSize(24);
-                statusIconContainer.getChildren().clear();
-                statusIconContainer.getChildren().add(successIcon);
-
-                // Enable parse tree buttons
+            // Invoke DOT.BAT
+            int exitCode = new ProcessBuilder("DOT.BAT").start().waitFor();
+            if (exitCode == 0) {
+                consoleArea.setStyle("-fx-text-fill: green;");
+                consoleArea.setText("Compiled Successfully");
+                statusIconContainer.getChildren().setAll(
+                        new FontIcon("fas-check-circle") {{
+                            setIconColor(javafx.scene.paint.Color.GREEN);
+                            setIconSize(24);
+                        }}
+                );
                 drawButton.setDisable(false);
                 openButton.setDisable(false);
                 view3DButton.setDisable(false);
+            } else {
+                consoleArea.setStyle("-fx-text-fill: orange;");
+                consoleArea.setText("Compiled, but DOT.BAT failed (exit " + exitCode + ")");
             }
 
-        } catch (IOException e) {
+        } catch (Exception ex) {
             consoleArea.setStyle("-fx-text-fill: red;");
-            consoleArea.setText("IO Error: " + e.getMessage());
-            e.printStackTrace();
-
-            // Create and set the error icon
-            FontIcon errorIcon = new FontIcon("fas-times-circle");
-            errorIcon.setIconColor(javafx.scene.paint.Color.RED);
-            errorIcon.setIconSize(24);
-            statusIconContainer.getChildren().clear();
-            statusIconContainer.getChildren().add(errorIcon);
-
-            // Disable parse tree buttons
-            drawButton.setDisable(true);
-            openButton.setDisable(true);
-            view3DButton.setDisable(true);
-        } catch (InterruptedException e) {
-            consoleArea.setStyle("-fx-text-fill: red;");
-            consoleArea.setText("Process interrupted: " + e.getMessage());
-            e.printStackTrace();
-
-            // Create and set the error icon
-            FontIcon errorIcon = new FontIcon("fas-times-circle");
-            errorIcon.setIconColor(javafx.scene.paint.Color.RED);
-            errorIcon.setIconSize(24);
-            statusIconContainer.getChildren().clear();
-            statusIconContainer.getChildren().add(errorIcon);
-
-            // Disable parse tree buttons
-            drawButton.setDisable(true);
-            openButton.setDisable(true);
-            view3DButton.setDisable(true);
-        } catch (Exception e) {
-            consoleArea.setStyle("-fx-text-fill: red;");
-            consoleArea.setText("Error: " + e.getMessage());
-            e.printStackTrace();
-
-            // Create and set the error icon
-            FontIcon errorIcon = new FontIcon("fas-times-circle");
-            errorIcon.setIconColor(javafx.scene.paint.Color.RED);
-            errorIcon.setIconSize(24);
-            statusIconContainer.getChildren().clear();
-            statusIconContainer.getChildren().add(errorIcon);
-
-            // Disable parse tree buttons
+            consoleArea.setText("Error: " + ex.getMessage());
+            statusIconContainer.getChildren().setAll(
+                    new FontIcon("fas-times-circle") {{
+                        setIconColor(javafx.scene.paint.Color.RED);
+                        setIconSize(24);
+                    }}
+            );
             drawButton.setDisable(true);
             openButton.setDisable(true);
             view3DButton.setDisable(true);
@@ -387,53 +257,46 @@ public class HelloController {
 
     private void drawParseTree() {
         try {
-            // Get dimensions of the image view
-            double width = parseTreeView.getFitWidth();
-            double height = parseTreeView.getFitHeight();
-
-            // Load parse tree image and resize to fit the view
-            File imageFile = new File("Parse.png");
-            if (imageFile.exists()) {
-                Image parseImage = new Image(imageFile.toURI().toString(),
-                        width, height, true, true);
-
-                // Check if there are errors before displaying
-                String msg = parser.s;
-                if (msg != null && msg.contains("line")) {
-                    // If there are errors, don't show a parse tree
-                    parseTreeView.setImage(null);
-                } else {
-                    // If compilation was successful, show a parse tree
-                    parseTreeView.setImage(parseImage);
-                }
-            } else {
-                consoleArea.setStyle("-fx-text-fill: red;");
-                consoleArea.setText("Parse tree image not found. Make sure DOT.BAT generated Parse.png correctly.");
-            }
-        } catch (Exception e) {
+            File img = new File("Parse.png");
+            if (!img.exists()) throw new IOException("Parse.png not found");
+            double w = parseTreeView.getFitWidth(), h = parseTreeView.getFitHeight();
+            parseTreeView.setImage(new Image(img.toURI().toString(), w, h, true, true));
+        } catch (Exception ex) {
             consoleArea.setStyle("-fx-text-fill: red;");
-            consoleArea.setText("Error displaying parse tree: " + e.getMessage());
-            e.printStackTrace();
+            consoleArea.setText("Error displaying parse tree: " + ex.getMessage());
         }
     }
 
     private void openParseTree() {
         try {
-            // Specify the path to the parse tree image file
-            File pictureFile = new File("Parse.png");
-
-            // Check if Desktop is supported and the file exists
-            if (Desktop.isDesktopSupported() && pictureFile.exists()) {
-                Desktop.getDesktop().open(pictureFile);
+            File img = new File("Parse.png");
+            if (Desktop.isDesktopSupported() && img.exists()) {
+                Desktop.getDesktop().open(img);
             } else {
-                // Handle case where Desktop is not supported or the file doesn't exist
-                consoleArea.setStyle("-fx-text-fill: red;");
-                consoleArea.setText("Cannot open parse tree. Desktop may not be supported or file does not exist.");
+                throw new IOException("Cannot open parse tree image");
             }
-        } catch (IOException e) {
+        } catch (Exception ex) {
             consoleArea.setStyle("-fx-text-fill: red;");
-            consoleArea.setText("Error opening parse tree: " + e.getMessage());
-            e.printStackTrace();
+            consoleArea.setText("Error opening parse tree: " + ex.getMessage());
         }
+    }
+
+    /**
+     * Highlights the first "line X:Y" occurrence in errs
+     */
+    private void highlightFirstError(String errs) {
+        Matcher m = Pattern.compile("line\\s+(\\d+):(\\d+)").matcher(errs);
+        if (!m.find()) return;
+        int line = Integer.parseInt(m.group(1));
+        int col = Integer.parseInt(m.group(2));
+
+        String[] lines = inputArea.getText().split("\n", -1);
+        int offset = 0;
+        for (int i = 0; i < line - 1 && i < lines.length; i++) {
+            offset += lines[i].length() + 1;
+        }
+        offset += col;
+        inputArea.selectRange(offset, offset + 1);
+        inputArea.requestFocus();
     }
 }
