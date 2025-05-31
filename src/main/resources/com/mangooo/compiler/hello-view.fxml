@@ -11,85 +11,110 @@
         <Insets top="25" right="25" bottom="25" left="25"/>
     </padding>
 
-    <!-- Input Section -->
-    <VBox spacing="15">
-        <HBox spacing="10" alignment="CENTER_LEFT">
-            <padding>
-                <Insets bottom="10"/>
-            </padding>
-            <Label text="Input Program" styleClass="section-label"/>
-            <Region HBox.hgrow="ALWAYS"/>
-            <Button fx:id="loadButton" text="Load File" styleClass="action-button">
-                <graphic>
-                    <FontIcon iconLiteral="fas-file-import"/>
-                </graphic>
-            </Button>
-            <ToggleButton fx:id="themeToggle" styleClass="toggle-theme">
-                <tooltip>
-                    <Tooltip text="Toggle Theme"/>
-                </tooltip>
-            </ToggleButton>
-        </HBox>
-        <TextArea fx:id="inputArea" wrapText="true" VBox.vgrow="ALWAYS" minHeight="150"/>
-    </VBox>
+    <!-- TabPane for organizing content -->
+    <TabPane VBox.vgrow="ALWAYS">
+        <!-- Tab 1: File and Console -->
+        <Tab text="File &amp; Console" closable="false">
+            <BorderPane VBox.vgrow="ALWAYS">
+                <!-- Main Content Area -->
+                <center>
+                    <SplitPane fx:id="splitPane" orientation="VERTICAL" dividerPositions="0.7" VBox.vgrow="ALWAYS">
+                        <!-- Input Section -->
+                        <VBox spacing="15" VBox.vgrow="ALWAYS">
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <padding>
+                                    <Insets bottom="10"/>
+                                </padding>
+                                <Label text="Input Program" styleClass="section-label"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <Button fx:id="loadButton" text="Load File" styleClass="action-button">
+                                    <graphic>
+                                        <FontIcon iconLiteral="fas-file-import"/>
+                                    </graphic>
+                                </Button>
+                                <ToggleButton fx:id="themeToggle" styleClass="toggle-theme">
+                                    <tooltip>
+                                        <Tooltip text="Toggle Theme"/>
+                                    </tooltip>
+                                </ToggleButton>
+                            </HBox>
+                            <TextArea fx:id="inputtedArea" wrapText="true" VBox.vgrow="ALWAYS" minHeight="150"/>
+                            <!-- Action Buttons -->
+                            <HBox alignment="CENTER" spacing="10">
+                                <padding>
+                                    <Insets top="5" bottom="15"/>
+                                </padding>
+                                <Button fx:id="compileButton" text="Compile" styleClass="primary-button">
+                                    <graphic>
+                                        <FontIcon iconLiteral="fas-play"/>
+                                    </graphic>
+                                </Button>
+                            </HBox>
+                        </VBox>
 
-    <!-- Action Buttons -->
-    <HBox alignment="CENTER" spacing="10">
-        <padding>
-            <Insets top="5" bottom="15"/>
-        </padding>
-        <Button fx:id="compileButton" text="Compile" styleClass="primary-button">
-            <graphic>
-                <FontIcon iconLiteral="fas-play"/>
-            </graphic>
-        </Button>
-    </HBox>
+                        <!-- Console Section with resizable border -->
+                        <VBox fx:id="consoleContent" styleClass="console-container" VBox.vgrow="ALWAYS">
+                            <!-- Console Header with collapse button on the right -->
+                            <HBox styleClass="console-header" alignment="CENTER_LEFT">
+                                <padding>
+                                    <Insets left="10" right="10" top="5" bottom="5"/>
+                                </padding>
+                                <Label text="Console" styleClass="section-label"/>
+                                <StackPane fx:id="statusIconContainer" HBox.hgrow="NEVER"/>
+                                <Region HBox.hgrow="ALWAYS"/>
+                                <ToggleButton fx:id="consoleCollapseToggle" styleClass="console-toggle-button">
+                                    <graphic>
+                                        <FontIcon fx:id="consoleCollapseIcon" iconLiteral="fas-minus"/>
+                                    </graphic>
+                                    <tooltip>
+                                        <Tooltip text="Hide Console"/>
+                                    </tooltip>
+                                </ToggleButton>
+                            </HBox>
 
-    <!-- Output Section -->
-    <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.7">
-        <!-- Parse Tree View -->
-        <VBox spacing="15">
-            <padding>
-                <Insets top="10" right="15" bottom="15" left="15"/>
-            </padding>
-            <HBox spacing="15" alignment="CENTER_LEFT">
+                            <!-- Console Content - Now in a separate VBox that can be hidden -->
+                            <VBox fx:id="consoleTextContainer" VBox.vgrow="ALWAYS">
+                                <TextArea fx:id="consoleArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+                            </VBox>
+                        </VBox>
+                    </SplitPane>
+                </center>
+            </BorderPane>
+        </Tab>
+
+        <!-- Tab 2: AST -->
+        <Tab text="AST" closable="false">
+            <VBox spacing="15" VBox.vgrow="ALWAYS">
                 <padding>
-                    <Insets bottom="10"/>
+                    <Insets top="10" right="15" bottom="15" left="15"/>
                 </padding>
-                <Label text="Parse Tree" styleClass="section-label"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Button fx:id="view3DButton" text="View 3D" styleClass="action-button">
-                    <graphic>
-                        <FontIcon iconLiteral="fas-globe"/>
-                    </graphic>
-                </Button>
-                <Button fx:id="drawButton" text="Draw" styleClass="action-button">
-                    <graphic>
-                        <FontIcon iconLiteral="fas-project-diagram"/>
-                    </graphic>
-                </Button>
-                <Button fx:id="openButton" text="Open" styleClass="action-button">
-                    <graphic>
-                        <FontIcon iconLiteral="fas-external-link-alt"/>
-                    </graphic>
-                </Button>
-            </HBox>
-            <ImageView fx:id="parseTreeView" fitWidth="800" fitHeight="400" preserveRatio="true"/>
-        </VBox>
-
-        <!-- Console Output -->
-        <VBox spacing="15" minWidth="300">
-            <padding>
-                <Insets top="10" right="15" bottom="15" left="15"/>
-            </padding>
-            <HBox spacing="15" alignment="CENTER_LEFT">
-                <padding>
-                    <Insets bottom="10"/>
-                </padding>
-                <Label text="Console Output" styleClass="section-label"/>
-                <StackPane fx:id="statusIconContainer"/>
-            </HBox>
-            <TextArea fx:id="consoleArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
-        </VBox>
-    </SplitPane>
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets bottom="10"/>
+                    </padding>
+                    <Label text="Parse Tree" styleClass="section-label"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button fx:id="view3DButton" text="View 3D" styleClass="action-button">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-globe"/>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="drawButton" text="Draw" styleClass="action-button">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-project-diagram"/>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="openButton" text="Open" styleClass="action-button">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-external-link-alt"/>
+                        </graphic>
+                    </Button>
+                </HBox>
+                <!-- Replace ImageView with ScrollPane containing the ImageView -->
+                <ScrollPane fx:id="imageScrollPane" VBox.vgrow="ALWAYS" pannable="true" fitToHeight="true" fitToWidth="true">
+                    <ImageView fx:id="parseTreeView" preserveRatio="true"/>
+                </ScrollPane>
+            </VBox>
+        </Tab>
+    </TabPane>
 </VBox>
