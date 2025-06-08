@@ -20,1331 +20,358 @@ digraph {
   n7 [label="string.h"];
   n8 [label="GLOBAL_DECLS"];
   n8 [label="GLOBAL_DECLS"];
-  n9 [label="STRUCT_DEF"];
-  n9 [label="STRUCT_DEF"];
-  n10 [label="Hospital"];
-  n11 [label="STRUCT_MEMBERS"];
-  n11 [label="STRUCT_MEMBERS"];
-  n12 [label="VAR_DECL"];
-  n12 [label="VAR_DECL"];
-  n13 [label="char"];
-  n14 [label="name"];
-  n15 [label="["];
-  n16 [label="50"];
-  n17 [label="]"];
-  n18 [label="VAR_DECL"];
-  n18 [label="VAR_DECL"];
-  n19 [label="char"];
-  n20 [label="city"];
-  n21 [label="["];
-  n22 [label="50"];
-  n23 [label="]"];
-  n24 [label="VAR_DECL"];
-  n24 [label="VAR_DECL"];
-  n25 [label="int"];
-  n26 [label="beds"];
-  n27 [label="VAR_DECL"];
-  n27 [label="VAR_DECL"];
-  n28 [label="float"];
-  n29 [label="price"];
-  n30 [label="VAR_DECL"];
-  n30 [label="VAR_DECL"];
-  n31 [label="float"];
-  n32 [label="rating"];
-  n33 [label="VAR_DECL"];
-  n33 [label="VAR_DECL"];
-  n34 [label="int"];
-  n35 [label="reviews"];
-  n36 [label="FUNC_DEF"];
-  n36 [label="FUNC_DEF"];
-  n37 [label="printHospital"];
-  n38 [label="PARAMS"];
-  n38 [label="PARAMS"];
-  n39 [label="struct"];
-  n40 [label="Hospital"];
-  n41 [label="hosp"];
-  n42 [label="BLOCK"];
-  n42 [label="BLOCK"];
-  n43 [label="printf"];
-  n44 [label="("];
-  n45 [label="\"Hospit...: %s\n\""];
-  n46 [label=","];
-  n47 [label="hosp"];
-  n48 [label="."];
-  n49 [label="name"];
-  n50 [label=")"];
-  n51 [label=";"];
-  n52 [label="printf"];
-  n53 [label="("];
-  n54 [label="\"City: %s\n\""];
-  n55 [label=","];
-  n56 [label="hosp"];
-  n57 [label="."];
-  n58 [label="city"];
-  n59 [label=")"];
-  n60 [label=";"];
-  n61 [label="printf"];
-  n62 [label="("];
-  n63 [label="\"Total Beds: %d\n\""];
-  n64 [label=","];
-  n65 [label="hosp"];
-  n66 [label="."];
-  n67 [label="beds"];
-  n68 [label=")"];
-  n69 [label=";"];
-  n70 [label="printf"];
-  n71 [label="("];
-  n72 [label="\"Price ...%.2f\n\""];
-  n73 [label=","];
-  n74 [label="hosp"];
-  n75 [label="."];
-  n76 [label="price"];
-  n77 [label=")"];
-  n78 [label=";"];
-  n79 [label="printf"];
-  n80 [label="("];
-  n81 [label="\"Rating: %.1f\n\""];
-  n82 [label=","];
-  n83 [label="hosp"];
-  n84 [label="."];
-  n85 [label="rating"];
-  n86 [label=")"];
-  n87 [label=";"];
-  n88 [label="printf"];
-  n89 [label="("];
-  n90 [label="\"Reviews: %d\n\n\""];
-  n91 [label=","];
-  n92 [label="hosp"];
-  n93 [label="."];
-  n94 [label="reviews"];
-  n95 [label=")"];
-  n96 [label=";"];
-  n97 [label="FUNC_DEF"];
-  n97 [label="FUNC_DEF"];
-  n98 [label="sortByPrice"];
-  n99 [label="PARAMS"];
-  n99 [label="PARAMS"];
-  n100 [label="struct"];
-  n101 [label="Hospital"];
-  n102 [label="hospitals"];
-  n103 [label="["];
-  n104 [label="]"];
-  n105 [label="int"];
-  n106 [label="n"];
-  n107 [label="BLOCK"];
-  n107 [label="BLOCK"];
-  n108 [label="for"];
-  n109 [label="("];
-  n110 [label="int"];
-  n111 [label="i"];
-  n112 [label="="];
-  n113 [label="0"];
+  n9 [label="FUNC_DEF"];
+  n9 [label="FUNC_DEF"];
+  n10 [label="int"];
+  n11 [label="main"];
+  n12 [label="BLOCK"];
+  n12 [label="BLOCK"];
+  n13 [label="VAR_DECL"];
+  n13 [label="VAR_DECL"];
+  n14 [label="struct"];
+  n15 [label="Hospital"];
+  n16 [label="hospitals"];
+  n17 [label="["];
+  n18 [label="100"];
+  n19 [label="]"];
+  n20 [label="ARRAY_INIT"];
+  n20 [label="ARRAY_INIT"];
+  n21 [label="INIT_LIST"];
+  n21 [label="INIT_LIST"];
+  n22 [label="ARRAY_INIT"];
+  n22 [label="ARRAY_INIT"];
+  n23 [label="INIT_LIST"];
+  n23 [label="INIT_LIST"];
+  n24 [label="\"Hospital A\""];
+  n25 [label="\"X\""];
+  n26 [label="100"];
+  n27 [label="250.0"];
+  n28 [label="4.5"];
+  n29 [label="100"];
+  n30 [label="ARRAY_INIT"];
+  n30 [label="ARRAY_INIT"];
+  n31 [label="INIT_LIST"];
+  n31 [label="INIT_LIST"];
+  n32 [label="\"Hospital B\""];
+  n33 [label="\"Y\""];
+  n34 [label="150"];
+  n35 [label="200.0"];
+  n36 [label="4.2"];
+  n37 [label="80"];
+  n38 [label="ARRAY_INIT"];
+  n38 [label="ARRAY_INIT"];
+  n39 [label="INIT_LIST"];
+  n39 [label="INIT_LIST"];
+  n40 [label="\"Hospital C\""];
+  n41 [label="\"X\""];
+  n42 [label="200"];
+  n43 [label="180.0"];
+  n44 [label="4.0"];
+  n45 [label="120"];
+  n46 [label="ARRAY_INIT"];
+  n46 [label="ARRAY_INIT"];
+  n47 [label="INIT_LIST"];
+  n47 [label="INIT_LIST"];
+  n48 [label="\"Hospital D\""];
+  n49 [label="\"Z\""];
+  n50 [label="80"];
+  n51 [label="300.0"];
+  n52 [label="4.8"];
+  n53 [label="90"];
+  n54 [label="ARRAY_INIT"];
+  n54 [label="ARRAY_INIT"];
+  n55 [label="INIT_LIST"];
+  n55 [label="INIT_LIST"];
+  n56 [label="\"Hospital E\""];
+  n57 [label="\"Y\""];
+  n58 [label="120"];
+  n59 [label="220.0"];
+  n60 [label="4.6"];
+  n61 [label="110"];
+  n62 [label="VAR_DECL"];
+  n62 [label="VAR_DECL"];
+  n63 [label="int"];
+  n64 [label="n"];
+  n65 [label="5"];
+  n66 [label="VAR_DECL"];
+  n66 [label="VAR_DECL"];
+  n67 [label="int"];
+  n68 [label="choice"];
+  n69 [label="VAR_DECL"];
+  n69 [label="VAR_DECL"];
+  n70 [label="char"];
+  n71 [label="name"];
+  n72 [label="["];
+  n73 [label="50"];
+  n74 [label="]"];
+  n75 [label="VAR_DECL"];
+  n75 [label="VAR_DECL"];
+  n76 [label="float"];
+  n77 [label="newRating"];
+  n78 [label="do"];
+  n79 [label="BLOCK"];
+  n79 [label="BLOCK"];
+  n80 [label="printf"];
+  n81 [label="("];
+  n82 [label="\"\n****...****\n\""];
+  n83 [label=")"];
+  n84 [label=";"];
+  n85 [label="printf"];
+  n86 [label="("];
+  n87 [label="\"1. Pri...tals\n\""];
+  n88 [label=")"];
+  n89 [label=";"];
+  n90 [label="printf"];
+  n91 [label="("];
+  n92 [label="\"2. Fin...ital\n\""];
+  n93 [label=")"];
+  n94 [label=";"];
+  n95 [label="printf"];
+  n96 [label="("];
+  n97 [label="\"3. Fin...ital\n\""];
+  n98 [label=")"];
+  n99 [label=";"];
+  n100 [label="printf"];
+  n101 [label="("];
+  n102 [label="\"4. Fin...Beds\n\""];
+  n103 [label=")"];
+  n104 [label=";"];
+  n105 [label="printf"];
+  n106 [label="("];
+  n107 [label="\"5. Fin...Beds\n\""];
+  n108 [label=")"];
+  n109 [label=";"];
+  n110 [label="printf"];
+  n111 [label="("];
+  n112 [label="\"6. Sor...ting\n\""];
+  n113 [label=")"];
   n114 [label=";"];
-  n115 [label="i"];
-  n116 [label="<"];
-  n117 [label="n"];
-  n118 [label="-"];
-  n119 [label="1"];
-  n120 [label=";"];
-  n121 [label="i"];
-  n122 [label="++"];
+  n115 [label="printf"];
+  n116 [label="("];
+  n117 [label="\"7. Sor...Beds\n\""];
+  n118 [label=")"];
+  n119 [label=";"];
+  n120 [label="printf"];
+  n121 [label="("];
+  n122 [label="\"8. Upd...ting\n\""];
   n123 [label=")"];
-  n124 [label="BLOCK"];
-  n124 [label="BLOCK"];
-  n125 [label="for"];
+  n124 [label=";"];
+  n125 [label="printf"];
   n126 [label="("];
-  n127 [label="int"];
-  n128 [label="j"];
-  n129 [label="="];
-  n130 [label="0"];
-  n131 [label=";"];
-  n132 [label="j"];
-  n133 [label="<"];
-  n134 [label="n"];
-  n135 [label="-"];
-  n136 [label="i"];
-  n137 [label="-"];
-  n138 [label="1"];
+  n127 [label="\"9. Add...ital\n\""];
+  n128 [label=")"];
+  n129 [label=";"];
+  n130 [label="printf"];
+  n131 [label="("];
+  n132 [label="\"10. Exit\n\""];
+  n133 [label=")"];
+  n134 [label=";"];
+  n135 [label="printf"];
+  n136 [label="("];
+  n137 [label="\"Enter ...oice: \""];
+  n138 [label=")"];
   n139 [label=";"];
-  n140 [label="j"];
-  n141 [label="++"];
-  n142 [label=")"];
-  n143 [label="BLOCK"];
-  n143 [label="BLOCK"];
-  n144 [label="if"];
-  n145 [label="("];
-  n146 [label="hospitals"];
-  n147 [label="["];
-  n148 [label="j"];
-  n149 [label="]"];
-  n150 [label="."];
-  n151 [label="price"];
-  n152 [label=">"];
-  n153 [label="hospitals"];
-  n154 [label="["];
-  n155 [label="j"];
-  n156 [label="+"];
-  n157 [label="1"];
-  n158 [label="]"];
-  n159 [label="."];
-  n160 [label="price"];
-  n161 [label=")"];
-  n162 [label="BLOCK"];
-  n162 [label="BLOCK"];
-  n163 [label="VAR_DECL"];
-  n163 [label="VAR_DECL"];
-  n164 [label="struct"];
-  n165 [label="Hospital"];
-  n166 [label="temp"];
-  n167 [label="hospitals"];
-  n168 [label="["];
-  n169 [label="j"];
-  n170 [label="]"];
-  n171 [label="="];
-  n171 [label="="];
-  n172 [label="hospitals"];
-  n173 [label="["];
-  n174 [label="j"];
-  n175 [label="]"];
-  n176 [label="hospitals"];
-  n177 [label="["];
-  n178 [label="j"];
-  n179 [label="+"];
-  n180 [label="1"];
-  n181 [label="]"];
+  n140 [label="scanf"];
+  n141 [label="("];
+  n142 [label="\"%d\""];
+  n143 [label=","];
+  n144 [label="&"];
+  n144 [label="&"];
+  n145 [label="choice"];
+  n146 [label=")"];
+  n147 [label=";"];
+  n148 [label="getchar"];
+  n149 [label="("];
+  n150 [label=")"];
+  n151 [label=";"];
+  n152 [label="switch"];
+  n153 [label="("];
+  n154 [label="choice"];
+  n155 [label=")"];
+  n156 [label="{"];
+  n157 [label="CASE_STMT"];
+  n157 [label="CASE_STMT"];
+  n158 [label="1"];
+  n159 [label="for"];
+  n160 [label="("];
+  n161 [label="int"];
+  n162 [label="i"];
+  n163 [label="="];
+  n164 [label="0"];
+  n165 [label=";"];
+  n166 [label="i"];
+  n167 [label="<"];
+  n168 [label="n"];
+  n169 [label=";"];
+  n170 [label="i"];
+  n171 [label="++"];
+  n172 [label=")"];
+  n173 [label="printHospital"];
+  n174 [label="("];
+  n175 [label="hospitals"];
+  n176 [label="["];
+  n177 [label="i"];
+  n178 [label="]"];
+  n179 [label=")"];
+  n180 [label=";"];
+  n181 [label="break"];
   n182 [label=";"];
-  n183 [label="="];
-  n183 [label="="];
-  n184 [label="hospitals"];
-  n185 [label="["];
-  n186 [label="j"];
-  n187 [label="+"];
-  n188 [label="1"];
-  n189 [label="]"];
-  n190 [label="temp"];
+  n183 [label="CASE_STMT"];
+  n183 [label="CASE_STMT"];
+  n184 [label="2"];
+  n185 [label="findCheapestHospital"];
+  n186 [label="("];
+  n187 [label="hospitals"];
+  n188 [label=","];
+  n189 [label="n"];
+  n190 [label=")"];
   n191 [label=";"];
-  n192 [label="FUNC_DEF"];
-  n192 [label="FUNC_DEF"];
-  n193 [label="findCheapestHospital"];
-  n194 [label="PARAMS"];
-  n194 [label="PARAMS"];
-  n195 [label="struct"];
-  n196 [label="Hospital"];
-  n197 [label="hospitals"];
-  n198 [label="["];
-  n199 [label="]"];
-  n200 [label="int"];
-  n201 [label="n"];
-  n202 [label="BLOCK"];
-  n202 [label="BLOCK"];
-  n203 [label="VAR_DECL"];
-  n203 [label="VAR_DECL"];
-  n204 [label="int"];
-  n205 [label="minIndex"];
-  n206 [label="0"];
-  n207 [label="for"];
+  n192 [label="break"];
+  n193 [label=";"];
+  n194 [label="CASE_STMT"];
+  n194 [label="CASE_STMT"];
+  n195 [label="3"];
+  n196 [label="findBest...Hospital"];
+  n197 [label="("];
+  n198 [label="hospitals"];
+  n199 [label=","];
+  n200 [label="n"];
+  n201 [label=")"];
+  n202 [label=";"];
+  n203 [label="break"];
+  n204 [label=";"];
+  n205 [label="CASE_STMT"];
+  n205 [label="CASE_STMT"];
+  n206 [label="4"];
+  n207 [label="findHosp...MostBeds"];
   n208 [label="("];
-  n209 [label="int"];
-  n210 [label="i"];
-  n211 [label="="];
-  n212 [label="1"];
+  n209 [label="hospitals"];
+  n210 [label=","];
+  n211 [label="n"];
+  n212 [label=")"];
   n213 [label=";"];
-  n214 [label="i"];
-  n215 [label="<"];
-  n216 [label="n"];
-  n217 [label=";"];
-  n218 [label="i"];
-  n219 [label="++"];
-  n220 [label=")"];
-  n221 [label="BLOCK"];
-  n221 [label="BLOCK"];
-  n222 [label="if"];
-  n223 [label="("];
-  n224 [label="hospitals"];
-  n225 [label="["];
-  n226 [label="i"];
-  n227 [label="]"];
-  n228 [label="."];
-  n229 [label="price"];
-  n230 [label="<"];
+  n214 [label="break"];
+  n215 [label=";"];
+  n216 [label="CASE_STMT"];
+  n216 [label="CASE_STMT"];
+  n217 [label="5"];
+  n218 [label="findHosp...eastBeds"];
+  n219 [label="("];
+  n220 [label="hospitals"];
+  n221 [label=","];
+  n222 [label="n"];
+  n223 [label=")"];
+  n224 [label=";"];
+  n225 [label="break"];
+  n226 [label=";"];
+  n227 [label="CASE_STMT"];
+  n227 [label="CASE_STMT"];
+  n228 [label="6"];
+  n229 [label="sortByRating"];
+  n230 [label="("];
   n231 [label="hospitals"];
-  n232 [label="["];
-  n233 [label="minIndex"];
-  n234 [label="]"];
-  n235 [label="."];
-  n236 [label="price"];
-  n237 [label=")"];
-  n238 [label="BLOCK"];
-  n238 [label="BLOCK"];
-  n239 [label="="];
-  n239 [label="="];
-  n240 [label="minIndex"];
-  n241 [label="i"];
-  n242 [label=";"];
-  n243 [label="printf"];
-  n244 [label="("];
-  n245 [label="\"\nChea...tal:\n\""];
-  n246 [label=")"];
-  n247 [label=";"];
-  n248 [label="printHospital"];
-  n249 [label="("];
-  n250 [label="hospitals"];
-  n251 [label="["];
-  n252 [label="minIndex"];
-  n253 [label="]"];
+  n232 [label=","];
+  n233 [label="n"];
+  n234 [label=")"];
+  n235 [label=";"];
+  n236 [label="break"];
+  n237 [label=";"];
+  n238 [label="CASE_STMT"];
+  n238 [label="CASE_STMT"];
+  n239 [label="7"];
+  n240 [label="sortByBeds"];
+  n241 [label="("];
+  n242 [label="hospitals"];
+  n243 [label=","];
+  n244 [label="n"];
+  n245 [label=")"];
+  n246 [label=";"];
+  n247 [label="break"];
+  n248 [label=";"];
+  n249 [label="CASE_STMT"];
+  n249 [label="CASE_STMT"];
+  n250 [label="8"];
+  n251 [label="printf"];
+  n252 [label="("];
+  n253 [label="\"Enter ...name: \""];
   n254 [label=")"];
   n255 [label=";"];
-  n256 [label="FUNC_DEF"];
-  n256 [label="FUNC_DEF"];
-  n257 [label="findBest...Hospital"];
-  n258 [label="PARAMS"];
-  n258 [label="PARAMS"];
-  n259 [label="struct"];
-  n260 [label="Hospital"];
-  n261 [label="hospitals"];
-  n262 [label="["];
-  n263 [label="]"];
-  n264 [label="int"];
-  n265 [label="n"];
-  n266 [label="BLOCK"];
-  n266 [label="BLOCK"];
-  n267 [label="VAR_DECL"];
-  n267 [label="VAR_DECL"];
-  n268 [label="int"];
-  n269 [label="maxIndex"];
-  n270 [label="0"];
-  n271 [label="for"];
-  n272 [label="("];
-  n273 [label="int"];
-  n274 [label="i"];
-  n275 [label="="];
-  n276 [label="1"];
-  n277 [label=";"];
-  n278 [label="i"];
-  n279 [label="<"];
+  n256 [label="scanf"];
+  n257 [label="("];
+  n258 [label="\" %[^\n]\""];
+  n259 [label=","];
+  n260 [label="name"];
+  n261 [label=")"];
+  n262 [label=";"];
+  n263 [label="printf"];
+  n264 [label="("];
+  n265 [label="\"Enter ...ting: \""];
+  n266 [label=")"];
+  n267 [label=";"];
+  n268 [label="scanf"];
+  n269 [label="("];
+  n270 [label="\"%f\""];
+  n271 [label=","];
+  n272 [label="&"];
+  n272 [label="&"];
+  n273 [label="newRating"];
+  n274 [label=")"];
+  n275 [label=";"];
+  n276 [label="updateHospitalRating"];
+  n277 [label="("];
+  n278 [label="hospitals"];
+  n279 [label=","];
   n280 [label="n"];
-  n281 [label=";"];
-  n282 [label="i"];
-  n283 [label="++"];
-  n284 [label=")"];
-  n285 [label="BLOCK"];
-  n285 [label="BLOCK"];
-  n286 [label="if"];
-  n287 [label="("];
-  n288 [label="hospitals"];
-  n289 [label="["];
-  n290 [label="i"];
-  n291 [label="]"];
-  n292 [label="."];
-  n293 [label="rating"];
-  n294 [label=">"];
-  n295 [label="hospitals"];
-  n296 [label="["];
-  n297 [label="maxIndex"];
-  n298 [label="]"];
-  n299 [label="."];
-  n300 [label="rating"];
-  n301 [label=")"];
-  n302 [label="BLOCK"];
-  n302 [label="BLOCK"];
-  n303 [label="="];
-  n303 [label="="];
-  n304 [label="maxIndex"];
-  n305 [label="i"];
-  n306 [label=";"];
-  n307 [label="printf"];
-  n308 [label="("];
-  n309 [label="\"\nBest...tal:\n\""];
-  n310 [label=")"];
-  n311 [label=";"];
-  n312 [label="printHospital"];
+  n281 [label=","];
+  n282 [label="name"];
+  n283 [label=","];
+  n284 [label="newRating"];
+  n285 [label=")"];
+  n286 [label=";"];
+  n287 [label="break"];
+  n288 [label=";"];
+  n289 [label="CASE_STMT"];
+  n289 [label="CASE_STMT"];
+  n290 [label="9"];
+  n291 [label="addNewHospital"];
+  n292 [label="("];
+  n293 [label="hospitals"];
+  n294 [label=","];
+  n295 [label="&"];
+  n295 [label="&"];
+  n296 [label="n"];
+  n297 [label=")"];
+  n298 [label=";"];
+  n299 [label="break"];
+  n300 [label=";"];
+  n301 [label="CASE_STMT"];
+  n301 [label="CASE_STMT"];
+  n302 [label="10"];
+  n303 [label="printf"];
+  n304 [label="("];
+  n305 [label="\"Exitin...ram.\n\""];
+  n306 [label=")"];
+  n307 [label=";"];
+  n308 [label="break"];
+  n309 [label=";"];
+  n310 [label="default"];
+  n311 [label=":"];
+  n312 [label="printf"];
   n313 [label="("];
-  n314 [label="hospitals"];
-  n315 [label="["];
-  n316 [label="maxIndex"];
-  n317 [label="]"];
-  n318 [label=")"];
-  n319 [label=";"];
-  n320 [label="FUNC_DEF"];
-  n320 [label="FUNC_DEF"];
-  n321 [label="findHosp...MostBeds"];
-  n322 [label="PARAMS"];
-  n322 [label="PARAMS"];
-  n323 [label="struct"];
-  n324 [label="Hospital"];
-  n325 [label="hospitals"];
-  n326 [label="["];
-  n327 [label="]"];
-  n328 [label="int"];
-  n329 [label="n"];
-  n330 [label="BLOCK"];
-  n330 [label="BLOCK"];
-  n331 [label="VAR_DECL"];
-  n331 [label="VAR_DECL"];
-  n332 [label="int"];
-  n333 [label="maxIndex"];
-  n334 [label="0"];
-  n335 [label="for"];
-  n336 [label="("];
-  n337 [label="int"];
-  n338 [label="i"];
-  n339 [label="="];
-  n340 [label="1"];
-  n341 [label=";"];
-  n342 [label="i"];
-  n343 [label="<"];
-  n344 [label="n"];
-  n345 [label=";"];
-  n346 [label="i"];
-  n347 [label="++"];
-  n348 [label=")"];
-  n349 [label="BLOCK"];
-  n349 [label="BLOCK"];
-  n350 [label="if"];
-  n351 [label="("];
-  n352 [label="hospitals"];
-  n353 [label="["];
-  n354 [label="i"];
-  n355 [label="]"];
-  n356 [label="."];
-  n357 [label="beds"];
-  n358 [label=">"];
-  n359 [label="hospitals"];
-  n360 [label="["];
-  n361 [label="maxIndex"];
-  n362 [label="]"];
-  n363 [label="."];
-  n364 [label="beds"];
-  n365 [label=")"];
-  n366 [label="BLOCK"];
-  n366 [label="BLOCK"];
-  n367 [label="="];
-  n367 [label="="];
-  n368 [label="maxIndex"];
-  n369 [label="i"];
-  n370 [label=";"];
-  n371 [label="printf"];
-  n372 [label="("];
-  n373 [label="\"\nHosp...eds:\n\""];
-  n374 [label=")"];
-  n375 [label=";"];
-  n376 [label="printHospital"];
-  n377 [label="("];
-  n378 [label="hospitals"];
-  n379 [label="["];
-  n380 [label="maxIndex"];
-  n381 [label="]"];
-  n382 [label=")"];
-  n383 [label=";"];
-  n384 [label="FUNC_DEF"];
-  n384 [label="FUNC_DEF"];
-  n385 [label="findHosp...eastBeds"];
-  n386 [label="PARAMS"];
-  n386 [label="PARAMS"];
-  n387 [label="struct"];
-  n388 [label="Hospital"];
-  n389 [label="hospitals"];
-  n390 [label="["];
-  n391 [label="]"];
-  n392 [label="int"];
-  n393 [label="n"];
-  n394 [label="BLOCK"];
-  n394 [label="BLOCK"];
-  n395 [label="VAR_DECL"];
-  n395 [label="VAR_DECL"];
-  n396 [label="int"];
-  n397 [label="minIndex"];
-  n398 [label="0"];
-  n399 [label="for"];
-  n400 [label="("];
-  n401 [label="int"];
-  n402 [label="i"];
-  n403 [label="="];
-  n404 [label="1"];
-  n405 [label=";"];
-  n406 [label="i"];
-  n407 [label="<"];
-  n408 [label="n"];
-  n409 [label=";"];
-  n410 [label="i"];
-  n411 [label="++"];
-  n412 [label=")"];
-  n413 [label="BLOCK"];
-  n413 [label="BLOCK"];
-  n414 [label="if"];
-  n415 [label="("];
-  n416 [label="hospitals"];
-  n417 [label="["];
-  n418 [label="i"];
-  n419 [label="]"];
-  n420 [label="."];
-  n421 [label="beds"];
-  n422 [label="<"];
-  n423 [label="hospitals"];
-  n424 [label="["];
-  n425 [label="minIndex"];
-  n426 [label="]"];
-  n427 [label="."];
-  n428 [label="beds"];
-  n429 [label=")"];
-  n430 [label="BLOCK"];
-  n430 [label="BLOCK"];
-  n431 [label="="];
-  n431 [label="="];
-  n432 [label="minIndex"];
-  n433 [label="i"];
-  n434 [label=";"];
-  n435 [label="printf"];
-  n436 [label="("];
-  n437 [label="\"\nHosp...eds:\n\""];
-  n438 [label=")"];
-  n439 [label=";"];
-  n440 [label="printHospital"];
-  n441 [label="("];
-  n442 [label="hospitals"];
-  n443 [label="["];
-  n444 [label="minIndex"];
-  n445 [label="]"];
-  n446 [label=")"];
-  n447 [label=";"];
-  n448 [label="FUNC_DEF"];
-  n448 [label="FUNC_DEF"];
-  n449 [label="sortByRating"];
-  n450 [label="PARAMS"];
-  n450 [label="PARAMS"];
-  n451 [label="struct"];
-  n452 [label="Hospital"];
-  n453 [label="hospitals"];
-  n454 [label="["];
-  n455 [label="]"];
-  n456 [label="int"];
-  n457 [label="n"];
-  n458 [label="BLOCK"];
-  n458 [label="BLOCK"];
-  n459 [label="for"];
-  n460 [label="("];
-  n461 [label="int"];
-  n462 [label="i"];
-  n463 [label="="];
-  n464 [label="0"];
-  n465 [label=";"];
-  n466 [label="i"];
-  n467 [label="<"];
-  n468 [label="n"];
-  n469 [label="-"];
-  n470 [label="1"];
-  n471 [label=";"];
-  n472 [label="i"];
-  n473 [label="++"];
-  n474 [label=")"];
-  n475 [label="BLOCK"];
-  n475 [label="BLOCK"];
-  n476 [label="for"];
-  n477 [label="("];
-  n478 [label="int"];
-  n479 [label="j"];
-  n480 [label="="];
-  n481 [label="0"];
-  n482 [label=";"];
-  n483 [label="j"];
-  n484 [label="<"];
-  n485 [label="n"];
-  n486 [label="-"];
-  n487 [label="i"];
-  n488 [label="-"];
-  n489 [label="1"];
-  n490 [label=";"];
-  n491 [label="j"];
-  n492 [label="++"];
-  n493 [label=")"];
-  n494 [label="BLOCK"];
-  n494 [label="BLOCK"];
-  n495 [label="if"];
-  n496 [label="("];
-  n497 [label="hospitals"];
-  n498 [label="["];
-  n499 [label="j"];
-  n500 [label="]"];
-  n501 [label="."];
-  n502 [label="rating"];
-  n503 [label="<"];
-  n504 [label="hospitals"];
-  n505 [label="["];
-  n506 [label="j"];
-  n507 [label="+"];
-  n508 [label="1"];
-  n509 [label="]"];
-  n510 [label="."];
-  n511 [label="rating"];
-  n512 [label=")"];
-  n513 [label="BLOCK"];
-  n513 [label="BLOCK"];
-  n514 [label="VAR_DECL"];
-  n514 [label="VAR_DECL"];
-  n515 [label="struct"];
-  n516 [label="Hospital"];
-  n517 [label="temp"];
-  n518 [label="hospitals"];
-  n519 [label="["];
-  n520 [label="j"];
-  n521 [label="]"];
-  n522 [label="="];
-  n522 [label="="];
-  n523 [label="hospitals"];
-  n524 [label="["];
-  n525 [label="j"];
-  n526 [label="]"];
-  n527 [label="hospitals"];
-  n528 [label="["];
-  n529 [label="j"];
-  n530 [label="+"];
-  n531 [label="1"];
-  n532 [label="]"];
-  n533 [label=";"];
-  n534 [label="="];
-  n534 [label="="];
-  n535 [label="hospitals"];
-  n536 [label="["];
-  n537 [label="j"];
-  n538 [label="+"];
-  n539 [label="1"];
-  n540 [label="]"];
-  n541 [label="temp"];
-  n542 [label=";"];
-  n543 [label="FUNC_DEF"];
-  n543 [label="FUNC_DEF"];
-  n544 [label="sortByBeds"];
-  n545 [label="PARAMS"];
-  n545 [label="PARAMS"];
-  n546 [label="struct"];
-  n547 [label="Hospital"];
-  n548 [label="hospitals"];
-  n549 [label="["];
-  n550 [label="]"];
-  n551 [label="int"];
-  n552 [label="n"];
-  n553 [label="BLOCK"];
-  n553 [label="BLOCK"];
-  n554 [label="for"];
-  n555 [label="("];
-  n556 [label="int"];
-  n557 [label="i"];
-  n558 [label="="];
-  n559 [label="0"];
-  n560 [label=";"];
-  n561 [label="i"];
-  n562 [label="<"];
-  n563 [label="n"];
-  n564 [label="-"];
-  n565 [label="1"];
-  n566 [label=";"];
-  n567 [label="i"];
-  n568 [label="++"];
-  n569 [label=")"];
-  n570 [label="BLOCK"];
-  n570 [label="BLOCK"];
-  n571 [label="for"];
-  n572 [label="("];
-  n573 [label="int"];
-  n574 [label="j"];
-  n575 [label="="];
-  n576 [label="0"];
-  n577 [label=";"];
-  n578 [label="j"];
-  n579 [label="<"];
-  n580 [label="n"];
-  n581 [label="-"];
-  n582 [label="i"];
-  n583 [label="-"];
-  n584 [label="1"];
-  n585 [label=";"];
-  n586 [label="j"];
-  n587 [label="++"];
-  n588 [label=")"];
-  n589 [label="BLOCK"];
-  n589 [label="BLOCK"];
-  n590 [label="if"];
-  n591 [label="("];
-  n592 [label="hospitals"];
-  n593 [label="["];
-  n594 [label="j"];
-  n595 [label="]"];
-  n596 [label="."];
-  n597 [label="beds"];
-  n598 [label="<"];
-  n599 [label="hospitals"];
-  n600 [label="["];
-  n601 [label="j"];
-  n602 [label="+"];
-  n603 [label="1"];
-  n604 [label="]"];
-  n605 [label="."];
-  n606 [label="beds"];
-  n607 [label=")"];
-  n608 [label="BLOCK"];
-  n608 [label="BLOCK"];
-  n609 [label="VAR_DECL"];
-  n609 [label="VAR_DECL"];
-  n610 [label="struct"];
-  n611 [label="Hospital"];
-  n612 [label="temp"];
-  n613 [label="hospitals"];
-  n614 [label="["];
-  n615 [label="j"];
-  n616 [label="]"];
-  n617 [label="="];
-  n617 [label="="];
-  n618 [label="hospitals"];
-  n619 [label="["];
-  n620 [label="j"];
-  n621 [label="]"];
-  n622 [label="hospitals"];
-  n623 [label="["];
-  n624 [label="j"];
-  n625 [label="+"];
-  n626 [label="1"];
-  n627 [label="]"];
-  n628 [label=";"];
-  n629 [label="="];
-  n629 [label="="];
-  n630 [label="hospitals"];
-  n631 [label="["];
-  n632 [label="j"];
-  n633 [label="+"];
-  n634 [label="1"];
-  n635 [label="]"];
-  n636 [label="temp"];
-  n637 [label=";"];
-  n638 [label="FUNC_DEF"];
-  n638 [label="FUNC_DEF"];
-  n639 [label="updateHospitalRating"];
-  n640 [label="PARAMS"];
-  n640 [label="PARAMS"];
-  n641 [label="struct"];
-  n642 [label="Hospital"];
-  n643 [label="hospitals"];
-  n644 [label="["];
-  n645 [label="]"];
-  n646 [label="int"];
-  n647 [label="n"];
-  n648 [label="char"];
-  n649 [label="name"];
-  n650 [label="["];
-  n651 [label="]"];
-  n652 [label="float"];
-  n653 [label="newRating"];
-  n654 [label="BLOCK"];
-  n654 [label="BLOCK"];
-  n655 [label="for"];
-  n656 [label="("];
-  n657 [label="int"];
-  n658 [label="i"];
-  n659 [label="="];
-  n660 [label="0"];
-  n661 [label=";"];
-  n662 [label="i"];
-  n663 [label="<"];
-  n664 [label="n"];
-  n665 [label=";"];
-  n666 [label="i"];
-  n667 [label="++"];
-  n668 [label=")"];
-  n669 [label="BLOCK"];
-  n669 [label="BLOCK"];
-  n670 [label="if"];
-  n671 [label="("];
-  n672 [label="strcasecmp"];
-  n673 [label="("];
-  n674 [label="hospitals"];
-  n675 [label="["];
-  n676 [label="i"];
-  n677 [label="]"];
-  n678 [label="."];
-  n679 [label="name"];
-  n680 [label=","];
-  n681 [label="name"];
-  n682 [label=")"];
-  n683 [label="=="];
-  n684 [label="0"];
-  n685 [label=")"];
-  n686 [label="BLOCK"];
-  n686 [label="BLOCK"];
-  n687 [label="="];
-  n687 [label="="];
-  n688 [label="hospitals"];
-  n689 [label="["];
-  n690 [label="i"];
-  n691 [label="]"];
-  n692 [label="."];
-  n693 [label="rating"];
-  n694 [label="/"];
-  n694 [label="/"];
-  n695 [label="("];
-  n696 [label="*"];
-  n696 [label="*"];
-  n697 [label="hospitals"];
-  n698 [label="["];
-  n699 [label="i"];
-  n700 [label="]"];
-  n701 [label="."];
-  n702 [label="rating"];
-  n703 [label="hospitals"];
-  n704 [label="["];
-  n705 [label="i"];
-  n706 [label="]"];
-  n707 [label="."];
-  n708 [label="reviews"];
-  n709 [label="+"];
-  n710 [label="newRating"];
-  n711 [label=")"];
-  n712 [label="("];
-  n713 [label="hospitals"];
-  n714 [label="["];
-  n715 [label="i"];
-  n716 [label="]"];
-  n717 [label="."];
-  n718 [label="reviews"];
-  n719 [label="+"];
-  n720 [label="1"];
-  n721 [label=")"];
-  n722 [label=";"];
-  n723 [label="hospitals"];
-  n724 [label="["];
-  n725 [label="i"];
-  n726 [label="]"];
-  n727 [label="."];
-  n728 [label="reviews"];
-  n729 [label="++"];
-  n730 [label=";"];
-  n731 [label="printf"];
-  n732 [label="("];
-  n733 [label="\"\nUpda...ing:\n\""];
-  n734 [label=")"];
-  n735 [label=";"];
-  n736 [label="printHospital"];
-  n737 [label="("];
-  n738 [label="hospitals"];
-  n739 [label="["];
-  n740 [label="i"];
-  n741 [label="]"];
-  n742 [label=")"];
-  n743 [label=";"];
-  n744 [label="return"];
-  n745 [label=";"];
-  n746 [label="printf"];
-  n747 [label="("];
-  n748 [label="\"Hospit...und.\n\""];
-  n749 [label=")"];
-  n750 [label=";"];
-  n751 [label="FUNC_DEF"];
-  n751 [label="FUNC_DEF"];
-  n752 [label="addNewHospital"];
-  n753 [label="PARAMS"];
-  n753 [label="PARAMS"];
-  n754 [label="struct"];
-  n755 [label="Hospital"];
-  n756 [label="hospitals"];
-  n757 [label="["];
-  n758 [label="]"];
-  n759 [label="int"];
-  n760 [label="*"];
-  n761 [label="n"];
-  n762 [label="BLOCK"];
-  n762 [label="BLOCK"];
-  n763 [label="if"];
-  n764 [label="("];
-  n765 [label="*"];
-  n765 [label="*"];
-  n766 [label="n"];
-  n767 [label=">="];
-  n768 [label="100"];
-  n769 [label=")"];
-  n770 [label="BLOCK"];
-  n770 [label="BLOCK"];
-  n771 [label="printf"];
-  n772 [label="("];
-  n773 [label="\"Cannot...als.\n\""];
-  n774 [label=")"];
-  n775 [label=";"];
-  n776 [label="return"];
-  n777 [label=";"];
-  n778 [label="printf"];
-  n779 [label="("];
-  n780 [label="\"Enter ...Name: \""];
-  n781 [label=")"];
-  n782 [label=";"];
-  n783 [label="scanf"];
-  n784 [label="("];
-  n785 [label="\" %[^\n]\""];
-  n786 [label=","];
-  n787 [label="hospitals"];
-  n788 [label="["];
-  n789 [label="*"];
-  n789 [label="*"];
-  n790 [label="n"];
-  n791 [label="]"];
-  n792 [label="."];
-  n793 [label="name"];
-  n794 [label=")"];
-  n795 [label=";"];
-  n796 [label="printf"];
-  n797 [label="("];
-  n798 [label="\"Enter City: \""];
-  n799 [label=")"];
-  n800 [label=";"];
-  n801 [label="scanf"];
-  n802 [label="("];
-  n803 [label="\" %[^\n]\""];
-  n804 [label=","];
-  n805 [label="hospitals"];
-  n806 [label="["];
-  n807 [label="*"];
-  n807 [label="*"];
-  n808 [label="n"];
-  n809 [label="]"];
-  n810 [label="."];
-  n811 [label="city"];
-  n812 [label=")"];
-  n813 [label=";"];
-  n814 [label="printf"];
-  n815 [label="("];
-  n816 [label="\"Enter ...Beds: \""];
-  n817 [label=")"];
-  n818 [label=";"];
-  n819 [label="scanf"];
-  n820 [label="("];
-  n821 [label="\"%d\""];
-  n822 [label=","];
-  n823 [label="&"];
-  n823 [label="&"];
-  n824 [label="hospitals"];
-  n825 [label="["];
-  n826 [label="*"];
-  n826 [label="*"];
-  n827 [label="n"];
-  n828 [label="]"];
-  n829 [label="."];
-  n830 [label="beds"];
-  n831 [label=")"];
-  n832 [label=";"];
-  n833 [label="printf"];
-  n834 [label="("];
-  n835 [label="\"Enter ... Bed: \""];
-  n836 [label=")"];
-  n837 [label=";"];
-  n838 [label="scanf"];
-  n839 [label="("];
-  n840 [label="\"%f\""];
-  n841 [label=","];
-  n842 [label="&"];
-  n842 [label="&"];
-  n843 [label="hospitals"];
-  n844 [label="["];
-  n845 [label="*"];
-  n845 [label="*"];
-  n846 [label="n"];
-  n847 [label="]"];
-  n848 [label="."];
-  n849 [label="price"];
-  n850 [label=")"];
-  n851 [label=";"];
-  n852 [label="printf"];
-  n853 [label="("];
-  n854 [label="\"Enter Rating: \""];
-  n855 [label=")"];
-  n856 [label=";"];
-  n857 [label="scanf"];
-  n858 [label="("];
-  n859 [label="\"%f\""];
-  n860 [label=","];
-  n861 [label="&"];
-  n861 [label="&"];
-  n862 [label="hospitals"];
-  n863 [label="["];
-  n864 [label="*"];
-  n864 [label="*"];
-  n865 [label="n"];
-  n866 [label="]"];
-  n867 [label="."];
-  n868 [label="rating"];
-  n869 [label=")"];
-  n870 [label=";"];
-  n871 [label="="];
-  n871 [label="="];
-  n872 [label="hospitals"];
-  n873 [label="["];
-  n874 [label="*"];
-  n874 [label="*"];
-  n875 [label="n"];
-  n876 [label="]"];
-  n877 [label="."];
-  n878 [label="reviews"];
-  n879 [label="1"];
-  n880 [label=";"];
-  n881 [label="("];
-  n882 [label="*"];
-  n882 [label="*"];
-  n883 [label="n"];
-  n884 [label=")"];
-  n885 [label="++"];
-  n886 [label=";"];
-  n887 [label="printf"];
-  n888 [label="("];
-  n889 [label="\"New ho...lly!\n\""];
-  n890 [label=")"];
-  n891 [label=";"];
-  n892 [label="FUNC_DEF"];
-  n892 [label="FUNC_DEF"];
-  n893 [label="int"];
-  n894 [label="main"];
-  n895 [label="BLOCK"];
-  n895 [label="BLOCK"];
-  n896 [label="VAR_DECL"];
-  n896 [label="VAR_DECL"];
-  n897 [label="struct"];
-  n898 [label="Hospital"];
-  n899 [label="hospitals"];
-  n900 [label="["];
-  n901 [label="100"];
-  n902 [label="]"];
-  n903 [label="ARRAY_INIT"];
-  n903 [label="ARRAY_INIT"];
-  n904 [label="INIT_LIST"];
-  n904 [label="INIT_LIST"];
-  n905 [label="ARRAY_INIT"];
-  n905 [label="ARRAY_INIT"];
-  n906 [label="INIT_LIST"];
-  n906 [label="INIT_LIST"];
-  n907 [label="\"Hospital A\""];
-  n908 [label="\"X\""];
-  n909 [label="100"];
-  n910 [label="250.0"];
-  n911 [label="4.5"];
-  n912 [label="100"];
-  n913 [label="ARRAY_INIT"];
-  n913 [label="ARRAY_INIT"];
-  n914 [label="INIT_LIST"];
-  n914 [label="INIT_LIST"];
-  n915 [label="\"Hospital B\""];
-  n916 [label="\"Y\""];
-  n917 [label="150"];
-  n918 [label="200.0"];
-  n919 [label="4.2"];
-  n920 [label="80"];
-  n921 [label="ARRAY_INIT"];
-  n921 [label="ARRAY_INIT"];
-  n922 [label="INIT_LIST"];
-  n922 [label="INIT_LIST"];
-  n923 [label="\"Hospital C\""];
-  n924 [label="\"X\""];
-  n925 [label="200"];
-  n926 [label="180.0"];
-  n927 [label="4.0"];
-  n928 [label="120"];
-  n929 [label="ARRAY_INIT"];
-  n929 [label="ARRAY_INIT"];
-  n930 [label="INIT_LIST"];
-  n930 [label="INIT_LIST"];
-  n931 [label="\"Hospital D\""];
-  n932 [label="\"Z\""];
-  n933 [label="80"];
-  n934 [label="300.0"];
-  n935 [label="4.8"];
-  n936 [label="90"];
-  n937 [label="ARRAY_INIT"];
-  n937 [label="ARRAY_INIT"];
-  n938 [label="INIT_LIST"];
-  n938 [label="INIT_LIST"];
-  n939 [label="\"Hospital E\""];
-  n940 [label="\"Y\""];
-  n941 [label="120"];
-  n942 [label="220.0"];
-  n943 [label="4.6"];
-  n944 [label="110"];
-  n945 [label="VAR_DECL"];
-  n945 [label="VAR_DECL"];
-  n946 [label="int"];
-  n947 [label="n"];
-  n948 [label="5"];
-  n949 [label="VAR_DECL"];
-  n949 [label="VAR_DECL"];
-  n950 [label="int"];
-  n951 [label="choice"];
-  n952 [label="VAR_DECL"];
-  n952 [label="VAR_DECL"];
-  n953 [label="char"];
-  n954 [label="name"];
-  n955 [label="["];
-  n956 [label="50"];
-  n957 [label="]"];
-  n958 [label="VAR_DECL"];
-  n958 [label="VAR_DECL"];
-  n959 [label="float"];
-  n960 [label="newRating"];
-  n961 [label="do"];
-  n962 [label="BLOCK"];
-  n962 [label="BLOCK"];
-  n963 [label="printf"];
-  n964 [label="("];
-  n965 [label="\"\n****...****\n\""];
-  n966 [label=")"];
-  n967 [label=";"];
-  n968 [label="printf"];
-  n969 [label="("];
-  n970 [label="\"1. Pri...tals\n\""];
-  n971 [label=")"];
-  n972 [label=";"];
-  n973 [label="printf"];
-  n974 [label="("];
-  n975 [label="\"2. Fin...ital\n\""];
-  n976 [label=")"];
-  n977 [label=";"];
-  n978 [label="printf"];
-  n979 [label="("];
-  n980 [label="\"3. Fin...ital\n\""];
-  n981 [label=")"];
-  n982 [label=";"];
-  n983 [label="printf"];
-  n984 [label="("];
-  n985 [label="\"4. Fin...Beds\n\""];
-  n986 [label=")"];
-  n987 [label=";"];
-  n988 [label="printf"];
-  n989 [label="("];
-  n990 [label="\"5. Fin...Beds\n\""];
-  n991 [label=")"];
-  n992 [label=";"];
-  n993 [label="printf"];
-  n994 [label="("];
-  n995 [label="\"6. Sor...ting\n\""];
-  n996 [label=")"];
-  n997 [label=";"];
-  n998 [label="printf"];
-  n999 [label="("];
-  n1000 [label="\"7. Sor...Beds\n\""];
-  n1001 [label=")"];
-  n1002 [label=";"];
-  n1003 [label="printf"];
-  n1004 [label="("];
-  n1005 [label="\"8. Upd...ting\n\""];
-  n1006 [label=")"];
-  n1007 [label=";"];
-  n1008 [label="printf"];
-  n1009 [label="("];
-  n1010 [label="\"9. Add...ital\n\""];
-  n1011 [label=")"];
-  n1012 [label=";"];
-  n1013 [label="printf"];
-  n1014 [label="("];
-  n1015 [label="\"10. Exit\n\""];
-  n1016 [label=")"];
-  n1017 [label=";"];
-  n1018 [label="printf"];
-  n1019 [label="("];
-  n1020 [label="\"Enter ...oice: \""];
-  n1021 [label=")"];
-  n1022 [label=";"];
-  n1023 [label="scanf"];
-  n1024 [label="("];
-  n1025 [label="\"%d\""];
-  n1026 [label=","];
-  n1027 [label="&"];
-  n1027 [label="&"];
-  n1028 [label="choice"];
-  n1029 [label=")"];
-  n1030 [label=";"];
-  n1031 [label="getchar"];
-  n1032 [label="("];
-  n1033 [label=")"];
-  n1034 [label=";"];
-  n1035 [label="switch"];
-  n1036 [label="("];
-  n1037 [label="choice"];
-  n1038 [label=")"];
-  n1039 [label="{"];
-  n1040 [label="CASE_STMT"];
-  n1040 [label="CASE_STMT"];
-  n1041 [label="1"];
-  n1042 [label="for"];
-  n1043 [label="("];
-  n1044 [label="int"];
-  n1045 [label="i"];
-  n1046 [label="="];
-  n1047 [label="0"];
-  n1048 [label=";"];
-  n1049 [label="i"];
-  n1050 [label="<"];
-  n1051 [label="n"];
-  n1052 [label=";"];
-  n1053 [label="i"];
-  n1054 [label="++"];
-  n1055 [label=")"];
-  n1056 [label="printHospital"];
-  n1057 [label="("];
-  n1058 [label="hospitals"];
-  n1059 [label="["];
-  n1060 [label="i"];
-  n1061 [label="]"];
-  n1062 [label=")"];
-  n1063 [label=";"];
-  n1064 [label="break"];
-  n1065 [label=";"];
-  n1066 [label="CASE_STMT"];
-  n1066 [label="CASE_STMT"];
-  n1067 [label="2"];
-  n1068 [label="findCheapestHospital"];
-  n1069 [label="("];
-  n1070 [label="hospitals"];
-  n1071 [label=","];
-  n1072 [label="n"];
-  n1073 [label=")"];
-  n1074 [label=";"];
-  n1075 [label="break"];
-  n1076 [label=";"];
-  n1077 [label="CASE_STMT"];
-  n1077 [label="CASE_STMT"];
-  n1078 [label="3"];
-  n1079 [label="findBest...Hospital"];
-  n1080 [label="("];
-  n1081 [label="hospitals"];
-  n1082 [label=","];
-  n1083 [label="n"];
-  n1084 [label=")"];
-  n1085 [label=";"];
-  n1086 [label="break"];
-  n1087 [label=";"];
-  n1088 [label="CASE_STMT"];
-  n1088 [label="CASE_STMT"];
-  n1089 [label="4"];
-  n1090 [label="findHosp...MostBeds"];
-  n1091 [label="("];
-  n1092 [label="hospitals"];
-  n1093 [label=","];
-  n1094 [label="n"];
-  n1095 [label=")"];
-  n1096 [label=";"];
-  n1097 [label="break"];
-  n1098 [label=";"];
-  n1099 [label="CASE_STMT"];
-  n1099 [label="CASE_STMT"];
-  n1100 [label="5"];
-  n1101 [label="findHosp...eastBeds"];
-  n1102 [label="("];
-  n1103 [label="hospitals"];
-  n1104 [label=","];
-  n1105 [label="n"];
-  n1106 [label=")"];
-  n1107 [label=";"];
-  n1108 [label="break"];
-  n1109 [label=";"];
-  n1110 [label="CASE_STMT"];
-  n1110 [label="CASE_STMT"];
-  n1111 [label="6"];
-  n1112 [label="sortByRating"];
-  n1113 [label="("];
-  n1114 [label="hospitals"];
-  n1115 [label=","];
-  n1116 [label="n"];
-  n1117 [label=")"];
-  n1118 [label=";"];
-  n1119 [label="break"];
-  n1120 [label=";"];
-  n1121 [label="CASE_STMT"];
-  n1121 [label="CASE_STMT"];
-  n1122 [label="7"];
-  n1123 [label="sortByBeds"];
-  n1124 [label="("];
-  n1125 [label="hospitals"];
-  n1126 [label=","];
-  n1127 [label="n"];
-  n1128 [label=")"];
-  n1129 [label=";"];
-  n1130 [label="break"];
-  n1131 [label=";"];
-  n1132 [label="CASE_STMT"];
-  n1132 [label="CASE_STMT"];
-  n1133 [label="8"];
-  n1134 [label="printf"];
-  n1135 [label="("];
-  n1136 [label="\"Enter ...name: \""];
-  n1137 [label=")"];
-  n1138 [label=";"];
-  n1139 [label="scanf"];
-  n1140 [label="("];
-  n1141 [label="\" %[^\n]\""];
-  n1142 [label=","];
-  n1143 [label="name"];
-  n1144 [label=")"];
-  n1145 [label=";"];
-  n1146 [label="printf"];
-  n1147 [label="("];
-  n1148 [label="\"Enter ...ting: \""];
-  n1149 [label=")"];
-  n1150 [label=";"];
-  n1151 [label="scanf"];
-  n1152 [label="("];
-  n1153 [label="\"%f\""];
-  n1154 [label=","];
-  n1155 [label="&"];
-  n1155 [label="&"];
-  n1156 [label="newRating"];
-  n1157 [label=")"];
-  n1158 [label=";"];
-  n1159 [label="updateHospitalRating"];
-  n1160 [label="("];
-  n1161 [label="hospitals"];
-  n1162 [label=","];
-  n1163 [label="n"];
-  n1164 [label=","];
-  n1165 [label="name"];
-  n1166 [label=","];
-  n1167 [label="newRating"];
-  n1168 [label=")"];
-  n1169 [label=";"];
-  n1170 [label="break"];
-  n1171 [label=";"];
-  n1172 [label="CASE_STMT"];
-  n1172 [label="CASE_STMT"];
-  n1173 [label="9"];
-  n1174 [label="addNewHospital"];
-  n1175 [label="("];
-  n1176 [label="hospitals"];
-  n1177 [label=","];
-  n1178 [label="&"];
-  n1178 [label="&"];
-  n1179 [label="n"];
-  n1180 [label=")"];
-  n1181 [label=";"];
-  n1182 [label="break"];
-  n1183 [label=";"];
-  n1184 [label="CASE_STMT"];
-  n1184 [label="CASE_STMT"];
-  n1185 [label="10"];
-  n1186 [label="printf"];
-  n1187 [label="("];
-  n1188 [label="\"Exitin...ram.\n\""];
-  n1189 [label=")"];
-  n1190 [label=";"];
-  n1191 [label="break"];
-  n1192 [label=";"];
-  n1193 [label="default"];
-  n1194 [label=":"];
-  n1195 [label="printf"];
-  n1196 [label="("];
-  n1197 [label="\"Invali...ion.\n\""];
-  n1198 [label=")"];
-  n1199 [label=";"];
-  n1200 [label="}"];
-  n1201 [label="while"];
-  n1202 [label="("];
-  n1203 [label="choice"];
-  n1204 [label="!="];
-  n1205 [label="10"];
-  n1206 [label=")"];
-  n1207 [label=";"];
-  n1208 [label="return"];
-  n1209 [label="0"];
-  n1210 [label=";"];
+  n314 [label="\"Invali...ion.\n\""];
+  n315 [label=")"];
+  n316 [label=";"];
+  n317 [label="}"];
+  n318 [label="while"];
+  n319 [label="("];
+  n320 [label="choice"];
+  n321 [label="!="];
+  n322 [label="10"];
+  n323 [label=")"];
+  n324 [label=";"];
+  n325 [label="return"];
+  n326 [label="0"];
+  n327 [label=";"];
 
   n0 -> n1 // "PROGRAM" -> "INCLUDES"
   n1 -> n2 // "INCLUDES" -> "#include"
@@ -1354,1207 +381,324 @@ digraph {
   n1 -> n6 // "INCLUDES" -> "#include"
   n6 -> n7 // "#include" -> "string.h"
   n0 -> n8 // "PROGRAM" -> "GLOBAL_DECLS"
-  n8 -> n9 // "GLOBAL_DECLS" -> "STRUCT_DEF"
-  n9 -> n10 // "STRUCT_DEF" -> "Hospital"
-  n9 -> n11 // "STRUCT_DEF" -> "STRUCT_MEMBERS"
-  n11 -> n12 // "STRUCT_MEMBERS" -> "VAR_DECL"
-  n12 -> n13 // "VAR_DECL" -> "char"
-  n12 -> n14 // "VAR_DECL" -> "name"
-  n12 -> n15 // "VAR_DECL" -> "["
-  n12 -> n16 // "VAR_DECL" -> "50"
-  n12 -> n17 // "VAR_DECL" -> "]"
-  n11 -> n18 // "STRUCT_MEMBERS" -> "VAR_DECL"
-  n18 -> n19 // "VAR_DECL" -> "char"
-  n18 -> n20 // "VAR_DECL" -> "city"
-  n18 -> n21 // "VAR_DECL" -> "["
-  n18 -> n22 // "VAR_DECL" -> "50"
-  n18 -> n23 // "VAR_DECL" -> "]"
-  n11 -> n24 // "STRUCT_MEMBERS" -> "VAR_DECL"
-  n24 -> n25 // "VAR_DECL" -> "int"
-  n24 -> n26 // "VAR_DECL" -> "beds"
-  n11 -> n27 // "STRUCT_MEMBERS" -> "VAR_DECL"
-  n27 -> n28 // "VAR_DECL" -> "float"
-  n27 -> n29 // "VAR_DECL" -> "price"
-  n11 -> n30 // "STRUCT_MEMBERS" -> "VAR_DECL"
-  n30 -> n31 // "VAR_DECL" -> "float"
-  n30 -> n32 // "VAR_DECL" -> "rating"
-  n11 -> n33 // "STRUCT_MEMBERS" -> "VAR_DECL"
-  n33 -> n34 // "VAR_DECL" -> "int"
-  n33 -> n35 // "VAR_DECL" -> "reviews"
-  n8 -> n36 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n36 -> n37 // "FUNC_DEF" -> "printHospital"
-  n36 -> n38 // "FUNC_DEF" -> "PARAMS"
-  n38 -> n39 // "PARAMS" -> "struct"
-  n38 -> n40 // "PARAMS" -> "Hospital"
-  n38 -> n41 // "PARAMS" -> "hosp"
-  n36 -> n42 // "FUNC_DEF" -> "BLOCK"
-  n42 -> n43 // "BLOCK" -> "printf"
-  n42 -> n44 // "BLOCK" -> "("
-  n42 -> n45 // "BLOCK" -> "\"Hospit...: %s\n\""
-  n42 -> n46 // "BLOCK" -> ","
-  n42 -> n47 // "BLOCK" -> "hosp"
-  n42 -> n48 // "BLOCK" -> "."
-  n42 -> n49 // "BLOCK" -> "name"
-  n42 -> n50 // "BLOCK" -> ")"
-  n42 -> n51 // "BLOCK" -> ";"
-  n42 -> n52 // "BLOCK" -> "printf"
-  n42 -> n53 // "BLOCK" -> "("
-  n42 -> n54 // "BLOCK" -> "\"City: %s\n\""
-  n42 -> n55 // "BLOCK" -> ","
-  n42 -> n56 // "BLOCK" -> "hosp"
-  n42 -> n57 // "BLOCK" -> "."
-  n42 -> n58 // "BLOCK" -> "city"
-  n42 -> n59 // "BLOCK" -> ")"
-  n42 -> n60 // "BLOCK" -> ";"
-  n42 -> n61 // "BLOCK" -> "printf"
-  n42 -> n62 // "BLOCK" -> "("
-  n42 -> n63 // "BLOCK" -> "\"Total Beds: %d\n\""
-  n42 -> n64 // "BLOCK" -> ","
-  n42 -> n65 // "BLOCK" -> "hosp"
-  n42 -> n66 // "BLOCK" -> "."
-  n42 -> n67 // "BLOCK" -> "beds"
-  n42 -> n68 // "BLOCK" -> ")"
-  n42 -> n69 // "BLOCK" -> ";"
-  n42 -> n70 // "BLOCK" -> "printf"
-  n42 -> n71 // "BLOCK" -> "("
-  n42 -> n72 // "BLOCK" -> "\"Price ...%.2f\n\""
-  n42 -> n73 // "BLOCK" -> ","
-  n42 -> n74 // "BLOCK" -> "hosp"
-  n42 -> n75 // "BLOCK" -> "."
-  n42 -> n76 // "BLOCK" -> "price"
-  n42 -> n77 // "BLOCK" -> ")"
-  n42 -> n78 // "BLOCK" -> ";"
-  n42 -> n79 // "BLOCK" -> "printf"
-  n42 -> n80 // "BLOCK" -> "("
-  n42 -> n81 // "BLOCK" -> "\"Rating: %.1f\n\""
-  n42 -> n82 // "BLOCK" -> ","
-  n42 -> n83 // "BLOCK" -> "hosp"
-  n42 -> n84 // "BLOCK" -> "."
-  n42 -> n85 // "BLOCK" -> "rating"
-  n42 -> n86 // "BLOCK" -> ")"
-  n42 -> n87 // "BLOCK" -> ";"
-  n42 -> n88 // "BLOCK" -> "printf"
-  n42 -> n89 // "BLOCK" -> "("
-  n42 -> n90 // "BLOCK" -> "\"Reviews: %d\n\n\""
-  n42 -> n91 // "BLOCK" -> ","
-  n42 -> n92 // "BLOCK" -> "hosp"
-  n42 -> n93 // "BLOCK" -> "."
-  n42 -> n94 // "BLOCK" -> "reviews"
-  n42 -> n95 // "BLOCK" -> ")"
-  n42 -> n96 // "BLOCK" -> ";"
-  n8 -> n97 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n97 -> n98 // "FUNC_DEF" -> "sortByPrice"
-  n97 -> n99 // "FUNC_DEF" -> "PARAMS"
-  n99 -> n100 // "PARAMS" -> "struct"
-  n99 -> n101 // "PARAMS" -> "Hospital"
-  n99 -> n102 // "PARAMS" -> "hospitals"
-  n99 -> n103 // "PARAMS" -> "["
-  n99 -> n104 // "PARAMS" -> "]"
-  n99 -> n105 // "PARAMS" -> "int"
-  n99 -> n106 // "PARAMS" -> "n"
-  n97 -> n107 // "FUNC_DEF" -> "BLOCK"
-  n107 -> n108 // "BLOCK" -> "for"
-  n107 -> n109 // "BLOCK" -> "("
-  n107 -> n110 // "BLOCK" -> "int"
-  n107 -> n111 // "BLOCK" -> "i"
-  n107 -> n112 // "BLOCK" -> "="
-  n107 -> n113 // "BLOCK" -> "0"
-  n107 -> n114 // "BLOCK" -> ";"
-  n107 -> n115 // "BLOCK" -> "i"
-  n107 -> n116 // "BLOCK" -> "<"
-  n107 -> n117 // "BLOCK" -> "n"
-  n107 -> n118 // "BLOCK" -> "-"
-  n107 -> n119 // "BLOCK" -> "1"
-  n107 -> n120 // "BLOCK" -> ";"
-  n107 -> n121 // "BLOCK" -> "i"
-  n107 -> n122 // "BLOCK" -> "++"
-  n107 -> n123 // "BLOCK" -> ")"
-  n107 -> n124 // "BLOCK" -> "BLOCK"
-  n124 -> n125 // "BLOCK" -> "for"
-  n124 -> n126 // "BLOCK" -> "("
-  n124 -> n127 // "BLOCK" -> "int"
-  n124 -> n128 // "BLOCK" -> "j"
-  n124 -> n129 // "BLOCK" -> "="
-  n124 -> n130 // "BLOCK" -> "0"
-  n124 -> n131 // "BLOCK" -> ";"
-  n124 -> n132 // "BLOCK" -> "j"
-  n124 -> n133 // "BLOCK" -> "<"
-  n124 -> n134 // "BLOCK" -> "n"
-  n124 -> n135 // "BLOCK" -> "-"
-  n124 -> n136 // "BLOCK" -> "i"
-  n124 -> n137 // "BLOCK" -> "-"
-  n124 -> n138 // "BLOCK" -> "1"
-  n124 -> n139 // "BLOCK" -> ";"
-  n124 -> n140 // "BLOCK" -> "j"
-  n124 -> n141 // "BLOCK" -> "++"
-  n124 -> n142 // "BLOCK" -> ")"
-  n124 -> n143 // "BLOCK" -> "BLOCK"
-  n143 -> n144 // "BLOCK" -> "if"
-  n143 -> n145 // "BLOCK" -> "("
-  n143 -> n146 // "BLOCK" -> "hospitals"
-  n143 -> n147 // "BLOCK" -> "["
-  n143 -> n148 // "BLOCK" -> "j"
-  n143 -> n149 // "BLOCK" -> "]"
-  n143 -> n150 // "BLOCK" -> "."
-  n143 -> n151 // "BLOCK" -> "price"
-  n143 -> n152 // "BLOCK" -> ">"
-  n143 -> n153 // "BLOCK" -> "hospitals"
-  n143 -> n154 // "BLOCK" -> "["
-  n143 -> n155 // "BLOCK" -> "j"
-  n143 -> n156 // "BLOCK" -> "+"
-  n143 -> n157 // "BLOCK" -> "1"
-  n143 -> n158 // "BLOCK" -> "]"
-  n143 -> n159 // "BLOCK" -> "."
-  n143 -> n160 // "BLOCK" -> "price"
-  n143 -> n161 // "BLOCK" -> ")"
-  n143 -> n162 // "BLOCK" -> "BLOCK"
-  n162 -> n163 // "BLOCK" -> "VAR_DECL"
-  n163 -> n164 // "VAR_DECL" -> "struct"
-  n163 -> n165 // "VAR_DECL" -> "Hospital"
-  n163 -> n166 // "VAR_DECL" -> "temp"
-  n163 -> n167 // "VAR_DECL" -> "hospitals"
-  n163 -> n168 // "VAR_DECL" -> "["
-  n163 -> n169 // "VAR_DECL" -> "j"
-  n163 -> n170 // "VAR_DECL" -> "]"
-  n162 -> n171 // "BLOCK" -> "="
-  n171 -> n172 // "=" -> "hospitals"
-  n171 -> n173 // "=" -> "["
-  n171 -> n174 // "=" -> "j"
-  n171 -> n175 // "=" -> "]"
-  n171 -> n176 // "=" -> "hospitals"
-  n171 -> n177 // "=" -> "["
-  n171 -> n178 // "=" -> "j"
-  n171 -> n179 // "=" -> "+"
-  n171 -> n180 // "=" -> "1"
-  n171 -> n181 // "=" -> "]"
-  n162 -> n182 // "BLOCK" -> ";"
-  n162 -> n183 // "BLOCK" -> "="
-  n183 -> n184 // "=" -> "hospitals"
-  n183 -> n185 // "=" -> "["
-  n183 -> n186 // "=" -> "j"
-  n183 -> n187 // "=" -> "+"
-  n183 -> n188 // "=" -> "1"
-  n183 -> n189 // "=" -> "]"
-  n183 -> n190 // "=" -> "temp"
-  n162 -> n191 // "BLOCK" -> ";"
-  n8 -> n192 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n192 -> n193 // "FUNC_DEF" -> "findCheapestHospital"
-  n192 -> n194 // "FUNC_DEF" -> "PARAMS"
-  n194 -> n195 // "PARAMS" -> "struct"
-  n194 -> n196 // "PARAMS" -> "Hospital"
-  n194 -> n197 // "PARAMS" -> "hospitals"
-  n194 -> n198 // "PARAMS" -> "["
-  n194 -> n199 // "PARAMS" -> "]"
-  n194 -> n200 // "PARAMS" -> "int"
-  n194 -> n201 // "PARAMS" -> "n"
-  n192 -> n202 // "FUNC_DEF" -> "BLOCK"
-  n202 -> n203 // "BLOCK" -> "VAR_DECL"
-  n203 -> n204 // "VAR_DECL" -> "int"
-  n203 -> n205 // "VAR_DECL" -> "minIndex"
-  n203 -> n206 // "VAR_DECL" -> "0"
-  n202 -> n207 // "BLOCK" -> "for"
-  n202 -> n208 // "BLOCK" -> "("
-  n202 -> n209 // "BLOCK" -> "int"
-  n202 -> n210 // "BLOCK" -> "i"
-  n202 -> n211 // "BLOCK" -> "="
-  n202 -> n212 // "BLOCK" -> "1"
-  n202 -> n213 // "BLOCK" -> ";"
-  n202 -> n214 // "BLOCK" -> "i"
-  n202 -> n215 // "BLOCK" -> "<"
-  n202 -> n216 // "BLOCK" -> "n"
-  n202 -> n217 // "BLOCK" -> ";"
-  n202 -> n218 // "BLOCK" -> "i"
-  n202 -> n219 // "BLOCK" -> "++"
-  n202 -> n220 // "BLOCK" -> ")"
-  n202 -> n221 // "BLOCK" -> "BLOCK"
-  n221 -> n222 // "BLOCK" -> "if"
-  n221 -> n223 // "BLOCK" -> "("
-  n221 -> n224 // "BLOCK" -> "hospitals"
-  n221 -> n225 // "BLOCK" -> "["
-  n221 -> n226 // "BLOCK" -> "i"
-  n221 -> n227 // "BLOCK" -> "]"
-  n221 -> n228 // "BLOCK" -> "."
-  n221 -> n229 // "BLOCK" -> "price"
-  n221 -> n230 // "BLOCK" -> "<"
-  n221 -> n231 // "BLOCK" -> "hospitals"
-  n221 -> n232 // "BLOCK" -> "["
-  n221 -> n233 // "BLOCK" -> "minIndex"
-  n221 -> n234 // "BLOCK" -> "]"
-  n221 -> n235 // "BLOCK" -> "."
-  n221 -> n236 // "BLOCK" -> "price"
-  n221 -> n237 // "BLOCK" -> ")"
-  n221 -> n238 // "BLOCK" -> "BLOCK"
-  n238 -> n239 // "BLOCK" -> "="
-  n239 -> n240 // "=" -> "minIndex"
-  n239 -> n241 // "=" -> "i"
-  n238 -> n242 // "BLOCK" -> ";"
-  n202 -> n243 // "BLOCK" -> "printf"
-  n202 -> n244 // "BLOCK" -> "("
-  n202 -> n245 // "BLOCK" -> "\"\nChea...tal:\n\""
-  n202 -> n246 // "BLOCK" -> ")"
-  n202 -> n247 // "BLOCK" -> ";"
-  n202 -> n248 // "BLOCK" -> "printHospital"
-  n202 -> n249 // "BLOCK" -> "("
-  n202 -> n250 // "BLOCK" -> "hospitals"
-  n202 -> n251 // "BLOCK" -> "["
-  n202 -> n252 // "BLOCK" -> "minIndex"
-  n202 -> n253 // "BLOCK" -> "]"
-  n202 -> n254 // "BLOCK" -> ")"
-  n202 -> n255 // "BLOCK" -> ";"
-  n8 -> n256 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n256 -> n257 // "FUNC_DEF" -> "findBest...Hospital"
-  n256 -> n258 // "FUNC_DEF" -> "PARAMS"
-  n258 -> n259 // "PARAMS" -> "struct"
-  n258 -> n260 // "PARAMS" -> "Hospital"
-  n258 -> n261 // "PARAMS" -> "hospitals"
-  n258 -> n262 // "PARAMS" -> "["
-  n258 -> n263 // "PARAMS" -> "]"
-  n258 -> n264 // "PARAMS" -> "int"
-  n258 -> n265 // "PARAMS" -> "n"
-  n256 -> n266 // "FUNC_DEF" -> "BLOCK"
-  n266 -> n267 // "BLOCK" -> "VAR_DECL"
-  n267 -> n268 // "VAR_DECL" -> "int"
-  n267 -> n269 // "VAR_DECL" -> "maxIndex"
-  n267 -> n270 // "VAR_DECL" -> "0"
-  n266 -> n271 // "BLOCK" -> "for"
-  n266 -> n272 // "BLOCK" -> "("
-  n266 -> n273 // "BLOCK" -> "int"
-  n266 -> n274 // "BLOCK" -> "i"
-  n266 -> n275 // "BLOCK" -> "="
-  n266 -> n276 // "BLOCK" -> "1"
-  n266 -> n277 // "BLOCK" -> ";"
-  n266 -> n278 // "BLOCK" -> "i"
-  n266 -> n279 // "BLOCK" -> "<"
-  n266 -> n280 // "BLOCK" -> "n"
-  n266 -> n281 // "BLOCK" -> ";"
-  n266 -> n282 // "BLOCK" -> "i"
-  n266 -> n283 // "BLOCK" -> "++"
-  n266 -> n284 // "BLOCK" -> ")"
-  n266 -> n285 // "BLOCK" -> "BLOCK"
-  n285 -> n286 // "BLOCK" -> "if"
-  n285 -> n287 // "BLOCK" -> "("
-  n285 -> n288 // "BLOCK" -> "hospitals"
-  n285 -> n289 // "BLOCK" -> "["
-  n285 -> n290 // "BLOCK" -> "i"
-  n285 -> n291 // "BLOCK" -> "]"
-  n285 -> n292 // "BLOCK" -> "."
-  n285 -> n293 // "BLOCK" -> "rating"
-  n285 -> n294 // "BLOCK" -> ">"
-  n285 -> n295 // "BLOCK" -> "hospitals"
-  n285 -> n296 // "BLOCK" -> "["
-  n285 -> n297 // "BLOCK" -> "maxIndex"
-  n285 -> n298 // "BLOCK" -> "]"
-  n285 -> n299 // "BLOCK" -> "."
-  n285 -> n300 // "BLOCK" -> "rating"
-  n285 -> n301 // "BLOCK" -> ")"
-  n285 -> n302 // "BLOCK" -> "BLOCK"
-  n302 -> n303 // "BLOCK" -> "="
-  n303 -> n304 // "=" -> "maxIndex"
-  n303 -> n305 // "=" -> "i"
-  n302 -> n306 // "BLOCK" -> ";"
-  n266 -> n307 // "BLOCK" -> "printf"
-  n266 -> n308 // "BLOCK" -> "("
-  n266 -> n309 // "BLOCK" -> "\"\nBest...tal:\n\""
-  n266 -> n310 // "BLOCK" -> ")"
-  n266 -> n311 // "BLOCK" -> ";"
-  n266 -> n312 // "BLOCK" -> "printHospital"
-  n266 -> n313 // "BLOCK" -> "("
-  n266 -> n314 // "BLOCK" -> "hospitals"
-  n266 -> n315 // "BLOCK" -> "["
-  n266 -> n316 // "BLOCK" -> "maxIndex"
-  n266 -> n317 // "BLOCK" -> "]"
-  n266 -> n318 // "BLOCK" -> ")"
-  n266 -> n319 // "BLOCK" -> ";"
-  n8 -> n320 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n320 -> n321 // "FUNC_DEF" -> "findHosp...MostBeds"
-  n320 -> n322 // "FUNC_DEF" -> "PARAMS"
-  n322 -> n323 // "PARAMS" -> "struct"
-  n322 -> n324 // "PARAMS" -> "Hospital"
-  n322 -> n325 // "PARAMS" -> "hospitals"
-  n322 -> n326 // "PARAMS" -> "["
-  n322 -> n327 // "PARAMS" -> "]"
-  n322 -> n328 // "PARAMS" -> "int"
-  n322 -> n329 // "PARAMS" -> "n"
-  n320 -> n330 // "FUNC_DEF" -> "BLOCK"
-  n330 -> n331 // "BLOCK" -> "VAR_DECL"
-  n331 -> n332 // "VAR_DECL" -> "int"
-  n331 -> n333 // "VAR_DECL" -> "maxIndex"
-  n331 -> n334 // "VAR_DECL" -> "0"
-  n330 -> n335 // "BLOCK" -> "for"
-  n330 -> n336 // "BLOCK" -> "("
-  n330 -> n337 // "BLOCK" -> "int"
-  n330 -> n338 // "BLOCK" -> "i"
-  n330 -> n339 // "BLOCK" -> "="
-  n330 -> n340 // "BLOCK" -> "1"
-  n330 -> n341 // "BLOCK" -> ";"
-  n330 -> n342 // "BLOCK" -> "i"
-  n330 -> n343 // "BLOCK" -> "<"
-  n330 -> n344 // "BLOCK" -> "n"
-  n330 -> n345 // "BLOCK" -> ";"
-  n330 -> n346 // "BLOCK" -> "i"
-  n330 -> n347 // "BLOCK" -> "++"
-  n330 -> n348 // "BLOCK" -> ")"
-  n330 -> n349 // "BLOCK" -> "BLOCK"
-  n349 -> n350 // "BLOCK" -> "if"
-  n349 -> n351 // "BLOCK" -> "("
-  n349 -> n352 // "BLOCK" -> "hospitals"
-  n349 -> n353 // "BLOCK" -> "["
-  n349 -> n354 // "BLOCK" -> "i"
-  n349 -> n355 // "BLOCK" -> "]"
-  n349 -> n356 // "BLOCK" -> "."
-  n349 -> n357 // "BLOCK" -> "beds"
-  n349 -> n358 // "BLOCK" -> ">"
-  n349 -> n359 // "BLOCK" -> "hospitals"
-  n349 -> n360 // "BLOCK" -> "["
-  n349 -> n361 // "BLOCK" -> "maxIndex"
-  n349 -> n362 // "BLOCK" -> "]"
-  n349 -> n363 // "BLOCK" -> "."
-  n349 -> n364 // "BLOCK" -> "beds"
-  n349 -> n365 // "BLOCK" -> ")"
-  n349 -> n366 // "BLOCK" -> "BLOCK"
-  n366 -> n367 // "BLOCK" -> "="
-  n367 -> n368 // "=" -> "maxIndex"
-  n367 -> n369 // "=" -> "i"
-  n366 -> n370 // "BLOCK" -> ";"
-  n330 -> n371 // "BLOCK" -> "printf"
-  n330 -> n372 // "BLOCK" -> "("
-  n330 -> n373 // "BLOCK" -> "\"\nHosp...eds:\n\""
-  n330 -> n374 // "BLOCK" -> ")"
-  n330 -> n375 // "BLOCK" -> ";"
-  n330 -> n376 // "BLOCK" -> "printHospital"
-  n330 -> n377 // "BLOCK" -> "("
-  n330 -> n378 // "BLOCK" -> "hospitals"
-  n330 -> n379 // "BLOCK" -> "["
-  n330 -> n380 // "BLOCK" -> "maxIndex"
-  n330 -> n381 // "BLOCK" -> "]"
-  n330 -> n382 // "BLOCK" -> ")"
-  n330 -> n383 // "BLOCK" -> ";"
-  n8 -> n384 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n384 -> n385 // "FUNC_DEF" -> "findHosp...eastBeds"
-  n384 -> n386 // "FUNC_DEF" -> "PARAMS"
-  n386 -> n387 // "PARAMS" -> "struct"
-  n386 -> n388 // "PARAMS" -> "Hospital"
-  n386 -> n389 // "PARAMS" -> "hospitals"
-  n386 -> n390 // "PARAMS" -> "["
-  n386 -> n391 // "PARAMS" -> "]"
-  n386 -> n392 // "PARAMS" -> "int"
-  n386 -> n393 // "PARAMS" -> "n"
-  n384 -> n394 // "FUNC_DEF" -> "BLOCK"
-  n394 -> n395 // "BLOCK" -> "VAR_DECL"
-  n395 -> n396 // "VAR_DECL" -> "int"
-  n395 -> n397 // "VAR_DECL" -> "minIndex"
-  n395 -> n398 // "VAR_DECL" -> "0"
-  n394 -> n399 // "BLOCK" -> "for"
-  n394 -> n400 // "BLOCK" -> "("
-  n394 -> n401 // "BLOCK" -> "int"
-  n394 -> n402 // "BLOCK" -> "i"
-  n394 -> n403 // "BLOCK" -> "="
-  n394 -> n404 // "BLOCK" -> "1"
-  n394 -> n405 // "BLOCK" -> ";"
-  n394 -> n406 // "BLOCK" -> "i"
-  n394 -> n407 // "BLOCK" -> "<"
-  n394 -> n408 // "BLOCK" -> "n"
-  n394 -> n409 // "BLOCK" -> ";"
-  n394 -> n410 // "BLOCK" -> "i"
-  n394 -> n411 // "BLOCK" -> "++"
-  n394 -> n412 // "BLOCK" -> ")"
-  n394 -> n413 // "BLOCK" -> "BLOCK"
-  n413 -> n414 // "BLOCK" -> "if"
-  n413 -> n415 // "BLOCK" -> "("
-  n413 -> n416 // "BLOCK" -> "hospitals"
-  n413 -> n417 // "BLOCK" -> "["
-  n413 -> n418 // "BLOCK" -> "i"
-  n413 -> n419 // "BLOCK" -> "]"
-  n413 -> n420 // "BLOCK" -> "."
-  n413 -> n421 // "BLOCK" -> "beds"
-  n413 -> n422 // "BLOCK" -> "<"
-  n413 -> n423 // "BLOCK" -> "hospitals"
-  n413 -> n424 // "BLOCK" -> "["
-  n413 -> n425 // "BLOCK" -> "minIndex"
-  n413 -> n426 // "BLOCK" -> "]"
-  n413 -> n427 // "BLOCK" -> "."
-  n413 -> n428 // "BLOCK" -> "beds"
-  n413 -> n429 // "BLOCK" -> ")"
-  n413 -> n430 // "BLOCK" -> "BLOCK"
-  n430 -> n431 // "BLOCK" -> "="
-  n431 -> n432 // "=" -> "minIndex"
-  n431 -> n433 // "=" -> "i"
-  n430 -> n434 // "BLOCK" -> ";"
-  n394 -> n435 // "BLOCK" -> "printf"
-  n394 -> n436 // "BLOCK" -> "("
-  n394 -> n437 // "BLOCK" -> "\"\nHosp...eds:\n\""
-  n394 -> n438 // "BLOCK" -> ")"
-  n394 -> n439 // "BLOCK" -> ";"
-  n394 -> n440 // "BLOCK" -> "printHospital"
-  n394 -> n441 // "BLOCK" -> "("
-  n394 -> n442 // "BLOCK" -> "hospitals"
-  n394 -> n443 // "BLOCK" -> "["
-  n394 -> n444 // "BLOCK" -> "minIndex"
-  n394 -> n445 // "BLOCK" -> "]"
-  n394 -> n446 // "BLOCK" -> ")"
-  n394 -> n447 // "BLOCK" -> ";"
-  n8 -> n448 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n448 -> n449 // "FUNC_DEF" -> "sortByRating"
-  n448 -> n450 // "FUNC_DEF" -> "PARAMS"
-  n450 -> n451 // "PARAMS" -> "struct"
-  n450 -> n452 // "PARAMS" -> "Hospital"
-  n450 -> n453 // "PARAMS" -> "hospitals"
-  n450 -> n454 // "PARAMS" -> "["
-  n450 -> n455 // "PARAMS" -> "]"
-  n450 -> n456 // "PARAMS" -> "int"
-  n450 -> n457 // "PARAMS" -> "n"
-  n448 -> n458 // "FUNC_DEF" -> "BLOCK"
-  n458 -> n459 // "BLOCK" -> "for"
-  n458 -> n460 // "BLOCK" -> "("
-  n458 -> n461 // "BLOCK" -> "int"
-  n458 -> n462 // "BLOCK" -> "i"
-  n458 -> n463 // "BLOCK" -> "="
-  n458 -> n464 // "BLOCK" -> "0"
-  n458 -> n465 // "BLOCK" -> ";"
-  n458 -> n466 // "BLOCK" -> "i"
-  n458 -> n467 // "BLOCK" -> "<"
-  n458 -> n468 // "BLOCK" -> "n"
-  n458 -> n469 // "BLOCK" -> "-"
-  n458 -> n470 // "BLOCK" -> "1"
-  n458 -> n471 // "BLOCK" -> ";"
-  n458 -> n472 // "BLOCK" -> "i"
-  n458 -> n473 // "BLOCK" -> "++"
-  n458 -> n474 // "BLOCK" -> ")"
-  n458 -> n475 // "BLOCK" -> "BLOCK"
-  n475 -> n476 // "BLOCK" -> "for"
-  n475 -> n477 // "BLOCK" -> "("
-  n475 -> n478 // "BLOCK" -> "int"
-  n475 -> n479 // "BLOCK" -> "j"
-  n475 -> n480 // "BLOCK" -> "="
-  n475 -> n481 // "BLOCK" -> "0"
-  n475 -> n482 // "BLOCK" -> ";"
-  n475 -> n483 // "BLOCK" -> "j"
-  n475 -> n484 // "BLOCK" -> "<"
-  n475 -> n485 // "BLOCK" -> "n"
-  n475 -> n486 // "BLOCK" -> "-"
-  n475 -> n487 // "BLOCK" -> "i"
-  n475 -> n488 // "BLOCK" -> "-"
-  n475 -> n489 // "BLOCK" -> "1"
-  n475 -> n490 // "BLOCK" -> ";"
-  n475 -> n491 // "BLOCK" -> "j"
-  n475 -> n492 // "BLOCK" -> "++"
-  n475 -> n493 // "BLOCK" -> ")"
-  n475 -> n494 // "BLOCK" -> "BLOCK"
-  n494 -> n495 // "BLOCK" -> "if"
-  n494 -> n496 // "BLOCK" -> "("
-  n494 -> n497 // "BLOCK" -> "hospitals"
-  n494 -> n498 // "BLOCK" -> "["
-  n494 -> n499 // "BLOCK" -> "j"
-  n494 -> n500 // "BLOCK" -> "]"
-  n494 -> n501 // "BLOCK" -> "."
-  n494 -> n502 // "BLOCK" -> "rating"
-  n494 -> n503 // "BLOCK" -> "<"
-  n494 -> n504 // "BLOCK" -> "hospitals"
-  n494 -> n505 // "BLOCK" -> "["
-  n494 -> n506 // "BLOCK" -> "j"
-  n494 -> n507 // "BLOCK" -> "+"
-  n494 -> n508 // "BLOCK" -> "1"
-  n494 -> n509 // "BLOCK" -> "]"
-  n494 -> n510 // "BLOCK" -> "."
-  n494 -> n511 // "BLOCK" -> "rating"
-  n494 -> n512 // "BLOCK" -> ")"
-  n494 -> n513 // "BLOCK" -> "BLOCK"
-  n513 -> n514 // "BLOCK" -> "VAR_DECL"
-  n514 -> n515 // "VAR_DECL" -> "struct"
-  n514 -> n516 // "VAR_DECL" -> "Hospital"
-  n514 -> n517 // "VAR_DECL" -> "temp"
-  n514 -> n518 // "VAR_DECL" -> "hospitals"
-  n514 -> n519 // "VAR_DECL" -> "["
-  n514 -> n520 // "VAR_DECL" -> "j"
-  n514 -> n521 // "VAR_DECL" -> "]"
-  n513 -> n522 // "BLOCK" -> "="
-  n522 -> n523 // "=" -> "hospitals"
-  n522 -> n524 // "=" -> "["
-  n522 -> n525 // "=" -> "j"
-  n522 -> n526 // "=" -> "]"
-  n522 -> n527 // "=" -> "hospitals"
-  n522 -> n528 // "=" -> "["
-  n522 -> n529 // "=" -> "j"
-  n522 -> n530 // "=" -> "+"
-  n522 -> n531 // "=" -> "1"
-  n522 -> n532 // "=" -> "]"
-  n513 -> n533 // "BLOCK" -> ";"
-  n513 -> n534 // "BLOCK" -> "="
-  n534 -> n535 // "=" -> "hospitals"
-  n534 -> n536 // "=" -> "["
-  n534 -> n537 // "=" -> "j"
-  n534 -> n538 // "=" -> "+"
-  n534 -> n539 // "=" -> "1"
-  n534 -> n540 // "=" -> "]"
-  n534 -> n541 // "=" -> "temp"
-  n513 -> n542 // "BLOCK" -> ";"
-  n8 -> n543 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n543 -> n544 // "FUNC_DEF" -> "sortByBeds"
-  n543 -> n545 // "FUNC_DEF" -> "PARAMS"
-  n545 -> n546 // "PARAMS" -> "struct"
-  n545 -> n547 // "PARAMS" -> "Hospital"
-  n545 -> n548 // "PARAMS" -> "hospitals"
-  n545 -> n549 // "PARAMS" -> "["
-  n545 -> n550 // "PARAMS" -> "]"
-  n545 -> n551 // "PARAMS" -> "int"
-  n545 -> n552 // "PARAMS" -> "n"
-  n543 -> n553 // "FUNC_DEF" -> "BLOCK"
-  n553 -> n554 // "BLOCK" -> "for"
-  n553 -> n555 // "BLOCK" -> "("
-  n553 -> n556 // "BLOCK" -> "int"
-  n553 -> n557 // "BLOCK" -> "i"
-  n553 -> n558 // "BLOCK" -> "="
-  n553 -> n559 // "BLOCK" -> "0"
-  n553 -> n560 // "BLOCK" -> ";"
-  n553 -> n561 // "BLOCK" -> "i"
-  n553 -> n562 // "BLOCK" -> "<"
-  n553 -> n563 // "BLOCK" -> "n"
-  n553 -> n564 // "BLOCK" -> "-"
-  n553 -> n565 // "BLOCK" -> "1"
-  n553 -> n566 // "BLOCK" -> ";"
-  n553 -> n567 // "BLOCK" -> "i"
-  n553 -> n568 // "BLOCK" -> "++"
-  n553 -> n569 // "BLOCK" -> ")"
-  n553 -> n570 // "BLOCK" -> "BLOCK"
-  n570 -> n571 // "BLOCK" -> "for"
-  n570 -> n572 // "BLOCK" -> "("
-  n570 -> n573 // "BLOCK" -> "int"
-  n570 -> n574 // "BLOCK" -> "j"
-  n570 -> n575 // "BLOCK" -> "="
-  n570 -> n576 // "BLOCK" -> "0"
-  n570 -> n577 // "BLOCK" -> ";"
-  n570 -> n578 // "BLOCK" -> "j"
-  n570 -> n579 // "BLOCK" -> "<"
-  n570 -> n580 // "BLOCK" -> "n"
-  n570 -> n581 // "BLOCK" -> "-"
-  n570 -> n582 // "BLOCK" -> "i"
-  n570 -> n583 // "BLOCK" -> "-"
-  n570 -> n584 // "BLOCK" -> "1"
-  n570 -> n585 // "BLOCK" -> ";"
-  n570 -> n586 // "BLOCK" -> "j"
-  n570 -> n587 // "BLOCK" -> "++"
-  n570 -> n588 // "BLOCK" -> ")"
-  n570 -> n589 // "BLOCK" -> "BLOCK"
-  n589 -> n590 // "BLOCK" -> "if"
-  n589 -> n591 // "BLOCK" -> "("
-  n589 -> n592 // "BLOCK" -> "hospitals"
-  n589 -> n593 // "BLOCK" -> "["
-  n589 -> n594 // "BLOCK" -> "j"
-  n589 -> n595 // "BLOCK" -> "]"
-  n589 -> n596 // "BLOCK" -> "."
-  n589 -> n597 // "BLOCK" -> "beds"
-  n589 -> n598 // "BLOCK" -> "<"
-  n589 -> n599 // "BLOCK" -> "hospitals"
-  n589 -> n600 // "BLOCK" -> "["
-  n589 -> n601 // "BLOCK" -> "j"
-  n589 -> n602 // "BLOCK" -> "+"
-  n589 -> n603 // "BLOCK" -> "1"
-  n589 -> n604 // "BLOCK" -> "]"
-  n589 -> n605 // "BLOCK" -> "."
-  n589 -> n606 // "BLOCK" -> "beds"
-  n589 -> n607 // "BLOCK" -> ")"
-  n589 -> n608 // "BLOCK" -> "BLOCK"
-  n608 -> n609 // "BLOCK" -> "VAR_DECL"
-  n609 -> n610 // "VAR_DECL" -> "struct"
-  n609 -> n611 // "VAR_DECL" -> "Hospital"
-  n609 -> n612 // "VAR_DECL" -> "temp"
-  n609 -> n613 // "VAR_DECL" -> "hospitals"
-  n609 -> n614 // "VAR_DECL" -> "["
-  n609 -> n615 // "VAR_DECL" -> "j"
-  n609 -> n616 // "VAR_DECL" -> "]"
-  n608 -> n617 // "BLOCK" -> "="
-  n617 -> n618 // "=" -> "hospitals"
-  n617 -> n619 // "=" -> "["
-  n617 -> n620 // "=" -> "j"
-  n617 -> n621 // "=" -> "]"
-  n617 -> n622 // "=" -> "hospitals"
-  n617 -> n623 // "=" -> "["
-  n617 -> n624 // "=" -> "j"
-  n617 -> n625 // "=" -> "+"
-  n617 -> n626 // "=" -> "1"
-  n617 -> n627 // "=" -> "]"
-  n608 -> n628 // "BLOCK" -> ";"
-  n608 -> n629 // "BLOCK" -> "="
-  n629 -> n630 // "=" -> "hospitals"
-  n629 -> n631 // "=" -> "["
-  n629 -> n632 // "=" -> "j"
-  n629 -> n633 // "=" -> "+"
-  n629 -> n634 // "=" -> "1"
-  n629 -> n635 // "=" -> "]"
-  n629 -> n636 // "=" -> "temp"
-  n608 -> n637 // "BLOCK" -> ";"
-  n8 -> n638 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n638 -> n639 // "FUNC_DEF" -> "updateHospitalRating"
-  n638 -> n640 // "FUNC_DEF" -> "PARAMS"
-  n640 -> n641 // "PARAMS" -> "struct"
-  n640 -> n642 // "PARAMS" -> "Hospital"
-  n640 -> n643 // "PARAMS" -> "hospitals"
-  n640 -> n644 // "PARAMS" -> "["
-  n640 -> n645 // "PARAMS" -> "]"
-  n640 -> n646 // "PARAMS" -> "int"
-  n640 -> n647 // "PARAMS" -> "n"
-  n640 -> n648 // "PARAMS" -> "char"
-  n640 -> n649 // "PARAMS" -> "name"
-  n640 -> n650 // "PARAMS" -> "["
-  n640 -> n651 // "PARAMS" -> "]"
-  n640 -> n652 // "PARAMS" -> "float"
-  n640 -> n653 // "PARAMS" -> "newRating"
-  n638 -> n654 // "FUNC_DEF" -> "BLOCK"
-  n654 -> n655 // "BLOCK" -> "for"
-  n654 -> n656 // "BLOCK" -> "("
-  n654 -> n657 // "BLOCK" -> "int"
-  n654 -> n658 // "BLOCK" -> "i"
-  n654 -> n659 // "BLOCK" -> "="
-  n654 -> n660 // "BLOCK" -> "0"
-  n654 -> n661 // "BLOCK" -> ";"
-  n654 -> n662 // "BLOCK" -> "i"
-  n654 -> n663 // "BLOCK" -> "<"
-  n654 -> n664 // "BLOCK" -> "n"
-  n654 -> n665 // "BLOCK" -> ";"
-  n654 -> n666 // "BLOCK" -> "i"
-  n654 -> n667 // "BLOCK" -> "++"
-  n654 -> n668 // "BLOCK" -> ")"
-  n654 -> n669 // "BLOCK" -> "BLOCK"
-  n669 -> n670 // "BLOCK" -> "if"
-  n669 -> n671 // "BLOCK" -> "("
-  n669 -> n672 // "BLOCK" -> "strcasecmp"
-  n669 -> n673 // "BLOCK" -> "("
-  n669 -> n674 // "BLOCK" -> "hospitals"
-  n669 -> n675 // "BLOCK" -> "["
-  n669 -> n676 // "BLOCK" -> "i"
-  n669 -> n677 // "BLOCK" -> "]"
-  n669 -> n678 // "BLOCK" -> "."
-  n669 -> n679 // "BLOCK" -> "name"
-  n669 -> n680 // "BLOCK" -> ","
-  n669 -> n681 // "BLOCK" -> "name"
-  n669 -> n682 // "BLOCK" -> ")"
-  n669 -> n683 // "BLOCK" -> "=="
-  n669 -> n684 // "BLOCK" -> "0"
-  n669 -> n685 // "BLOCK" -> ")"
-  n669 -> n686 // "BLOCK" -> "BLOCK"
-  n686 -> n687 // "BLOCK" -> "="
-  n687 -> n688 // "=" -> "hospitals"
-  n687 -> n689 // "=" -> "["
-  n687 -> n690 // "=" -> "i"
-  n687 -> n691 // "=" -> "]"
-  n687 -> n692 // "=" -> "."
-  n687 -> n693 // "=" -> "rating"
-  n687 -> n694 // "=" -> "/"
-  n694 -> n695 // "/" -> "("
-  n694 -> n696 // "/" -> "*"
-  n696 -> n697 // "*" -> "hospitals"
-  n696 -> n698 // "*" -> "["
-  n696 -> n699 // "*" -> "i"
-  n696 -> n700 // "*" -> "]"
-  n696 -> n701 // "*" -> "."
-  n696 -> n702 // "*" -> "rating"
-  n696 -> n703 // "*" -> "hospitals"
-  n696 -> n704 // "*" -> "["
-  n696 -> n705 // "*" -> "i"
-  n696 -> n706 // "*" -> "]"
-  n696 -> n707 // "*" -> "."
-  n696 -> n708 // "*" -> "reviews"
-  n694 -> n709 // "/" -> "+"
-  n694 -> n710 // "/" -> "newRating"
-  n694 -> n711 // "/" -> ")"
-  n694 -> n712 // "/" -> "("
-  n694 -> n713 // "/" -> "hospitals"
-  n694 -> n714 // "/" -> "["
-  n694 -> n715 // "/" -> "i"
-  n694 -> n716 // "/" -> "]"
-  n694 -> n717 // "/" -> "."
-  n694 -> n718 // "/" -> "reviews"
-  n694 -> n719 // "/" -> "+"
-  n694 -> n720 // "/" -> "1"
-  n694 -> n721 // "/" -> ")"
-  n686 -> n722 // "BLOCK" -> ";"
-  n686 -> n723 // "BLOCK" -> "hospitals"
-  n686 -> n724 // "BLOCK" -> "["
-  n686 -> n725 // "BLOCK" -> "i"
-  n686 -> n726 // "BLOCK" -> "]"
-  n686 -> n727 // "BLOCK" -> "."
-  n686 -> n728 // "BLOCK" -> "reviews"
-  n686 -> n729 // "BLOCK" -> "++"
-  n686 -> n730 // "BLOCK" -> ";"
-  n686 -> n731 // "BLOCK" -> "printf"
-  n686 -> n732 // "BLOCK" -> "("
-  n686 -> n733 // "BLOCK" -> "\"\nUpda...ing:\n\""
-  n686 -> n734 // "BLOCK" -> ")"
-  n686 -> n735 // "BLOCK" -> ";"
-  n686 -> n736 // "BLOCK" -> "printHospital"
-  n686 -> n737 // "BLOCK" -> "("
-  n686 -> n738 // "BLOCK" -> "hospitals"
-  n686 -> n739 // "BLOCK" -> "["
-  n686 -> n740 // "BLOCK" -> "i"
-  n686 -> n741 // "BLOCK" -> "]"
-  n686 -> n742 // "BLOCK" -> ")"
-  n686 -> n743 // "BLOCK" -> ";"
-  n686 -> n744 // "BLOCK" -> "return"
-  n686 -> n745 // "BLOCK" -> ";"
-  n654 -> n746 // "BLOCK" -> "printf"
-  n654 -> n747 // "BLOCK" -> "("
-  n654 -> n748 // "BLOCK" -> "\"Hospit...und.\n\""
-  n654 -> n749 // "BLOCK" -> ")"
-  n654 -> n750 // "BLOCK" -> ";"
-  n8 -> n751 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n751 -> n752 // "FUNC_DEF" -> "addNewHospital"
-  n751 -> n753 // "FUNC_DEF" -> "PARAMS"
-  n753 -> n754 // "PARAMS" -> "struct"
-  n753 -> n755 // "PARAMS" -> "Hospital"
-  n753 -> n756 // "PARAMS" -> "hospitals"
-  n753 -> n757 // "PARAMS" -> "["
-  n753 -> n758 // "PARAMS" -> "]"
-  n753 -> n759 // "PARAMS" -> "int"
-  n753 -> n760 // "PARAMS" -> "*"
-  n753 -> n761 // "PARAMS" -> "n"
-  n751 -> n762 // "FUNC_DEF" -> "BLOCK"
-  n762 -> n763 // "BLOCK" -> "if"
-  n762 -> n764 // "BLOCK" -> "("
-  n762 -> n765 // "BLOCK" -> "*"
-  n765 -> n766 // "*" -> "n"
-  n762 -> n767 // "BLOCK" -> ">="
-  n762 -> n768 // "BLOCK" -> "100"
-  n762 -> n769 // "BLOCK" -> ")"
-  n762 -> n770 // "BLOCK" -> "BLOCK"
-  n770 -> n771 // "BLOCK" -> "printf"
-  n770 -> n772 // "BLOCK" -> "("
-  n770 -> n773 // "BLOCK" -> "\"Cannot...als.\n\""
-  n770 -> n774 // "BLOCK" -> ")"
-  n770 -> n775 // "BLOCK" -> ";"
-  n770 -> n776 // "BLOCK" -> "return"
-  n770 -> n777 // "BLOCK" -> ";"
-  n762 -> n778 // "BLOCK" -> "printf"
-  n762 -> n779 // "BLOCK" -> "("
-  n762 -> n780 // "BLOCK" -> "\"Enter ...Name: \""
-  n762 -> n781 // "BLOCK" -> ")"
-  n762 -> n782 // "BLOCK" -> ";"
-  n762 -> n783 // "BLOCK" -> "scanf"
-  n762 -> n784 // "BLOCK" -> "("
-  n762 -> n785 // "BLOCK" -> "\" %[^\n]\""
-  n762 -> n786 // "BLOCK" -> ","
-  n762 -> n787 // "BLOCK" -> "hospitals"
-  n762 -> n788 // "BLOCK" -> "["
-  n762 -> n789 // "BLOCK" -> "*"
-  n789 -> n790 // "*" -> "n"
-  n762 -> n791 // "BLOCK" -> "]"
-  n762 -> n792 // "BLOCK" -> "."
-  n762 -> n793 // "BLOCK" -> "name"
-  n762 -> n794 // "BLOCK" -> ")"
-  n762 -> n795 // "BLOCK" -> ";"
-  n762 -> n796 // "BLOCK" -> "printf"
-  n762 -> n797 // "BLOCK" -> "("
-  n762 -> n798 // "BLOCK" -> "\"Enter City: \""
-  n762 -> n799 // "BLOCK" -> ")"
-  n762 -> n800 // "BLOCK" -> ";"
-  n762 -> n801 // "BLOCK" -> "scanf"
-  n762 -> n802 // "BLOCK" -> "("
-  n762 -> n803 // "BLOCK" -> "\" %[^\n]\""
-  n762 -> n804 // "BLOCK" -> ","
-  n762 -> n805 // "BLOCK" -> "hospitals"
-  n762 -> n806 // "BLOCK" -> "["
-  n762 -> n807 // "BLOCK" -> "*"
-  n807 -> n808 // "*" -> "n"
-  n762 -> n809 // "BLOCK" -> "]"
-  n762 -> n810 // "BLOCK" -> "."
-  n762 -> n811 // "BLOCK" -> "city"
-  n762 -> n812 // "BLOCK" -> ")"
-  n762 -> n813 // "BLOCK" -> ";"
-  n762 -> n814 // "BLOCK" -> "printf"
-  n762 -> n815 // "BLOCK" -> "("
-  n762 -> n816 // "BLOCK" -> "\"Enter ...Beds: \""
-  n762 -> n817 // "BLOCK" -> ")"
-  n762 -> n818 // "BLOCK" -> ";"
-  n762 -> n819 // "BLOCK" -> "scanf"
-  n762 -> n820 // "BLOCK" -> "("
-  n762 -> n821 // "BLOCK" -> "\"%d\""
-  n762 -> n822 // "BLOCK" -> ","
-  n762 -> n823 // "BLOCK" -> "&"
-  n823 -> n824 // "&" -> "hospitals"
-  n823 -> n825 // "&" -> "["
-  n823 -> n826 // "&" -> "*"
-  n826 -> n827 // "*" -> "n"
-  n823 -> n828 // "&" -> "]"
-  n823 -> n829 // "&" -> "."
-  n823 -> n830 // "&" -> "beds"
-  n762 -> n831 // "BLOCK" -> ")"
-  n762 -> n832 // "BLOCK" -> ";"
-  n762 -> n833 // "BLOCK" -> "printf"
-  n762 -> n834 // "BLOCK" -> "("
-  n762 -> n835 // "BLOCK" -> "\"Enter ... Bed: \""
-  n762 -> n836 // "BLOCK" -> ")"
-  n762 -> n837 // "BLOCK" -> ";"
-  n762 -> n838 // "BLOCK" -> "scanf"
-  n762 -> n839 // "BLOCK" -> "("
-  n762 -> n840 // "BLOCK" -> "\"%f\""
-  n762 -> n841 // "BLOCK" -> ","
-  n762 -> n842 // "BLOCK" -> "&"
-  n842 -> n843 // "&" -> "hospitals"
-  n842 -> n844 // "&" -> "["
-  n842 -> n845 // "&" -> "*"
-  n845 -> n846 // "*" -> "n"
-  n842 -> n847 // "&" -> "]"
-  n842 -> n848 // "&" -> "."
-  n842 -> n849 // "&" -> "price"
-  n762 -> n850 // "BLOCK" -> ")"
-  n762 -> n851 // "BLOCK" -> ";"
-  n762 -> n852 // "BLOCK" -> "printf"
-  n762 -> n853 // "BLOCK" -> "("
-  n762 -> n854 // "BLOCK" -> "\"Enter Rating: \""
-  n762 -> n855 // "BLOCK" -> ")"
-  n762 -> n856 // "BLOCK" -> ";"
-  n762 -> n857 // "BLOCK" -> "scanf"
-  n762 -> n858 // "BLOCK" -> "("
-  n762 -> n859 // "BLOCK" -> "\"%f\""
-  n762 -> n860 // "BLOCK" -> ","
-  n762 -> n861 // "BLOCK" -> "&"
-  n861 -> n862 // "&" -> "hospitals"
-  n861 -> n863 // "&" -> "["
-  n861 -> n864 // "&" -> "*"
-  n864 -> n865 // "*" -> "n"
-  n861 -> n866 // "&" -> "]"
-  n861 -> n867 // "&" -> "."
-  n861 -> n868 // "&" -> "rating"
-  n762 -> n869 // "BLOCK" -> ")"
-  n762 -> n870 // "BLOCK" -> ";"
-  n762 -> n871 // "BLOCK" -> "="
-  n871 -> n872 // "=" -> "hospitals"
-  n871 -> n873 // "=" -> "["
-  n871 -> n874 // "=" -> "*"
-  n874 -> n875 // "*" -> "n"
-  n871 -> n876 // "=" -> "]"
-  n871 -> n877 // "=" -> "."
-  n871 -> n878 // "=" -> "reviews"
-  n871 -> n879 // "=" -> "1"
-  n762 -> n880 // "BLOCK" -> ";"
-  n762 -> n881 // "BLOCK" -> "("
-  n762 -> n882 // "BLOCK" -> "*"
-  n882 -> n883 // "*" -> "n"
-  n762 -> n884 // "BLOCK" -> ")"
-  n762 -> n885 // "BLOCK" -> "++"
-  n762 -> n886 // "BLOCK" -> ";"
-  n762 -> n887 // "BLOCK" -> "printf"
-  n762 -> n888 // "BLOCK" -> "("
-  n762 -> n889 // "BLOCK" -> "\"New ho...lly!\n\""
-  n762 -> n890 // "BLOCK" -> ")"
-  n762 -> n891 // "BLOCK" -> ";"
-  n8 -> n892 // "GLOBAL_DECLS" -> "FUNC_DEF"
-  n892 -> n893 // "FUNC_DEF" -> "int"
-  n892 -> n894 // "FUNC_DEF" -> "main"
-  n892 -> n895 // "FUNC_DEF" -> "BLOCK"
-  n895 -> n896 // "BLOCK" -> "VAR_DECL"
-  n896 -> n897 // "VAR_DECL" -> "struct"
-  n896 -> n898 // "VAR_DECL" -> "Hospital"
-  n896 -> n899 // "VAR_DECL" -> "hospitals"
-  n896 -> n900 // "VAR_DECL" -> "["
-  n896 -> n901 // "VAR_DECL" -> "100"
-  n896 -> n902 // "VAR_DECL" -> "]"
-  n896 -> n903 // "VAR_DECL" -> "ARRAY_INIT"
-  n903 -> n904 // "ARRAY_INIT" -> "INIT_LIST"
-  n904 -> n905 // "INIT_LIST" -> "ARRAY_INIT"
-  n905 -> n906 // "ARRAY_INIT" -> "INIT_LIST"
-  n906 -> n907 // "INIT_LIST" -> "\"Hospital A\""
-  n906 -> n908 // "INIT_LIST" -> "\"X\""
-  n906 -> n909 // "INIT_LIST" -> "100"
-  n906 -> n910 // "INIT_LIST" -> "250.0"
-  n906 -> n911 // "INIT_LIST" -> "4.5"
-  n906 -> n912 // "INIT_LIST" -> "100"
-  n904 -> n913 // "INIT_LIST" -> "ARRAY_INIT"
-  n913 -> n914 // "ARRAY_INIT" -> "INIT_LIST"
-  n914 -> n915 // "INIT_LIST" -> "\"Hospital B\""
-  n914 -> n916 // "INIT_LIST" -> "\"Y\""
-  n914 -> n917 // "INIT_LIST" -> "150"
-  n914 -> n918 // "INIT_LIST" -> "200.0"
-  n914 -> n919 // "INIT_LIST" -> "4.2"
-  n914 -> n920 // "INIT_LIST" -> "80"
-  n904 -> n921 // "INIT_LIST" -> "ARRAY_INIT"
-  n921 -> n922 // "ARRAY_INIT" -> "INIT_LIST"
-  n922 -> n923 // "INIT_LIST" -> "\"Hospital C\""
-  n922 -> n924 // "INIT_LIST" -> "\"X\""
-  n922 -> n925 // "INIT_LIST" -> "200"
-  n922 -> n926 // "INIT_LIST" -> "180.0"
-  n922 -> n927 // "INIT_LIST" -> "4.0"
-  n922 -> n928 // "INIT_LIST" -> "120"
-  n904 -> n929 // "INIT_LIST" -> "ARRAY_INIT"
-  n929 -> n930 // "ARRAY_INIT" -> "INIT_LIST"
-  n930 -> n931 // "INIT_LIST" -> "\"Hospital D\""
-  n930 -> n932 // "INIT_LIST" -> "\"Z\""
-  n930 -> n933 // "INIT_LIST" -> "80"
-  n930 -> n934 // "INIT_LIST" -> "300.0"
-  n930 -> n935 // "INIT_LIST" -> "4.8"
-  n930 -> n936 // "INIT_LIST" -> "90"
-  n904 -> n937 // "INIT_LIST" -> "ARRAY_INIT"
-  n937 -> n938 // "ARRAY_INIT" -> "INIT_LIST"
-  n938 -> n939 // "INIT_LIST" -> "\"Hospital E\""
-  n938 -> n940 // "INIT_LIST" -> "\"Y\""
-  n938 -> n941 // "INIT_LIST" -> "120"
-  n938 -> n942 // "INIT_LIST" -> "220.0"
-  n938 -> n943 // "INIT_LIST" -> "4.6"
-  n938 -> n944 // "INIT_LIST" -> "110"
-  n895 -> n945 // "BLOCK" -> "VAR_DECL"
-  n945 -> n946 // "VAR_DECL" -> "int"
-  n945 -> n947 // "VAR_DECL" -> "n"
-  n945 -> n948 // "VAR_DECL" -> "5"
-  n895 -> n949 // "BLOCK" -> "VAR_DECL"
-  n949 -> n950 // "VAR_DECL" -> "int"
-  n949 -> n951 // "VAR_DECL" -> "choice"
-  n895 -> n952 // "BLOCK" -> "VAR_DECL"
-  n952 -> n953 // "VAR_DECL" -> "char"
-  n952 -> n954 // "VAR_DECL" -> "name"
-  n952 -> n955 // "VAR_DECL" -> "["
-  n952 -> n956 // "VAR_DECL" -> "50"
-  n952 -> n957 // "VAR_DECL" -> "]"
-  n895 -> n958 // "BLOCK" -> "VAR_DECL"
-  n958 -> n959 // "VAR_DECL" -> "float"
-  n958 -> n960 // "VAR_DECL" -> "newRating"
-  n895 -> n961 // "BLOCK" -> "do"
-  n895 -> n962 // "BLOCK" -> "BLOCK"
-  n962 -> n963 // "BLOCK" -> "printf"
-  n962 -> n964 // "BLOCK" -> "("
-  n962 -> n965 // "BLOCK" -> "\"\n****...****\n\""
-  n962 -> n966 // "BLOCK" -> ")"
-  n962 -> n967 // "BLOCK" -> ";"
-  n962 -> n968 // "BLOCK" -> "printf"
-  n962 -> n969 // "BLOCK" -> "("
-  n962 -> n970 // "BLOCK" -> "\"1. Pri...tals\n\""
-  n962 -> n971 // "BLOCK" -> ")"
-  n962 -> n972 // "BLOCK" -> ";"
-  n962 -> n973 // "BLOCK" -> "printf"
-  n962 -> n974 // "BLOCK" -> "("
-  n962 -> n975 // "BLOCK" -> "\"2. Fin...ital\n\""
-  n962 -> n976 // "BLOCK" -> ")"
-  n962 -> n977 // "BLOCK" -> ";"
-  n962 -> n978 // "BLOCK" -> "printf"
-  n962 -> n979 // "BLOCK" -> "("
-  n962 -> n980 // "BLOCK" -> "\"3. Fin...ital\n\""
-  n962 -> n981 // "BLOCK" -> ")"
-  n962 -> n982 // "BLOCK" -> ";"
-  n962 -> n983 // "BLOCK" -> "printf"
-  n962 -> n984 // "BLOCK" -> "("
-  n962 -> n985 // "BLOCK" -> "\"4. Fin...Beds\n\""
-  n962 -> n986 // "BLOCK" -> ")"
-  n962 -> n987 // "BLOCK" -> ";"
-  n962 -> n988 // "BLOCK" -> "printf"
-  n962 -> n989 // "BLOCK" -> "("
-  n962 -> n990 // "BLOCK" -> "\"5. Fin...Beds\n\""
-  n962 -> n991 // "BLOCK" -> ")"
-  n962 -> n992 // "BLOCK" -> ";"
-  n962 -> n993 // "BLOCK" -> "printf"
-  n962 -> n994 // "BLOCK" -> "("
-  n962 -> n995 // "BLOCK" -> "\"6. Sor...ting\n\""
-  n962 -> n996 // "BLOCK" -> ")"
-  n962 -> n997 // "BLOCK" -> ";"
-  n962 -> n998 // "BLOCK" -> "printf"
-  n962 -> n999 // "BLOCK" -> "("
-  n962 -> n1000 // "BLOCK" -> "\"7. Sor...Beds\n\""
-  n962 -> n1001 // "BLOCK" -> ")"
-  n962 -> n1002 // "BLOCK" -> ";"
-  n962 -> n1003 // "BLOCK" -> "printf"
-  n962 -> n1004 // "BLOCK" -> "("
-  n962 -> n1005 // "BLOCK" -> "\"8. Upd...ting\n\""
-  n962 -> n1006 // "BLOCK" -> ")"
-  n962 -> n1007 // "BLOCK" -> ";"
-  n962 -> n1008 // "BLOCK" -> "printf"
-  n962 -> n1009 // "BLOCK" -> "("
-  n962 -> n1010 // "BLOCK" -> "\"9. Add...ital\n\""
-  n962 -> n1011 // "BLOCK" -> ")"
-  n962 -> n1012 // "BLOCK" -> ";"
-  n962 -> n1013 // "BLOCK" -> "printf"
-  n962 -> n1014 // "BLOCK" -> "("
-  n962 -> n1015 // "BLOCK" -> "\"10. Exit\n\""
-  n962 -> n1016 // "BLOCK" -> ")"
-  n962 -> n1017 // "BLOCK" -> ";"
-  n962 -> n1018 // "BLOCK" -> "printf"
-  n962 -> n1019 // "BLOCK" -> "("
-  n962 -> n1020 // "BLOCK" -> "\"Enter ...oice: \""
-  n962 -> n1021 // "BLOCK" -> ")"
-  n962 -> n1022 // "BLOCK" -> ";"
-  n962 -> n1023 // "BLOCK" -> "scanf"
-  n962 -> n1024 // "BLOCK" -> "("
-  n962 -> n1025 // "BLOCK" -> "\"%d\""
-  n962 -> n1026 // "BLOCK" -> ","
-  n962 -> n1027 // "BLOCK" -> "&"
-  n1027 -> n1028 // "&" -> "choice"
-  n962 -> n1029 // "BLOCK" -> ")"
-  n962 -> n1030 // "BLOCK" -> ";"
-  n962 -> n1031 // "BLOCK" -> "getchar"
-  n962 -> n1032 // "BLOCK" -> "("
-  n962 -> n1033 // "BLOCK" -> ")"
-  n962 -> n1034 // "BLOCK" -> ";"
-  n962 -> n1035 // "BLOCK" -> "switch"
-  n962 -> n1036 // "BLOCK" -> "("
-  n962 -> n1037 // "BLOCK" -> "choice"
-  n962 -> n1038 // "BLOCK" -> ")"
-  n962 -> n1039 // "BLOCK" -> "{"
-  n962 -> n1040 // "BLOCK" -> "CASE_STMT"
-  n1040 -> n1041 // "CASE_STMT" -> "1"
-  n1040 -> n1042 // "CASE_STMT" -> "for"
-  n1040 -> n1043 // "CASE_STMT" -> "("
-  n1040 -> n1044 // "CASE_STMT" -> "int"
-  n1040 -> n1045 // "CASE_STMT" -> "i"
-  n1040 -> n1046 // "CASE_STMT" -> "="
-  n1040 -> n1047 // "CASE_STMT" -> "0"
-  n1040 -> n1048 // "CASE_STMT" -> ";"
-  n1040 -> n1049 // "CASE_STMT" -> "i"
-  n1040 -> n1050 // "CASE_STMT" -> "<"
-  n1040 -> n1051 // "CASE_STMT" -> "n"
-  n1040 -> n1052 // "CASE_STMT" -> ";"
-  n1040 -> n1053 // "CASE_STMT" -> "i"
-  n1040 -> n1054 // "CASE_STMT" -> "++"
-  n1040 -> n1055 // "CASE_STMT" -> ")"
-  n1040 -> n1056 // "CASE_STMT" -> "printHospital"
-  n1040 -> n1057 // "CASE_STMT" -> "("
-  n1040 -> n1058 // "CASE_STMT" -> "hospitals"
-  n1040 -> n1059 // "CASE_STMT" -> "["
-  n1040 -> n1060 // "CASE_STMT" -> "i"
-  n1040 -> n1061 // "CASE_STMT" -> "]"
-  n1040 -> n1062 // "CASE_STMT" -> ")"
-  n1040 -> n1063 // "CASE_STMT" -> ";"
-  n1040 -> n1064 // "CASE_STMT" -> "break"
-  n1040 -> n1065 // "CASE_STMT" -> ";"
-  n962 -> n1066 // "BLOCK" -> "CASE_STMT"
-  n1066 -> n1067 // "CASE_STMT" -> "2"
-  n1066 -> n1068 // "CASE_STMT" -> "findCheapestHospital"
-  n1066 -> n1069 // "CASE_STMT" -> "("
-  n1066 -> n1070 // "CASE_STMT" -> "hospitals"
-  n1066 -> n1071 // "CASE_STMT" -> ","
-  n1066 -> n1072 // "CASE_STMT" -> "n"
-  n1066 -> n1073 // "CASE_STMT" -> ")"
-  n1066 -> n1074 // "CASE_STMT" -> ";"
-  n1066 -> n1075 // "CASE_STMT" -> "break"
-  n1066 -> n1076 // "CASE_STMT" -> ";"
-  n962 -> n1077 // "BLOCK" -> "CASE_STMT"
-  n1077 -> n1078 // "CASE_STMT" -> "3"
-  n1077 -> n1079 // "CASE_STMT" -> "findBest...Hospital"
-  n1077 -> n1080 // "CASE_STMT" -> "("
-  n1077 -> n1081 // "CASE_STMT" -> "hospitals"
-  n1077 -> n1082 // "CASE_STMT" -> ","
-  n1077 -> n1083 // "CASE_STMT" -> "n"
-  n1077 -> n1084 // "CASE_STMT" -> ")"
-  n1077 -> n1085 // "CASE_STMT" -> ";"
-  n1077 -> n1086 // "CASE_STMT" -> "break"
-  n1077 -> n1087 // "CASE_STMT" -> ";"
-  n962 -> n1088 // "BLOCK" -> "CASE_STMT"
-  n1088 -> n1089 // "CASE_STMT" -> "4"
-  n1088 -> n1090 // "CASE_STMT" -> "findHosp...MostBeds"
-  n1088 -> n1091 // "CASE_STMT" -> "("
-  n1088 -> n1092 // "CASE_STMT" -> "hospitals"
-  n1088 -> n1093 // "CASE_STMT" -> ","
-  n1088 -> n1094 // "CASE_STMT" -> "n"
-  n1088 -> n1095 // "CASE_STMT" -> ")"
-  n1088 -> n1096 // "CASE_STMT" -> ";"
-  n1088 -> n1097 // "CASE_STMT" -> "break"
-  n1088 -> n1098 // "CASE_STMT" -> ";"
-  n962 -> n1099 // "BLOCK" -> "CASE_STMT"
-  n1099 -> n1100 // "CASE_STMT" -> "5"
-  n1099 -> n1101 // "CASE_STMT" -> "findHosp...eastBeds"
-  n1099 -> n1102 // "CASE_STMT" -> "("
-  n1099 -> n1103 // "CASE_STMT" -> "hospitals"
-  n1099 -> n1104 // "CASE_STMT" -> ","
-  n1099 -> n1105 // "CASE_STMT" -> "n"
-  n1099 -> n1106 // "CASE_STMT" -> ")"
-  n1099 -> n1107 // "CASE_STMT" -> ";"
-  n1099 -> n1108 // "CASE_STMT" -> "break"
-  n1099 -> n1109 // "CASE_STMT" -> ";"
-  n962 -> n1110 // "BLOCK" -> "CASE_STMT"
-  n1110 -> n1111 // "CASE_STMT" -> "6"
-  n1110 -> n1112 // "CASE_STMT" -> "sortByRating"
-  n1110 -> n1113 // "CASE_STMT" -> "("
-  n1110 -> n1114 // "CASE_STMT" -> "hospitals"
-  n1110 -> n1115 // "CASE_STMT" -> ","
-  n1110 -> n1116 // "CASE_STMT" -> "n"
-  n1110 -> n1117 // "CASE_STMT" -> ")"
-  n1110 -> n1118 // "CASE_STMT" -> ";"
-  n1110 -> n1119 // "CASE_STMT" -> "break"
-  n1110 -> n1120 // "CASE_STMT" -> ";"
-  n962 -> n1121 // "BLOCK" -> "CASE_STMT"
-  n1121 -> n1122 // "CASE_STMT" -> "7"
-  n1121 -> n1123 // "CASE_STMT" -> "sortByBeds"
-  n1121 -> n1124 // "CASE_STMT" -> "("
-  n1121 -> n1125 // "CASE_STMT" -> "hospitals"
-  n1121 -> n1126 // "CASE_STMT" -> ","
-  n1121 -> n1127 // "CASE_STMT" -> "n"
-  n1121 -> n1128 // "CASE_STMT" -> ")"
-  n1121 -> n1129 // "CASE_STMT" -> ";"
-  n1121 -> n1130 // "CASE_STMT" -> "break"
-  n1121 -> n1131 // "CASE_STMT" -> ";"
-  n962 -> n1132 // "BLOCK" -> "CASE_STMT"
-  n1132 -> n1133 // "CASE_STMT" -> "8"
-  n1132 -> n1134 // "CASE_STMT" -> "printf"
-  n1132 -> n1135 // "CASE_STMT" -> "("
-  n1132 -> n1136 // "CASE_STMT" -> "\"Enter ...name: \""
-  n1132 -> n1137 // "CASE_STMT" -> ")"
-  n1132 -> n1138 // "CASE_STMT" -> ";"
-  n1132 -> n1139 // "CASE_STMT" -> "scanf"
-  n1132 -> n1140 // "CASE_STMT" -> "("
-  n1132 -> n1141 // "CASE_STMT" -> "\" %[^\n]\""
-  n1132 -> n1142 // "CASE_STMT" -> ","
-  n1132 -> n1143 // "CASE_STMT" -> "name"
-  n1132 -> n1144 // "CASE_STMT" -> ")"
-  n1132 -> n1145 // "CASE_STMT" -> ";"
-  n1132 -> n1146 // "CASE_STMT" -> "printf"
-  n1132 -> n1147 // "CASE_STMT" -> "("
-  n1132 -> n1148 // "CASE_STMT" -> "\"Enter ...ting: \""
-  n1132 -> n1149 // "CASE_STMT" -> ")"
-  n1132 -> n1150 // "CASE_STMT" -> ";"
-  n1132 -> n1151 // "CASE_STMT" -> "scanf"
-  n1132 -> n1152 // "CASE_STMT" -> "("
-  n1132 -> n1153 // "CASE_STMT" -> "\"%f\""
-  n1132 -> n1154 // "CASE_STMT" -> ","
-  n1132 -> n1155 // "CASE_STMT" -> "&"
-  n1155 -> n1156 // "&" -> "newRating"
-  n1132 -> n1157 // "CASE_STMT" -> ")"
-  n1132 -> n1158 // "CASE_STMT" -> ";"
-  n1132 -> n1159 // "CASE_STMT" -> "updateHospitalRating"
-  n1132 -> n1160 // "CASE_STMT" -> "("
-  n1132 -> n1161 // "CASE_STMT" -> "hospitals"
-  n1132 -> n1162 // "CASE_STMT" -> ","
-  n1132 -> n1163 // "CASE_STMT" -> "n"
-  n1132 -> n1164 // "CASE_STMT" -> ","
-  n1132 -> n1165 // "CASE_STMT" -> "name"
-  n1132 -> n1166 // "CASE_STMT" -> ","
-  n1132 -> n1167 // "CASE_STMT" -> "newRating"
-  n1132 -> n1168 // "CASE_STMT" -> ")"
-  n1132 -> n1169 // "CASE_STMT" -> ";"
-  n1132 -> n1170 // "CASE_STMT" -> "break"
-  n1132 -> n1171 // "CASE_STMT" -> ";"
-  n962 -> n1172 // "BLOCK" -> "CASE_STMT"
-  n1172 -> n1173 // "CASE_STMT" -> "9"
-  n1172 -> n1174 // "CASE_STMT" -> "addNewHospital"
-  n1172 -> n1175 // "CASE_STMT" -> "("
-  n1172 -> n1176 // "CASE_STMT" -> "hospitals"
-  n1172 -> n1177 // "CASE_STMT" -> ","
-  n1172 -> n1178 // "CASE_STMT" -> "&"
-  n1178 -> n1179 // "&" -> "n"
-  n1172 -> n1180 // "CASE_STMT" -> ")"
-  n1172 -> n1181 // "CASE_STMT" -> ";"
-  n1172 -> n1182 // "CASE_STMT" -> "break"
-  n1172 -> n1183 // "CASE_STMT" -> ";"
-  n962 -> n1184 // "BLOCK" -> "CASE_STMT"
-  n1184 -> n1185 // "CASE_STMT" -> "10"
-  n1184 -> n1186 // "CASE_STMT" -> "printf"
-  n1184 -> n1187 // "CASE_STMT" -> "("
-  n1184 -> n1188 // "CASE_STMT" -> "\"Exitin...ram.\n\""
-  n1184 -> n1189 // "CASE_STMT" -> ")"
-  n1184 -> n1190 // "CASE_STMT" -> ";"
-  n1184 -> n1191 // "CASE_STMT" -> "break"
-  n1184 -> n1192 // "CASE_STMT" -> ";"
-  n962 -> n1193 // "BLOCK" -> "default"
-  n962 -> n1194 // "BLOCK" -> ":"
-  n962 -> n1195 // "BLOCK" -> "printf"
-  n962 -> n1196 // "BLOCK" -> "("
-  n962 -> n1197 // "BLOCK" -> "\"Invali...ion.\n\""
-  n962 -> n1198 // "BLOCK" -> ")"
-  n962 -> n1199 // "BLOCK" -> ";"
-  n962 -> n1200 // "BLOCK" -> "}"
-  n895 -> n1201 // "BLOCK" -> "while"
-  n895 -> n1202 // "BLOCK" -> "("
-  n895 -> n1203 // "BLOCK" -> "choice"
-  n895 -> n1204 // "BLOCK" -> "!="
-  n895 -> n1205 // "BLOCK" -> "10"
-  n895 -> n1206 // "BLOCK" -> ")"
-  n895 -> n1207 // "BLOCK" -> ";"
-  n895 -> n1208 // "BLOCK" -> "return"
-  n895 -> n1209 // "BLOCK" -> "0"
-  n895 -> n1210 // "BLOCK" -> ";"
+  n8 -> n9 // "GLOBAL_DECLS" -> "FUNC_DEF"
+  n9 -> n10 // "FUNC_DEF" -> "int"
+  n9 -> n11 // "FUNC_DEF" -> "main"
+  n9 -> n12 // "FUNC_DEF" -> "BLOCK"
+  n12 -> n13 // "BLOCK" -> "VAR_DECL"
+  n13 -> n14 // "VAR_DECL" -> "struct"
+  n13 -> n15 // "VAR_DECL" -> "Hospital"
+  n13 -> n16 // "VAR_DECL" -> "hospitals"
+  n13 -> n17 // "VAR_DECL" -> "["
+  n13 -> n18 // "VAR_DECL" -> "100"
+  n13 -> n19 // "VAR_DECL" -> "]"
+  n13 -> n20 // "VAR_DECL" -> "ARRAY_INIT"
+  n20 -> n21 // "ARRAY_INIT" -> "INIT_LIST"
+  n21 -> n22 // "INIT_LIST" -> "ARRAY_INIT"
+  n22 -> n23 // "ARRAY_INIT" -> "INIT_LIST"
+  n23 -> n24 // "INIT_LIST" -> "\"Hospital A\""
+  n23 -> n25 // "INIT_LIST" -> "\"X\""
+  n23 -> n26 // "INIT_LIST" -> "100"
+  n23 -> n27 // "INIT_LIST" -> "250.0"
+  n23 -> n28 // "INIT_LIST" -> "4.5"
+  n23 -> n29 // "INIT_LIST" -> "100"
+  n21 -> n30 // "INIT_LIST" -> "ARRAY_INIT"
+  n30 -> n31 // "ARRAY_INIT" -> "INIT_LIST"
+  n31 -> n32 // "INIT_LIST" -> "\"Hospital B\""
+  n31 -> n33 // "INIT_LIST" -> "\"Y\""
+  n31 -> n34 // "INIT_LIST" -> "150"
+  n31 -> n35 // "INIT_LIST" -> "200.0"
+  n31 -> n36 // "INIT_LIST" -> "4.2"
+  n31 -> n37 // "INIT_LIST" -> "80"
+  n21 -> n38 // "INIT_LIST" -> "ARRAY_INIT"
+  n38 -> n39 // "ARRAY_INIT" -> "INIT_LIST"
+  n39 -> n40 // "INIT_LIST" -> "\"Hospital C\""
+  n39 -> n41 // "INIT_LIST" -> "\"X\""
+  n39 -> n42 // "INIT_LIST" -> "200"
+  n39 -> n43 // "INIT_LIST" -> "180.0"
+  n39 -> n44 // "INIT_LIST" -> "4.0"
+  n39 -> n45 // "INIT_LIST" -> "120"
+  n21 -> n46 // "INIT_LIST" -> "ARRAY_INIT"
+  n46 -> n47 // "ARRAY_INIT" -> "INIT_LIST"
+  n47 -> n48 // "INIT_LIST" -> "\"Hospital D\""
+  n47 -> n49 // "INIT_LIST" -> "\"Z\""
+  n47 -> n50 // "INIT_LIST" -> "80"
+  n47 -> n51 // "INIT_LIST" -> "300.0"
+  n47 -> n52 // "INIT_LIST" -> "4.8"
+  n47 -> n53 // "INIT_LIST" -> "90"
+  n21 -> n54 // "INIT_LIST" -> "ARRAY_INIT"
+  n54 -> n55 // "ARRAY_INIT" -> "INIT_LIST"
+  n55 -> n56 // "INIT_LIST" -> "\"Hospital E\""
+  n55 -> n57 // "INIT_LIST" -> "\"Y\""
+  n55 -> n58 // "INIT_LIST" -> "120"
+  n55 -> n59 // "INIT_LIST" -> "220.0"
+  n55 -> n60 // "INIT_LIST" -> "4.6"
+  n55 -> n61 // "INIT_LIST" -> "110"
+  n12 -> n62 // "BLOCK" -> "VAR_DECL"
+  n62 -> n63 // "VAR_DECL" -> "int"
+  n62 -> n64 // "VAR_DECL" -> "n"
+  n62 -> n65 // "VAR_DECL" -> "5"
+  n12 -> n66 // "BLOCK" -> "VAR_DECL"
+  n66 -> n67 // "VAR_DECL" -> "int"
+  n66 -> n68 // "VAR_DECL" -> "choice"
+  n12 -> n69 // "BLOCK" -> "VAR_DECL"
+  n69 -> n70 // "VAR_DECL" -> "char"
+  n69 -> n71 // "VAR_DECL" -> "name"
+  n69 -> n72 // "VAR_DECL" -> "["
+  n69 -> n73 // "VAR_DECL" -> "50"
+  n69 -> n74 // "VAR_DECL" -> "]"
+  n12 -> n75 // "BLOCK" -> "VAR_DECL"
+  n75 -> n76 // "VAR_DECL" -> "float"
+  n75 -> n77 // "VAR_DECL" -> "newRating"
+  n12 -> n78 // "BLOCK" -> "do"
+  n12 -> n79 // "BLOCK" -> "BLOCK"
+  n79 -> n80 // "BLOCK" -> "printf"
+  n79 -> n81 // "BLOCK" -> "("
+  n79 -> n82 // "BLOCK" -> "\"\n****...****\n\""
+  n79 -> n83 // "BLOCK" -> ")"
+  n79 -> n84 // "BLOCK" -> ";"
+  n79 -> n85 // "BLOCK" -> "printf"
+  n79 -> n86 // "BLOCK" -> "("
+  n79 -> n87 // "BLOCK" -> "\"1. Pri...tals\n\""
+  n79 -> n88 // "BLOCK" -> ")"
+  n79 -> n89 // "BLOCK" -> ";"
+  n79 -> n90 // "BLOCK" -> "printf"
+  n79 -> n91 // "BLOCK" -> "("
+  n79 -> n92 // "BLOCK" -> "\"2. Fin...ital\n\""
+  n79 -> n93 // "BLOCK" -> ")"
+  n79 -> n94 // "BLOCK" -> ";"
+  n79 -> n95 // "BLOCK" -> "printf"
+  n79 -> n96 // "BLOCK" -> "("
+  n79 -> n97 // "BLOCK" -> "\"3. Fin...ital\n\""
+  n79 -> n98 // "BLOCK" -> ")"
+  n79 -> n99 // "BLOCK" -> ";"
+  n79 -> n100 // "BLOCK" -> "printf"
+  n79 -> n101 // "BLOCK" -> "("
+  n79 -> n102 // "BLOCK" -> "\"4. Fin...Beds\n\""
+  n79 -> n103 // "BLOCK" -> ")"
+  n79 -> n104 // "BLOCK" -> ";"
+  n79 -> n105 // "BLOCK" -> "printf"
+  n79 -> n106 // "BLOCK" -> "("
+  n79 -> n107 // "BLOCK" -> "\"5. Fin...Beds\n\""
+  n79 -> n108 // "BLOCK" -> ")"
+  n79 -> n109 // "BLOCK" -> ";"
+  n79 -> n110 // "BLOCK" -> "printf"
+  n79 -> n111 // "BLOCK" -> "("
+  n79 -> n112 // "BLOCK" -> "\"6. Sor...ting\n\""
+  n79 -> n113 // "BLOCK" -> ")"
+  n79 -> n114 // "BLOCK" -> ";"
+  n79 -> n115 // "BLOCK" -> "printf"
+  n79 -> n116 // "BLOCK" -> "("
+  n79 -> n117 // "BLOCK" -> "\"7. Sor...Beds\n\""
+  n79 -> n118 // "BLOCK" -> ")"
+  n79 -> n119 // "BLOCK" -> ";"
+  n79 -> n120 // "BLOCK" -> "printf"
+  n79 -> n121 // "BLOCK" -> "("
+  n79 -> n122 // "BLOCK" -> "\"8. Upd...ting\n\""
+  n79 -> n123 // "BLOCK" -> ")"
+  n79 -> n124 // "BLOCK" -> ";"
+  n79 -> n125 // "BLOCK" -> "printf"
+  n79 -> n126 // "BLOCK" -> "("
+  n79 -> n127 // "BLOCK" -> "\"9. Add...ital\n\""
+  n79 -> n128 // "BLOCK" -> ")"
+  n79 -> n129 // "BLOCK" -> ";"
+  n79 -> n130 // "BLOCK" -> "printf"
+  n79 -> n131 // "BLOCK" -> "("
+  n79 -> n132 // "BLOCK" -> "\"10. Exit\n\""
+  n79 -> n133 // "BLOCK" -> ")"
+  n79 -> n134 // "BLOCK" -> ";"
+  n79 -> n135 // "BLOCK" -> "printf"
+  n79 -> n136 // "BLOCK" -> "("
+  n79 -> n137 // "BLOCK" -> "\"Enter ...oice: \""
+  n79 -> n138 // "BLOCK" -> ")"
+  n79 -> n139 // "BLOCK" -> ";"
+  n79 -> n140 // "BLOCK" -> "scanf"
+  n79 -> n141 // "BLOCK" -> "("
+  n79 -> n142 // "BLOCK" -> "\"%d\""
+  n79 -> n143 // "BLOCK" -> ","
+  n79 -> n144 // "BLOCK" -> "&"
+  n144 -> n145 // "&" -> "choice"
+  n79 -> n146 // "BLOCK" -> ")"
+  n79 -> n147 // "BLOCK" -> ";"
+  n79 -> n148 // "BLOCK" -> "getchar"
+  n79 -> n149 // "BLOCK" -> "("
+  n79 -> n150 // "BLOCK" -> ")"
+  n79 -> n151 // "BLOCK" -> ";"
+  n79 -> n152 // "BLOCK" -> "switch"
+  n79 -> n153 // "BLOCK" -> "("
+  n79 -> n154 // "BLOCK" -> "choice"
+  n79 -> n155 // "BLOCK" -> ")"
+  n79 -> n156 // "BLOCK" -> "{"
+  n79 -> n157 // "BLOCK" -> "CASE_STMT"
+  n157 -> n158 // "CASE_STMT" -> "1"
+  n157 -> n159 // "CASE_STMT" -> "for"
+  n157 -> n160 // "CASE_STMT" -> "("
+  n157 -> n161 // "CASE_STMT" -> "int"
+  n157 -> n162 // "CASE_STMT" -> "i"
+  n157 -> n163 // "CASE_STMT" -> "="
+  n157 -> n164 // "CASE_STMT" -> "0"
+  n157 -> n165 // "CASE_STMT" -> ";"
+  n157 -> n166 // "CASE_STMT" -> "i"
+  n157 -> n167 // "CASE_STMT" -> "<"
+  n157 -> n168 // "CASE_STMT" -> "n"
+  n157 -> n169 // "CASE_STMT" -> ";"
+  n157 -> n170 // "CASE_STMT" -> "i"
+  n157 -> n171 // "CASE_STMT" -> "++"
+  n157 -> n172 // "CASE_STMT" -> ")"
+  n157 -> n173 // "CASE_STMT" -> "printHospital"
+  n157 -> n174 // "CASE_STMT" -> "("
+  n157 -> n175 // "CASE_STMT" -> "hospitals"
+  n157 -> n176 // "CASE_STMT" -> "["
+  n157 -> n177 // "CASE_STMT" -> "i"
+  n157 -> n178 // "CASE_STMT" -> "]"
+  n157 -> n179 // "CASE_STMT" -> ")"
+  n157 -> n180 // "CASE_STMT" -> ";"
+  n157 -> n181 // "CASE_STMT" -> "break"
+  n157 -> n182 // "CASE_STMT" -> ";"
+  n79 -> n183 // "BLOCK" -> "CASE_STMT"
+  n183 -> n184 // "CASE_STMT" -> "2"
+  n183 -> n185 // "CASE_STMT" -> "findCheapestHospital"
+  n183 -> n186 // "CASE_STMT" -> "("
+  n183 -> n187 // "CASE_STMT" -> "hospitals"
+  n183 -> n188 // "CASE_STMT" -> ","
+  n183 -> n189 // "CASE_STMT" -> "n"
+  n183 -> n190 // "CASE_STMT" -> ")"
+  n183 -> n191 // "CASE_STMT" -> ";"
+  n183 -> n192 // "CASE_STMT" -> "break"
+  n183 -> n193 // "CASE_STMT" -> ";"
+  n79 -> n194 // "BLOCK" -> "CASE_STMT"
+  n194 -> n195 // "CASE_STMT" -> "3"
+  n194 -> n196 // "CASE_STMT" -> "findBest...Hospital"
+  n194 -> n197 // "CASE_STMT" -> "("
+  n194 -> n198 // "CASE_STMT" -> "hospitals"
+  n194 -> n199 // "CASE_STMT" -> ","
+  n194 -> n200 // "CASE_STMT" -> "n"
+  n194 -> n201 // "CASE_STMT" -> ")"
+  n194 -> n202 // "CASE_STMT" -> ";"
+  n194 -> n203 // "CASE_STMT" -> "break"
+  n194 -> n204 // "CASE_STMT" -> ";"
+  n79 -> n205 // "BLOCK" -> "CASE_STMT"
+  n205 -> n206 // "CASE_STMT" -> "4"
+  n205 -> n207 // "CASE_STMT" -> "findHosp...MostBeds"
+  n205 -> n208 // "CASE_STMT" -> "("
+  n205 -> n209 // "CASE_STMT" -> "hospitals"
+  n205 -> n210 // "CASE_STMT" -> ","
+  n205 -> n211 // "CASE_STMT" -> "n"
+  n205 -> n212 // "CASE_STMT" -> ")"
+  n205 -> n213 // "CASE_STMT" -> ";"
+  n205 -> n214 // "CASE_STMT" -> "break"
+  n205 -> n215 // "CASE_STMT" -> ";"
+  n79 -> n216 // "BLOCK" -> "CASE_STMT"
+  n216 -> n217 // "CASE_STMT" -> "5"
+  n216 -> n218 // "CASE_STMT" -> "findHosp...eastBeds"
+  n216 -> n219 // "CASE_STMT" -> "("
+  n216 -> n220 // "CASE_STMT" -> "hospitals"
+  n216 -> n221 // "CASE_STMT" -> ","
+  n216 -> n222 // "CASE_STMT" -> "n"
+  n216 -> n223 // "CASE_STMT" -> ")"
+  n216 -> n224 // "CASE_STMT" -> ";"
+  n216 -> n225 // "CASE_STMT" -> "break"
+  n216 -> n226 // "CASE_STMT" -> ";"
+  n79 -> n227 // "BLOCK" -> "CASE_STMT"
+  n227 -> n228 // "CASE_STMT" -> "6"
+  n227 -> n229 // "CASE_STMT" -> "sortByRating"
+  n227 -> n230 // "CASE_STMT" -> "("
+  n227 -> n231 // "CASE_STMT" -> "hospitals"
+  n227 -> n232 // "CASE_STMT" -> ","
+  n227 -> n233 // "CASE_STMT" -> "n"
+  n227 -> n234 // "CASE_STMT" -> ")"
+  n227 -> n235 // "CASE_STMT" -> ";"
+  n227 -> n236 // "CASE_STMT" -> "break"
+  n227 -> n237 // "CASE_STMT" -> ";"
+  n79 -> n238 // "BLOCK" -> "CASE_STMT"
+  n238 -> n239 // "CASE_STMT" -> "7"
+  n238 -> n240 // "CASE_STMT" -> "sortByBeds"
+  n238 -> n241 // "CASE_STMT" -> "("
+  n238 -> n242 // "CASE_STMT" -> "hospitals"
+  n238 -> n243 // "CASE_STMT" -> ","
+  n238 -> n244 // "CASE_STMT" -> "n"
+  n238 -> n245 // "CASE_STMT" -> ")"
+  n238 -> n246 // "CASE_STMT" -> ";"
+  n238 -> n247 // "CASE_STMT" -> "break"
+  n238 -> n248 // "CASE_STMT" -> ";"
+  n79 -> n249 // "BLOCK" -> "CASE_STMT"
+  n249 -> n250 // "CASE_STMT" -> "8"
+  n249 -> n251 // "CASE_STMT" -> "printf"
+  n249 -> n252 // "CASE_STMT" -> "("
+  n249 -> n253 // "CASE_STMT" -> "\"Enter ...name: \""
+  n249 -> n254 // "CASE_STMT" -> ")"
+  n249 -> n255 // "CASE_STMT" -> ";"
+  n249 -> n256 // "CASE_STMT" -> "scanf"
+  n249 -> n257 // "CASE_STMT" -> "("
+  n249 -> n258 // "CASE_STMT" -> "\" %[^\n]\""
+  n249 -> n259 // "CASE_STMT" -> ","
+  n249 -> n260 // "CASE_STMT" -> "name"
+  n249 -> n261 // "CASE_STMT" -> ")"
+  n249 -> n262 // "CASE_STMT" -> ";"
+  n249 -> n263 // "CASE_STMT" -> "printf"
+  n249 -> n264 // "CASE_STMT" -> "("
+  n249 -> n265 // "CASE_STMT" -> "\"Enter ...ting: \""
+  n249 -> n266 // "CASE_STMT" -> ")"
+  n249 -> n267 // "CASE_STMT" -> ";"
+  n249 -> n268 // "CASE_STMT" -> "scanf"
+  n249 -> n269 // "CASE_STMT" -> "("
+  n249 -> n270 // "CASE_STMT" -> "\"%f\""
+  n249 -> n271 // "CASE_STMT" -> ","
+  n249 -> n272 // "CASE_STMT" -> "&"
+  n272 -> n273 // "&" -> "newRating"
+  n249 -> n274 // "CASE_STMT" -> ")"
+  n249 -> n275 // "CASE_STMT" -> ";"
+  n249 -> n276 // "CASE_STMT" -> "updateHospitalRating"
+  n249 -> n277 // "CASE_STMT" -> "("
+  n249 -> n278 // "CASE_STMT" -> "hospitals"
+  n249 -> n279 // "CASE_STMT" -> ","
+  n249 -> n280 // "CASE_STMT" -> "n"
+  n249 -> n281 // "CASE_STMT" -> ","
+  n249 -> n282 // "CASE_STMT" -> "name"
+  n249 -> n283 // "CASE_STMT" -> ","
+  n249 -> n284 // "CASE_STMT" -> "newRating"
+  n249 -> n285 // "CASE_STMT" -> ")"
+  n249 -> n286 // "CASE_STMT" -> ";"
+  n249 -> n287 // "CASE_STMT" -> "break"
+  n249 -> n288 // "CASE_STMT" -> ";"
+  n79 -> n289 // "BLOCK" -> "CASE_STMT"
+  n289 -> n290 // "CASE_STMT" -> "9"
+  n289 -> n291 // "CASE_STMT" -> "addNewHospital"
+  n289 -> n292 // "CASE_STMT" -> "("
+  n289 -> n293 // "CASE_STMT" -> "hospitals"
+  n289 -> n294 // "CASE_STMT" -> ","
+  n289 -> n295 // "CASE_STMT" -> "&"
+  n295 -> n296 // "&" -> "n"
+  n289 -> n297 // "CASE_STMT" -> ")"
+  n289 -> n298 // "CASE_STMT" -> ";"
+  n289 -> n299 // "CASE_STMT" -> "break"
+  n289 -> n300 // "CASE_STMT" -> ";"
+  n79 -> n301 // "BLOCK" -> "CASE_STMT"
+  n301 -> n302 // "CASE_STMT" -> "10"
+  n301 -> n303 // "CASE_STMT" -> "printf"
+  n301 -> n304 // "CASE_STMT" -> "("
+  n301 -> n305 // "CASE_STMT" -> "\"Exitin...ram.\n\""
+  n301 -> n306 // "CASE_STMT" -> ")"
+  n301 -> n307 // "CASE_STMT" -> ";"
+  n301 -> n308 // "CASE_STMT" -> "break"
+  n301 -> n309 // "CASE_STMT" -> ";"
+  n79 -> n310 // "BLOCK" -> "default"
+  n79 -> n311 // "BLOCK" -> ":"
+  n79 -> n312 // "BLOCK" -> "printf"
+  n79 -> n313 // "BLOCK" -> "("
+  n79 -> n314 // "BLOCK" -> "\"Invali...ion.\n\""
+  n79 -> n315 // "BLOCK" -> ")"
+  n79 -> n316 // "BLOCK" -> ";"
+  n79 -> n317 // "BLOCK" -> "}"
+  n12 -> n318 // "BLOCK" -> "while"
+  n12 -> n319 // "BLOCK" -> "("
+  n12 -> n320 // "BLOCK" -> "choice"
+  n12 -> n321 // "BLOCK" -> "!="
+  n12 -> n322 // "BLOCK" -> "10"
+  n12 -> n323 // "BLOCK" -> ")"
+  n12 -> n324 // "BLOCK" -> ";"
+  n12 -> n325 // "BLOCK" -> "return"
+  n12 -> n326 // "BLOCK" -> "0"
+  n12 -> n327 // "BLOCK" -> ";"
 
 }
