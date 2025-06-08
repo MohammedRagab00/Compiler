@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
 
         stage.getIcons().add(new Image(Objects.requireNonNull(HelloApplication.class.getResourceAsStream("/icon.png"))));
-        stage.setTitle("Manga Compiler");
+        stage.setTitle("C__Compiler");
         stage.setScene(scene);
         stage.show();
     }
