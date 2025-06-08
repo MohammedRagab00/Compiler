@@ -6,19 +6,14 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextFormatter;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -110,33 +105,33 @@ public class HelloController {
         setupLineNumbering();
     }
 
+    private boolean updatingLineNumbers = false;
+
     private void setupLineNumbering() {
         // Initialize with a single line
         actualText = "";
         updateLineNumbers();
 
-        // Use a TextFormatter to manage the text
-        TextFormatter<String> textFormatter = new TextFormatter<>(change -> {
-            // Allow the change to go through
-            String newText = change.getControlNewText();
+        // Use a simple text change listener instead of TextFormatter
+        inputtedArea.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!updatingLineNumbers) {
+                // Extract the actual text without line numbers
+                String strippedText = stripLineNumbers(newValue);
+                actualText = strippedText;
 
-            // Extract the actual text without line numbers
-            String strippedText = stripLineNumbers(newText);
-            actualText = strippedText;
+                // Store caret position relative to actual text
+                int caretPos = inputtedArea.getCaretPosition();
+                int actualCaretPos = getActualCaretPosition(caretPos, newValue);
 
-            // Defer the line number update to after the change is applied
-            inputtedArea.textProperty().addListener(new javafx.beans.value.ChangeListener<String>() {
-                @Override
-                public void changed(javafx.beans.value.ObservableValue<? extends String> obs, String oldValue, String newValue) {
-                    inputtedArea.textProperty().removeListener(this); // Remove listener to avoid recursion
-                    updateLineNumbers();
-                }
-            });
+                // Update line numbers
+                updatingLineNumbers = true;
+                updateLineNumbers();
 
-            return change; // Accept the change
+                // Restore caret position
+                setCaretPositionInNumberedText(actualCaretPos);
+                updatingLineNumbers = false;
+            }
         });
-
-        inputtedArea.setTextFormatter(textFormatter);
     }
 
     private void updateLineNumbers() {
@@ -146,20 +141,17 @@ public class HelloController {
 
         String[] lines = normalizedText.isEmpty() ? new String[]{""} : normalizedText.split("\n", -1);
         StringBuilder numberedText = new StringBuilder();
+
         for (int i = 0; i < lines.length; i++) {
             numberedText.append(String.format("%d | %s", i + 1, lines[i]));
             if (i < lines.length - 1) {
                 numberedText.append("\n");
             }
         }
+
         String newText = numberedText.toString();
         if (!inputtedArea.getText().equals(newText)) {
-            int caretPosition = inputtedArea.getCaretPosition();
             inputtedArea.setText(newText);
-            // Adjust caret position to account for line numbers, but only during user edits
-            if (caretPosition > 0) { // Caret position > 0 indicates user typing, not file loading
-                adjustCaretPosition(caretPosition);
-            }
         }
     }
 
@@ -183,10 +175,83 @@ public class HelloController {
         inputtedArea.positionCaret(Math.min(newCaretPosition, inputtedArea.getText().length()));
     }
 
+    private int getActualCaretPosition(int caretInNumberedText, String numberedText) {
+        String[] lines = numberedText.split("\n", -1);
+        int actualPos = 0;
+        int currentPos = 0;
+
+        for (int i = 0; i < lines.length; i++) {
+            String line = lines[i];
+            int lineStart = currentPos;
+            int lineEnd = currentPos + line.length();
+
+            if (caretInNumberedText >= lineStart && caretInNumberedText <= lineEnd) {
+                // Caret is in this line
+                String lineNumberPrefix = String.format("%d | ", i + 1);
+                int prefixLength = lineNumberPrefix.length();
+
+                if (caretInNumberedText >= lineStart + prefixLength) {
+                    // Caret is after the line number prefix
+                    actualPos += (caretInNumberedText - lineStart - prefixLength);
+                }
+                break;
+            }
+
+            // Move to next line
+            currentPos = lineEnd + 1; // +1 for newline
+
+            // Add the actual line content length (without line numbers)
+            if (line.matches("^\\d+\\s\\|\\s.*")) {
+                actualPos += line.replaceFirst("^\\d+\\s\\|\\s", "").length();
+            } else if (line.matches("^\\d+\\s\\|$")) {
+                // Empty line, don't add anything
+            } else {
+                actualPos += line.length();
+            }
+
+            if (i < lines.length - 1) {
+                actualPos += 1; // Add newline
+            }
+        }
+
+        return actualPos;
+    }
+
+    private void setCaretPositionInNumberedText(int actualCaretPos) {
+        String[] actualLines = actualText.split("\n", -1);
+        int numberedCaretPos = 0;
+        int actualCharsProcessed = 0;
+
+        for (int i = 0; i < actualLines.length; i++) {
+            String lineNumberPrefix = String.format("%d | ", i + 1);
+            numberedCaretPos += lineNumberPrefix.length();
+
+            int lineLength = actualLines[i].length();
+
+            if (actualCaretPos <= actualCharsProcessed + lineLength) {
+                // Caret is in this line
+                numberedCaretPos += (actualCaretPos - actualCharsProcessed);
+                break;
+            }
+
+            // Move past this line
+            numberedCaretPos += lineLength;
+            actualCharsProcessed += lineLength;
+
+            if (i < actualLines.length - 1) {
+                numberedCaretPos += 1; // Add newline
+                actualCharsProcessed += 1; // Add newline
+            }
+        }
+
+        inputtedArea.positionCaret(Math.min(numberedCaretPos, inputtedArea.getText().length()));
+    }
+
     private String stripLineNumbers(String text) {
         if (text.isEmpty()) return "";
         String[] lines = text.split("\n", -1);
         StringBuilder stripped = new StringBuilder();
+
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
             if (line.matches("^\\d+\\s\\|\\s.*")) {
@@ -326,12 +391,15 @@ public class HelloController {
     }
 
     private void loadFile() {
+/*
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Input File");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("All Files", "*.*")
         );
         File selectedFile = fileChooser.showOpenDialog(inputtedArea.getScene().getWindow());
+*/
+        File selectedFile = new File("src/main/resources/Input.txt");
         try {
             // Read the file content
             String content = new String(Files.readAllBytes(selectedFile.toPath()));
